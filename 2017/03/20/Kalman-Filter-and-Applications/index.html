@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -135,7 +135,7 @@
 
 
 
-  <title> Kalman Filter and Its Applications | Yoyo in Wanderland </title>
+  <title> Kalman Filter and Its Applications | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -160,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -384,26 +384,26 @@
 <p>[source: ref 2]</p>
 <h3 id="Prediction-Phase-X-k-P-k-F-k"><a href="#Prediction-Phase-X-k-P-k-F-k" class="headerlink" title="Prediction Phase: $X_k, P_k, F_k$"></a>Prediction Phase: $X_k, P_k, F_k$</h3><h4 id="X-k-Position-and-Velocity"><a href="#X-k-Position-and-Velocity" class="headerlink" title="$X_k$: Position and Velocity"></a>$X_k$: Position and Velocity</h4><p>Remember in our scenario, we want to know the position and velocity.  We represent the <strong>state</strong> of the walking people at time k as $X_k = [position_k; velocity_k]$. </p>
 <h4 id="F-k-Prediction-Matrix"><a href="#F-k-Prediction-Matrix" class="headerlink" title="$F_k$: Prediction Matrix"></a>$F_k$: Prediction Matrix</h4><p>We have</p>
-<p>$ Position<em>k = Velocity</em>{k-1} * t + Position_{k-1} $<br>$ Velocity<em>k = Velocity</em>{k-1} $</p>
+<p>$ Position_k = Velocity_{k-1} * t + Position_{k-1} $<br>$ Velocity_k = Velocity_{k-1} $</p>
 <p>The above two formulas could be written as:</p>
-<p>$ \begin{bmatrix} Position_k \\ Velocity<em>k \end{bmatrix} = \begin{bmatrix} 1 &amp; t \\ 0 &amp; 1 \end{bmatrix} * \begin{bmatrix} Position</em>{k-1} \\ Velocity_{k-1} \end{bmatrix} $</p>
-<p>We represent the prediction matrix $\begin{bmatrix} 1 &amp; t \\ 0 &amp; 1 \end{bmatrix} ​$ as $F_k​$. We have then $ X_k = F<em>k * X</em>{k-1} ​$</p>
+<p>$ \begin{bmatrix} Position_k \\ Velocity_k \end{bmatrix} = \begin{bmatrix} 1 &amp; t \\ 0 &amp; 1 \end{bmatrix} * \begin{bmatrix} Position_{k-1} \\ Velocity_{k-1} \end{bmatrix} $</p>
+<p>We represent the prediction matrix $\begin{bmatrix} 1 &amp; t \\ 0 &amp; 1 \end{bmatrix} ​$ as $F_k​$. We have then $ X_k = F_k * X_{k-1} ​$</p>
 <h4 id="P-k-Covariance-Matrix"><a href="#P-k-Covariance-Matrix" class="headerlink" title="$P_k$: Covariance Matrix"></a>$P_k$: Covariance Matrix</h4><p>Since in our case, the faster the robot walks, the further the position might be. Therefore velocity and position should be correlated; the covariance matrix is $P_k$ .</p>
-<p>When prediction matrix updates X_k, the change will also reflect on covariance matrix. Therefore $  P_k = F<em>k * P</em>{k-1}  F_k^T  $ .</p>
+<p>When prediction matrix updates X_k, the change will also reflect on covariance matrix. Therefore $  P_k = F_k * P_{k-1}  F_k^T  $ .</p>
 <h3 id="Measurement-Phase-Z-k-H-k"><a href="#Measurement-Phase-Z-k-H-k" class="headerlink" title="Measurement Phase: $Z_k, H_k$"></a>Measurement Phase: $Z_k, H_k$</h3><h4 id="H-k-Measurement-Function"><a href="#H-k-Measurement-Function" class="headerlink" title="$H_k$: Measurement Function"></a>$H_k$: Measurement Function</h4><p>Sometimes the GPS reading is not having the same units with the prediction states. For example, we use km/h in prediction states and we use m/s in GPS reading for velocity. So we need a transformation with matrix $H_k$: </p>
 <p>$$ X_k = H_k  X_k $$</p>
 <p>$$ P_k = H_k  P_kH_k^T $$</p>
 <h4 id="Z-k-Measurement"><a href="#Z-k-Measurement" class="headerlink" title="$Z_k$: Measurement"></a>$Z_k$: Measurement</h4><p>Remember the GPS reading is not very reliable and might have some variations. So it is represented as a Gaussian distribution with <strong>mean</strong> $Z_k =  [PositionReading_k, VelocityReading_k]$. So in below picture the pink circle represents the prediction distribution while the green circle represents the measurement distribution. The bright bubble insight represents the belief distribution of position and velocity.</p>
 <p><img src="http://www.bzarg.com/wp-content/uploads/2015/08/gauss_6a.png" alt="bayesian"></p>
 <p>[source: ref 2]</p>
-<h3 id="External-Factors-R-k-Q-k-B-k-U-k"><a href="#External-Factors-R-k-Q-k-B-k-U-k" class="headerlink" title="External Factors: $R_k, Q_k, B_k, U_k $"></a>External Factors: $R_k, Q_k, B_k, U_k $</h3><h4 id="R-k-Q-k-noises"><a href="#R-k-Q-k-noises" class="headerlink" title="$R_k, Q_k$: noises"></a>$R_k, Q_k$: noises</h4><p>$Q_k$ is the transition covariance for the prediction phase. $ P_k = F<em>kP</em>{k-1}F_k^T + Q_k $. The idea is that there would always be some uncertainty. Therefore we kept an assumption - points might move a bit outside its original path. In practice, the value is often set very slow, for example: </p>
+<h3 id="External-Factors-R-k-Q-k-B-k-U-k"><a href="#External-Factors-R-k-Q-k-B-k-U-k" class="headerlink" title="External Factors: $R_k, Q_k, B_k, U_k $"></a>External Factors: $R_k, Q_k, B_k, U_k $</h3><h4 id="R-k-Q-k-noises"><a href="#R-k-Q-k-noises" class="headerlink" title="$R_k, Q_k$: noises"></a>$R_k, Q_k$: noises</h4><p>$Q_k$ is the transition covariance for the prediction phase. $ P_k = F_kP_{k-1}F_k^T + Q_k $. The idea is that there would always be some uncertainty. Therefore we kept an assumption - points might move a bit outside its original path. In practice, the value is often set very slow, for example: </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">delta = 1e-5</div><div class="line">Q = np.array([delta/1-delta, 0; 0, dealta/1-delta])</div></pre></td></tr></table></figure>
-<p>$R_k$ is the observation covariance for the measurement phase. $ P’<em>k = P’</em>{k-1} + R_k $. Default set as 1.</p>
+<p>$R_k$ is the observation covariance for the measurement phase. $ P’_k = P’_{k-1} + R_k $. Default set as 1.</p>
 <h4 id="B-k-U-k-External-influence"><a href="#B-k-U-k-External-influence" class="headerlink" title="$B_k, U_k$: External influence"></a>$B_k, U_k$: External influence</h4><p>For example, if the people are going down from the mountain, he might walker quicker because of the gravity. Therefore we have</p>
-<p>$$ Position<em>k =  Velocity</em>{k-1} * t + Position_{k-1} + gt^2 /2 $$ </p>
-<p>$$ Velocity<em>k = Velocity</em>{k-1} + gt $$</p>
+<p>$$ Position_k =  Velocity_{k-1} * t + Position_{k-1} + gt^2 /2 $$ </p>
+<p>$$ Velocity_k = Velocity_{k-1} + gt $$</p>
 <p>Therefore we have</p>
-<p>$$ X_k = F<em>k  X</em>{k-1} + \begin{bmatrix} t^2/2 \\ t \end{bmatrix} g = F<em>k X</em>{k-1} + B_k U_k $$</p>
+<p>$$ X_k = F_k  X_{k-1} + \begin{bmatrix} t^2/2 \\ t \end{bmatrix} g = F_k X_{k-1} + B_k U_k $$</p>
 <p>where $ B_k $ is the control matrix for external influence and $U_k​$ is the control vector. </p>
 <h3 id="The-Big-Boss-Kalman-Gain"><a href="#The-Big-Boss-Kalman-Gain" class="headerlink" title="The Big Boss: Kalman Gain ?"></a>The Big Boss: Kalman Gain ?</h3><p>We are almost done explaining all the variables in Kalman Filter, except a very important term: Kalman Gain. This is a bit complicated, but luckily, this is not something we need to calculate or input.</p>
 <p>Now let’s go back to the measurement phase once more. When we multiplying the prediction distribution and measurement distribution, the new mean and variance go like this:</p>
@@ -751,7 +751,24 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
