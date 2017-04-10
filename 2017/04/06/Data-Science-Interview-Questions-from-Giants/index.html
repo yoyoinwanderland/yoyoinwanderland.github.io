@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Data Science Interview Questions for Linear Regression">
+<meta name="description" content="Key notes from Heinz Data Science Job Hunting Team">
 <meta name="keywords" content="Data Science Basics">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DS Interview: Linear Regression">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/DS-Interview-Linear-Regression/index.html">
+<meta property="og:title" content="Data Science Interview Questions from Giants">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
-<meta property="og:description" content="Data Science Interview Questions for Linear Regression">
-<meta property="og:updated_time" content="2017-04-04T20:20:32.000Z">
+<meta property="og:description" content="Key notes from Heinz Data Science Job Hunting Team">
+<meta property="og:updated_time" content="2017-04-10T03:28:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DS Interview: Linear Regression">
-<meta name="twitter:description" content="Data Science Interview Questions for Linear Regression">
+<meta name="twitter:title" content="Data Science Interview Questions from Giants">
+<meta name="twitter:description" content="Key notes from Heinz Data Science Job Hunting Team">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/09/DS-Interview-Linear-Regression/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/"/>
 
 
 
 
 
-  <title> DS Interview: Linear Regression | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Data Science Interview Questions from Giants | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/DS-Interview-Linear-Regression/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -281,7 +281,7 @@
             
             
               
-                DS Interview: Linear Regression
+                Data Science Interview Questions from Giants
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T16:52:30-05:00">
-                2017-03-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T10:45:14-04:00">
+                2017-04-06
               </time>
             
 
@@ -306,28 +306,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -343,7 +321,7 @@
 
           
               <div class="post-description">
-                  Data Science Interview Questions for Linear Regression
+                  Key notes from Heinz Data Science Job Hunting Team
               </div>
           
 
@@ -358,50 +336,95 @@
       
 
       
-        <h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><ul>
-<li><p><strong>How would linear regression be described and explained in layman’s terms?</strong> <br><br>Linear regression is to <em>find the best fitting line</em> given a bunch of points. The distance to the line is the “error” - because ideally we prefer every point is on that line. Mathematically, we want a line that produces as small total error as possible. That’s what we do in linear regression. </p>
+        <p>This post is to answer a collection of data science interview questions posted on <a href="http://www.learndatasci.com/data-science-interview-questions/" target="_blank" rel="external">LearnDataSci</a>. Special thanks to my CMU friends <a href="http://hexiaoyuhaha.github.io" target="_blank" rel="external">Xiaoyu</a>, <a href="https://www.linkedin.com/in/shuting-amanda-zhang-b9a33879/" target="_blank" rel="external">Shuting</a>, <a href="https://www.linkedin.com/in/qianyi-hu-cindy/" target="_blank" rel="external">Qianyi</a>.</p>
+<h2 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General Questions"></a>General Questions</h2><h3 id="Apple"><a href="#Apple" class="headerlink" title="Apple"></a>Apple</h3><ol>
+<li><p><strong>Suppose you’re given millions of users that each have hundreds of transactions and these millions of transactions are for tens of thousands of products. How would you group the users together in meaningful segments?</strong> </p>
+<p>Answer: this depends on business objective. If the management aim to know different degrees of engagement, then sales amount, purchase frequency, purchase range are valuable inputs to cluster on. If the team wants to group “neighbours” in terms of product preferences, the transaction records could be a large one hot encoding matrix to be clustered on.</p>
 </li>
-<li><p><strong>What is an intuitive explanation of a multivariate regression?</strong> <br><br>Normally regression only has one outcome (Y), and several predictor variables (X). In Multivariate regression, there are more than one outcomes (Y). </p>
+</ol>
+<h3 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h3><ol>
+<li><p><strong>Describe a project you’ve worked on and how it made a difference.</strong></p>
 </li>
-<li><p><strong>What is gradient descent method? Will gradient descent methods always converge to the same point?</strong><br><br>Gradient descent is an interative algorithm to find optimal solution. Sometimes, for example, in k-means clustering it will converge to different local optimals with different initializations. In regression, yes, it will always converge to the global optimal point.</p>
+<li><p><strong>How would you approach a categorical feature with high-cardinality?</strong></p>
+<p>Categorical feature should always be dealt with one hot encoding. When it has high cardinality, first thing to do is to understand the goal of the task, what categorical feature represents and its distribution. If this is a prediction task and we want to improve accuracy, feature reduction such as PCA might be a good choice; while if it’s a causality analysis task, feature selection algorithms such as lasso (logistic) regression is more appropriate.  In terms of feature meaning, if, say, the feature represents age range and it’s divided into many little ranges, some combinations could be made. If we observe the distribution with bar chart and we find some of the categories take the majority of all the records, then maybe we could combine all the rest into one category. </p>
+<p><em>Additional answers from <a href="https://www.quora.com/In-scikit-learn-what-is-the-best-way-to-handle-categorical-features-of-high-cardinality-Using-one-hot-encoder-seems-to-blow-up-my-feature-space-Does-assigning-a-number-to-each-cardinality-work-better-or-do-we-run-into-the-risk-of-the-ML-algorithm-assuming-some-ordering-in-these-numeric-labels" target="_blank" rel="external">ref</a>:</em></p>
+<ul>
+<li>When using Scikit-learn, DictEncoder helps to tranform categorical features to one hot encoding sparse matrix thus saving memory - as the matrix is supposed to be very sparse.</li>
+<li>Tree-based algorithms can deal with categorical variables. For high-cardinality categorical feature, random forest is recommended. It bootstraps for features and records, thus it removes some noisy / unuseful features.</li>
+</ul>
+<p>​</p>
 </li>
-<li><p><strong>What is the difference between linear regression and least squares?</strong> <br><br>Linear regression is a statistical inference problem / machine learning model; and least squares describes one way to achieve the solution to the problem/ model. Alternatively, we can use MAE as measurement and gradient descent to find the solution to linear regression model.</p>
+<li><p><strong>What would you do to summarize a Twitter feed?</strong></p>
+<p>A twitter feed always states either an event, or a mood. So we can either do a POS tagging with NLTK, and then select either adjective plus noun, noun plus noun if not found then adjective only and make these as summation; or we can use named entity analytics (HMM) using NLTK and sentiement analysis using Stanford NLP tool. </p>
+<p>​</p>
+</li>
+<li><p><strong>What are the steps for wrangling and cleaning data before applying machine learning algorithms?</strong> <a href="http://www.cs.ccsu.edu/~markov/ccsu_courses/datamining-3.html" target="_blank" rel="external">ref</a></p>
+<p>For numerical data, the normal things we do include:</p>
+<ul>
+<li><p>Data joining. Sometimes we are provided with multiple sources of files we need to combine them;</p>
+</li>
+<li><p>Manipulate missing data: there are several ways to deal with missing data: we can either delete rows containing missing data if it won’t lose important info; or we can use zero/ average fill it; or we can use a regression to estimate missing data.</p>
+</li>
+<li><p>Deal with outliers: firstly observe the meaning of the feature and if the value all make sense, if no then remove it; if yes, smooth with regression line, or use clustering; then remove outliers</p>
+</li>
+<li><p>Data normalization is always useful in any prediction tasks</p>
 </li>
 </ul>
-<h4 id="Statistical-Perspective"><a href="#Statistical-Perspective" class="headerlink" title="Statistical Perspective"></a>Statistical Perspective</h4><ul>
-<li><p><strong>What are the assumptions required for linear regression? What if some of these assumptions are violated?</strong> <br><br>First, variables are <strong>normal distributed</strong>. Can check with histogram/ QQ plot. <br><br>Second, relationship is <strong>linear</strong> between independent and dependent variables (not polynomial etc.). Scatter plot is helpful in two dimensional case. <br>  <em>Solution: change the model to include polynomial terms.</em> <br><br>Third, no linear dependency between predictors (no <strong>multi-collinearity</strong>). Use correlation/ covariance matrix to detect. <br><em>Solution: dimensional reduction (PCA), select one particular variable from highly correlated variable set, or  ridge regression (without expecting the coefficient of one single variable explain much)</em> <br><br>Fourth, there is no correlation between error terms (<strong>no autocorrelation</strong>). This means, dependent variables (y) are independent of each other. Use residual plot or Durbin – Watson test. <br> <em>Solution: time-series modelling</em> <br><br>Last, <strong>homoscedasticity</strong>. It means the residual remains same as x changes. Scatter plot with x,y,fitting line, residuals is a good measurement. <br> <em>Solution: log transformation, box-cox transformation</em></p>
-</li>
-<li><p><strong>What is collinearity and what to do with it? How to remove multicollinearity?</strong> <br><br>This means there are at least two predictors are highly correlated. It will make interpretation of coefficients, lead to overfitting, or even failure of inverting the matrix.<br>To remove multicollinearity, there are generally four ways:<br>1, drop affected variables; 2, dimensional reduction (PCA); 3, ridge regression; 4, partial least square regression.</p>
-</li>
-<li><p><strong>Can you derive the ordinary least square regression formula?</strong> <br></p>
-</li>
+<p>For text data, we can do:</p>
+<ul>
+<li>Standarization: Stem (remove the ending) or lemmatize (go back to the original form) it</li>
+<li>one hot encoding: transform to term frequency matrix or tf-idf matrix</li>
 </ul>
-<h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h4><ul>
-<li><p><strong>What is an intuitive explanation of regularization?</strong> <br><br>Regularization is a technique to prevent overfitting. It enables the model to learn just the right amount of information about the data. Basically it penalizes the model if it goes too detailed that even learn specific patterns that will not necessarily present in the future.</p>
 </li>
-<li><p><strong>What is the difference between L1 and L2 regularization?</strong> <br><br>L1 regularization gives sparse estimation by giving a Lapace prior for coefficients. It will force most of coefficients to be zero.<br>L2 regularization will retain all predictors with Gaussian prior for coefficients. Some of the coefficients get larger and some get smaller. It’s easier to compute.</p>
+</ol>
+<ol>
+<li><p><strong>How do you measure distance between data points?</strong></p>
+<p>For numerical data, we can use Minkowski distance. When P=1 it’s mahanttan distance and P=2 it’s euclidean distance. So as P increases it penalizes more on big differences (outliers for linear regression, misclassified items for classification).</p>
+<p>For text data, we can use cosine similarity for tokenized matrix.</p>
+<p>​</p>
 </li>
-<li><p><strong>What are the benefits and drawbacks of specific methods, such as ridge regression and lasso?</strong> <br><br>Ridge regression is faster than lasso; lasso regression is a feature selection method itself. But we can’t claim which method to use without observing the distribution of data. <br></p>
+<li><p><strong>Define variance.</strong></p>
+<p>Variance is the disperse from the mean. </p>
+<p>​</p>
 </li>
+<li><p><strong>Describe the differences between and use cases for box plots and histograms.</strong></p>
+</li>
+</ol>
+<p>   For box plots we can see the ranges as well as the percentiles with just one line, so it’s good for distribution comparison between different categories. With histogram we can see the distributions (i.e. the shape) of the data.</p>
+<h3 id="Twitter"><a href="#Twitter" class="headerlink" title="Twitter"></a>Twitter</h3><ol>
+<li><p><strong>What features would you use to build a recommendation algorithm for users?</strong></p>
+<p>There are two ways: one based on the most-in-common friends’ followees. If most of your friends are connected with someone, but you are not yet connected, it’s likely you are from the same friends circle just not added as friends. second based on shared interested. The person (particularly friends’ followee) who shares most topic sharing or reposts with each other are likely to become friends. </p>
+</li>
+</ol>
+<h3 id="Uber"><a href="#Uber" class="headerlink" title="Uber"></a>Uber</h3><ol>
+<li><p><strong>Pick any product or app that you really like and describe how you would improve it.</strong></p>
+<p>YouVersion bible - prayer function.</p>
+<p>​</p>
+</li>
+<li><p><strong>How would you find an anomaly in a distribution ?</strong> <a href="http://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" target="_blank" rel="external">Ref</a></p>
+<p>There are two kinds of anomaly detection: </p>
+<ul>
+<li>Novelty detection:  to detect meaningful anomaly patterns in a clean dataset. This is normally used in fraud detection in banking/ insurance/ telecom industries. One of the common ways is to use an elliptic envolope with assumption that the data comes from certain “shape” of distribution such as Gaussian.</li>
+<li>Outlier detection: to identify outliers from a noisy dataset.  There are several ways, like visualization with one or two dimensional data, fitting an elliptic envolope, or an isolation forest for high dimensional data.</li>
 </ul>
-<h4 id="Model-Tuning-Selection"><a href="#Model-Tuning-Selection" class="headerlink" title="Model Tuning/ Selection"></a>Model Tuning/ Selection</h4><ul>
-<li><p><strong>How do you choose the right number of predictors?</strong> <br><br>One lazy method is lasso regression. We can also go through a feature selection process: First we decide the metric, such as MSE or R square. Then we can use greedy search and cross validation to build models with different combinations of predictors; and evaluate the models with test set. <br></p>
+<p>​</p>
 </li>
-<li><p><strong>How to check if the regression model fits the data well?</strong> <br><br>Adjusted R square, MSE</p>
+<li><p>s<strong>How would you go about investigating if a certain trend in a distribution is due to an anomaly?</strong></p>
+<p>​</p>
 </li>
-<li><p><strong>What is the difference between squared error and absolute error? and Are there instances where root mean squared error might be used rather than mean absolute error? and How would a model change if we minimized absolute error instead of squared error? What about the other way around?</strong> <br><br>Squared error/ root mean squared error  - penalize more on big errors; while MAE is more robust to outliers. This is because taking square of a small item (&lt; 1) is even smaller, square of a large item is even larger.</p>
+<li><p><strong>How would you estimate the impact Uber has on traffic and driving conditions?</strong></p>
+<p>A/B testing on regions with/ without uber driving. Useful metrics: average time waiting for taxi, traffic conjunction duration in peak hours etc.</p>
+<p>​</p>
 </li>
-</ul>
-<h4 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h4><ul>
-<li><p><strong>What are the drawbacks of linear model? Are you familiar with alternatives (Lasso, ridge regression, boosted trees)?</strong> <br><br>Drawbacks: Rigid assumptions; overfitting problem; linearity; see previous regularization part; boosted trees turn a series of weak prediction models into a strong prediction by voting.</p>
+<li><p><strong>What metrics would you consider using to track if Uber’s paid advertising strategy to acquire new customers actually works? How would you then approach figuring out an ideal customer acquisition cost?</strong></p>
+<p>Metric: Clickthrough rate and conversion rate. Normlly customer acquisition cost is calculated using $ Total market campaign / No of customers acquired$, but it should be noted that the as total market campain increases, the curve won’t be a straight line, instead it should be diminishing. The ideal customer acquisition cost can be calculated before the turning point. </p>
 </li>
-<li><p><strong>Assume you need to generate a predictive model using multiple regression. Explain how you intend to validate this model</strong><br><br>Cross validation; R^2 or MSE; Residual analysis (see statistical part)</p>
+</ol>
+<h3 id="LinkedIn"><a href="#LinkedIn" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><ol>
+<li><p><strong>Can you explain what REST is?</strong> </p>
+<p>​</p>
 </li>
-<li><p><strong>Do we always need the intercept term in a regression model?</strong> <br> Yes. Intuitively speaking, without the constant, the regression line has to cross the origin, but it’s not always the case. Statistically speaking, it allows the mean of residuals to be 0.</p>
-</li>
-<li><p><strong>Provide three examples of relevant phenomena that have long tails. Why are they important in classification and regression problems?</strong> <br><br>Natural language (Zipf’s law); customer purchase; wealth. The problem associated include it violates the normal distribution and linearity assumption for linear model and create accuracy paradox in classification problem. We will need to perform log transformation for long tailed data. </p>
-</li>
-</ul>
+</ol>
 
       
     </div>
@@ -444,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/09/DS-Interview-Classification/" rel="next" title="DS Interview: Classification">
-                <i class="fa fa-chevron-left"></i> DS Interview: Classification
+              <a href="/2017/04/08/四月-芳菲尽/" rel="next" title="四月 芳菲尽">
+                <i class="fa fa-chevron-left"></i> 四月 芳菲尽
               </a>
             
           </div>
@@ -454,8 +477,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/" rel="prev" title="Install Pentaho with GUI on EC2 Linux Instance">
-                Install Pentaho with GUI on EC2 Linux Instance <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/27/Optimizing-SQL-Statements/" rel="prev" title="Optimizing SQL Statements">
+                Optimizing SQL Statements <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -585,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Definition"><span class="nav-number">1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Statistical-Perspective"><span class="nav-number">2.</span> <span class="nav-text">Statistical Perspective</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularization"><span class="nav-number">3.</span> <span class="nav-text">Regularization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Tuning-Selection"><span class="nav-number">4.</span> <span class="nav-text">Model Tuning/ Selection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Others"><span class="nav-number">5.</span> <span class="nav-text">Others</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Questions"><span class="nav-number">1.</span> <span class="nav-text">General Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple"><span class="nav-number">1.1.</span> <span class="nav-text">Apple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft"><span class="nav-number">1.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twitter"><span class="nav-number">1.3.</span> <span class="nav-text">Twitter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber"><span class="nav-number">1.4.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn"><span class="nav-number">1.5.</span> <span class="nav-text">LinkedIn</span></a></li></ol></li></ol></div>
             
 
           </div>
