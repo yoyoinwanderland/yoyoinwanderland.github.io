@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Key notes from Heinz Data Science Job Hunting Team">
-<meta property="og:updated_time" content="2017-04-10T03:54:08.000Z">
+<meta property="og:updated_time" content="2017-04-10T03:58:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Science Interview Questions from Giants">
 <meta name="twitter:description" content="Key notes from Heinz Data Science Job Hunting Team">
@@ -339,7 +339,7 @@
         <p>This post is to answer a collection of data science interview questions posted on <a href="http://www.learndatasci.com/data-science-interview-questions/" target="_blank" rel="external">LearnDataSci</a>. Special thanks to my CMU friends <a href="http://hexiaoyuhaha.github.io" target="_blank" rel="external">Xiaoyu</a>, <a href="https://www.linkedin.com/in/shuting-amanda-zhang-b9a33879/" target="_blank" rel="external">Shuting</a>, <a href="https://www.linkedin.com/in/qianyi-hu-cindy/" target="_blank" rel="external">Qianyi</a>.</p>
 <h2 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General Questions"></a>General Questions</h2><h3 id="Apple"><a href="#Apple" class="headerlink" title="Apple"></a>Apple</h3><ul>
 <li><p><strong>Suppose you’re given millions of users that each have hundreds of transactions and these millions of transactions are for tens of thousands of products. How would you group the users together in meaningful segments?</strong> </p>
-<p> Answer: this depends on business objective. If the management aim to know different degrees of engagement, then sales amount, purchase frequency, purchase range are valuable inputs to cluster on. If the team wants to group “neighbours” in terms of product preferences, the transaction records could be a large one hot encoding matrix to be clustered on.</p>
+<p> This depends on business objective. If the management aim to know different degrees of engagement, then sales amount, purchase frequency, purchase range are valuable inputs to cluster on. If the team wants to group “neighbours” in terms of product preferences, the transaction records could be a large one hot encoding matrix to be clustered on.</p>
 </li>
 </ul>
 <h3 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h3><ul>
@@ -362,30 +362,26 @@
 <li><p><strong>What are the steps for wrangling and cleaning data before applying machine learning algorithms?</strong> <a href="http://www.cs.ccsu.edu/~markov/ccsu_courses/datamining-3.html" target="_blank" rel="external">ref</a></p>
 <p> For numerical data, the normal things we do include:</p>
 <ul>
-<li><p>Data joining. Sometimes we are provided with multiple sources of files we need to combine them;</p>
-</li>
-<li><p>Manipulate missing data: there are several ways to deal with missing data: we can either delete rows containing missing data if it won’t lose important info; or we can use zero/ average fill it; or we can use a regression to estimate missing data.</p>
-</li>
-<li><p>Deal with outliers: firstly observe the meaning of the feature and if the value all make sense, if no then remove it; if yes, smooth with regression line, or use clustering; then remove outliers</p>
-</li>
-<li><p>Data normalization is always useful in any prediction tasks</p>
-<p>For text data, we can do:</p>
-</li>
-<li><p>Standarization: Stem (remove the ending) or lemmatize (go back to the original form) it</p>
-</li>
-<li>one hot encoding: transform to term frequency matrix or tf-idf matrix</li>
+<li>Data joining. Sometimes we are provided with multiple sources of files we need to combine them;</li>
+<li>Manipulate missing data: there are several ways to deal with missing data: we can either delete rows containing missing data if it won’t lose important info; or we can use zero/ average fill it; or we can use a regression to estimate missing data.</li>
+<li>Deal with outliers: firstly observe the meaning of the feature and if the value all make sense, if no then remove it; if yes, smooth with regression line, or use clustering; then remove outliers</li>
+<li>Data normalization is always useful in any prediction tasks</li>
 </ul>
 </li>
+</ul>
+<p>   ​</p>
+<p>   For text data, we can do:</p>
+<ul>
+<li>Standarization: Stem (remove the ending) or lemmatize (go back to the original form) it</li>
+<li>one hot encoding: transform to term frequency matrix or tf-idf matrix</li>
 </ul>
 <ul>
 <li><p><strong>How do you measure distance between data points?</strong></p>
 <p> For numerical data, we can use Minkowski distance. When P=1 it’s mahanttan distance and P=2 it’s euclidean distance. So as P increases it penalizes more on big differences (outliers for linear regression, misclassified items for classification).</p>
 <p> For text data, we can use cosine similarity for tokenized matrix.</p>
-<p> ​</p>
 </li>
 <li><p><strong>Define variance.</strong></p>
 <p> Variance is the disperse from the mean. </p>
-<p> ​</p>
 </li>
 <li><p><strong>Describe the differences between and use cases for box plots and histograms.</strong></p>
 </li>
@@ -399,23 +395,18 @@
 <h3 id="Uber"><a href="#Uber" class="headerlink" title="Uber"></a>Uber</h3><ul>
 <li><p><strong>Pick any product or app that you really like and describe how you would improve it.</strong></p>
 <p> YouVersion bible - prayer function.</p>
-<p> ​</p>
 </li>
 <li><p><strong>How would you find an anomaly in a distribution ?</strong> <a href="http://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" target="_blank" rel="external">Ref</a></p>
 <p>  There are two kinds of anomaly detection: </p>
 <ul>
 <li>Novelty detection:  to detect meaningful anomaly patterns in a clean dataset. This is normally used in fraud detection in banking/ insurance/ telecom industries. One of the common ways is to use an elliptic envolope with assumption that the data comes from certain “shape” of distribution such as Gaussian.</li>
-<li><p>Outlier detection: to identify outliers from a noisy dataset.  There are several ways, like visualization with one or two dimensional data, fitting an elliptic envolope, or an isolation forest for high dimensional data.</p>
-<p>​</p>
-</li>
+<li>Outlier detection: to identify outliers from a noisy dataset.  There are several ways, like visualization with one or two dimensional data, fitting an elliptic envolope, or an isolation forest for high dimensional data.</li>
 </ul>
 </li>
 <li><p><strong>How would you go about investigating if a certain trend in a distribution is due to an anomaly?</strong></p>
-<p>  ​</p>
 </li>
 <li><p><strong>How would you estimate the impact Uber has on traffic and driving conditions?</strong></p>
-<p>  A/B testing on regions with/ without uber driving. Useful metrics: average time waiting for taxi, traffic conjunction duration in peak hours etc.</p>
-<p>  ​</p>
+<p>  A/B testing on regions with/ without uber driving. Useful metrics: average time waiting for taxi, traffic conjunction duration in peak hours etc.​</p>
 </li>
 <li><p><strong>What metrics would you consider using to track if Uber’s paid advertising strategy to acquire new customers actually works? How would you then approach figuring out an ideal customer acquisition cost?</strong></p>
 <p>  Metric: Clickthrough rate and conversion rate. Normlly customer acquisition cost is calculated using $ Total market campaign / No of customers acquired$, but it should be noted that the as total market campain increases, the curve won’t be a straight line, instead it should be diminishing. The ideal customer acquisition cost can be calculated before the turning point. </p>
