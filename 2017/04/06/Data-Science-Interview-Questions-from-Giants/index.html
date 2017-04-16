@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Key notes from Heinz Data Science Job Hunting Team">
-<meta property="og:updated_time" content="2017-04-10T04:05:15.000Z">
+<meta property="og:updated_time" content="2017-04-13T22:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Data Science Interview Questions from Giants">
 <meta name="twitter:description" content="Key notes from Heinz Data Science Job Hunting Team">
@@ -412,10 +412,135 @@
 </li>
 </ul>
 <h3 id="LinkedIn"><a href="#LinkedIn" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><ul>
-<li><p><strong>Can you explain what REST is?</strong> </p>
-<p>  ​</p>
+<li><strong>Can you explain what REST is?</strong> </li>
+</ul>
+<h2 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h2><h3 id="Google"><a href="#Google" class="headerlink" title="Google"></a>Google</h3><ul>
+<li><p><strong>Why do you use feature selection?</strong></p>
+<p>Three reasons:</p>
+<ul>
+<li>Due to Ocam’s Razor, the simpler the better</li>
+<li>Normally the number of rows should be less than the number of features</li>
+<li>Multicolinearity: We assume the features are independent from each other but in reality this is not the case.</li>
+</ul>
+</li>
+<li><p><strong>What is the effect on the coefficients of logistic regression if two predictors are highly correlated? What are the confidence intervals of the coefficients?</strong></p>
+<p>This causes four problems: unstable coefficients, interpretation problems for coefficients, causes R^2 to increase, and inflated P-value on correlated coefficients. </p>
+<p>Confidence interval is, with large number of experiments, coefficients will fall into the certain range. It’s not where true value of coefficients will reside.</p>
+</li>
+<li><p><strong>What’s the difference between Gaussian Mixture Model and K-Means?</strong></p>
+<p>Gaussian mixture model is a soft clustering method while k-means is a hard clustering method.</p>
+<p>Gaussian is based on EM - the probabilities resides in certain cluster. K-means is based on distance.</p>
+</li>
+<li><p><strong>How do you pick k for K-Means?</strong></p>
+<p>Plot SSE (Sum of square error) onto graph and choose the point after the steepest step.</p>
+</li>
+<li><p><strong>How do you know when Gaussian Mixture Model is applicable?</strong></p>
+<p>K-means produces less accurate results than Gaussian mixture model. So if the resources are enough, kmeans is a good first step to determine initlization points.</p>
+</li>
+<li><p><strong>Assuming a clustering model’s labels are known, how do you evaluate the performance of the model?</strong></p>
+<p>Cross entropy loss. It measures how “pure” each cluster is.</p>
 </li>
 </ul>
+<h3 id="Microsoft-1"><a href="#Microsoft-1" class="headerlink" title="Microsoft"></a>Microsoft</h3><ul>
+<li><p><strong>What’s an example of a machine learning project you’re proud of?</strong></p>
+</li>
+<li><p><strong>Choose any machine learning algorithm and describe it.</strong></p>
+</li>
+<li><p><strong>Describe how Gradient Boosting works.</strong></p>
+</li>
+<li><p><strong>Describe the decision tree model.</strong></p>
+</li>
+<li><p><strong>What is a neural network?</strong></p>
+<p>It is a classification method that model brain neuras to solve complex classification problems. Back propagation is a “learn from mistake” algorithm for neural network training. Back propagation, in its nature, is gradient descent. It compares the output with the label, and “propagate” the error back onto the previous layers and adjust the weights accordingly.</p>
+</li>
+<li><p><strong>Explain the Bias-Variance Tradeoff</strong></p>
+<p>$MSE = bias + variance$</p>
+</li>
+<li><p><strong>How do you deal with unbalanced binary classification?</strong></p>
+<p>Oversampling the samller class and undersample the big class. Similarly, we could give more weights to smaller class when calculating objective losses. In scikit-learn, there is a parameter class_weight and it could be set as “balanced”.</p>
+</li>
+<li><p><strong>What’s the difference between L1 and L2 regularization?</strong></p>
+<p>L1 regularization gives sparse estimation by giving a Lapace prior for coefficients. It will force most of coefficients to be zero.<br>L2 regularization will retain all predictors with Gaussian prior for coefficients. Some of the coefficients get larger and some get smaller. It’s easier to compute.</p>
+</li>
+</ul>
+<h3 id="Uber-1"><a href="#Uber-1" class="headerlink" title="Uber"></a>Uber</h3><ul>
+<li><p><strong>What sort features could you give an Uber driver to predict if they will accept a ride request or not? What supervised learning algorithm would you use to solve the problem and how would compare the results of the algorithm?</strong></p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="LinkedIn-1"><a href="#LinkedIn-1" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><ul>
+<li><p><strong>Name and describe three different kernel functions and in what situation you would use each.</strong></p>
+<p>RBF, linear, Polynomial, chi-squared</p>
+</li>
+<li><p><strong>Describe a method used in machine learning.</strong></p>
+</li>
+<li><p><strong>How do you deal with sparse data?</strong></p>
+</li>
+</ul>
+<h3 id="IBM"><a href="#IBM" class="headerlink" title="IBM"></a>IBM</h3><ul>
+<li><p><strong>How do you prevent overfitting?</strong></p>
+<ul>
+<li>simple model</li>
+<li>regularization</li>
+<li>feature selection</li>
+<li>feature reduction</li>
+</ul>
+</li>
+<li><p><strong>How do you deal with outliers in your data?</strong></p>
+<ul>
+<li>If the outlier is an error: delete it </li>
+<li>If it’s outliers: depends on the business goal - if you want a more accurate linear model: remove it at this moment but keep the records</li>
+</ul>
+</li>
+<li><p><strong>How do you analyze the performance of the predictions generated by regression models versus classification models?</strong></p>
+<p>Regression:</p>
+<ul>
+<li>MSE</li>
+<li>Adjusted $R^2$</li>
+<li>Percentage error</li>
+</ul>
+<p>Classification:</p>
+<ul>
+<li>Confusion matrix</li>
+<li>​</li>
+</ul>
+</li>
+<li><p><strong>How do you assess logistic regression versus simple linear regression models?</strong></p>
+</li>
+<li><p><strong>What’s the difference between supervised learning and unsupervised learning?</strong></p>
+</li>
+<li><p><strong>What is cross-validation and why would you use it?</strong></p>
+</li>
+<li><p><strong>What’s the name of the matrix used to evaluate predictive models?</strong></p>
+</li>
+<li><p><strong>What relationships exist between a logistic regression’s coefficient and the Odds Ratio?</strong></p>
+</li>
+<li><p><strong>What’s the relationship between Principal Component Analysis (PCA) and Linear &amp; Quadratic Discriminant Analysis (LDA &amp; QDA)</strong></p>
+</li>
+<li><p><strong>If you had a categorical dependent variable and a mixture of categorical and continuous independent variables, what algorithms, methods, or tools would you use for analysis?</strong></p>
+</li>
+<li><p><strong>What’s the difference between logistic and linear regression? How do you avoid local minima?</strong></p>
+</li>
+</ul>
+<h3 id="Salesforce"><a href="#Salesforce" class="headerlink" title="Salesforce"></a>Salesforce</h3><ul>
+<li><strong>What data and models would would you use to measure attrition/churn? How would you measure the performance of your models?</strong></li>
+</ul>
+<ol>
+<li>Explain a machine learning algorithm as if you’re talking to a non-technical person.</li>
+</ol>
+<h3 id="Capital-One"><a href="#Capital-One" class="headerlink" title="Capital One"></a>Capital One</h3><ol>
+<li>How would you build a model to predict credit card fraud?</li>
+<li>How do you handle missing or bad data?</li>
+<li>How would you derive new features from features that already exist?</li>
+<li>If you’re attempting to predict a customer’s gender, and you only have 100 data points, what problems could arise?</li>
+<li>Suppose you were given two years of transaction history. What features would you use to predict credit risk?</li>
+<li>Design an AI program for Tic-tac-toe</li>
+</ol>
+<h3 id="Zillow"><a href="#Zillow" class="headerlink" title="Zillow"></a>Zillow</h3><ol>
+<li>Explain overfitting and what steps you can take to prevent it.</li>
+<li>Why does SVM need to maximize the margin between support vectors?</li>
+</ol>
+<p>​</p>
 
       
     </div>
@@ -468,8 +593,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/28/Big-Data-Large-Scale-Computing/" rel="prev" title="Big Data Large Scale Computing">
-                Big Data Large Scale Computing <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/27/Optimizing-SQL-Statements/" rel="prev" title="Optimizing SQL Statements">
+                Optimizing SQL Statements <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +667,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -564,7 +689,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -599,7 +724,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Questions"><span class="nav-number">1.</span> <span class="nav-text">General Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple"><span class="nav-number">1.1.</span> <span class="nav-text">Apple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft"><span class="nav-number">1.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twitter"><span class="nav-number">1.3.</span> <span class="nav-text">Twitter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber"><span class="nav-number">1.4.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn"><span class="nav-number">1.5.</span> <span class="nav-text">LinkedIn</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Questions"><span class="nav-number">1.</span> <span class="nav-text">General Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple"><span class="nav-number">1.1.</span> <span class="nav-text">Apple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft"><span class="nav-number">1.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twitter"><span class="nav-number">1.3.</span> <span class="nav-text">Twitter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber"><span class="nav-number">1.4.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn"><span class="nav-number">1.5.</span> <span class="nav-text">LinkedIn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-Learning"><span class="nav-number">2.</span> <span class="nav-text">Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google"><span class="nav-number">2.1.</span> <span class="nav-text">Google</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft-1"><span class="nav-number">2.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber-1"><span class="nav-number">2.3.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn-1"><span class="nav-number">2.4.</span> <span class="nav-text">LinkedIn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IBM"><span class="nav-number">2.5.</span> <span class="nav-text">IBM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Salesforce"><span class="nav-number">2.6.</span> <span class="nav-text">Salesforce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Capital-One"><span class="nav-number">2.7.</span> <span class="nav-text">Capital One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zillow"><span class="nav-number">2.8.</span> <span class="nav-text">Zillow</span></a></li></ol></li></ol></div>
             
 
           </div>
