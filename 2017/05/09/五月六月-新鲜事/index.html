@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Linux," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,17 +87,23 @@
 
 
 
-<meta name="description" content="记录一下Pentaho及VNCServer安装过程">
-<meta name="keywords" content="Linux">
+<meta name="description" content="人生新篇章啦">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Install Pentaho with GUI on EC2 Linux Instance">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/index.html">
+<meta property="og:title" content="五月六月 新鲜事">
+<meta property="og:url" content="http://yoursite.com/2017/05/09/五月六月-新鲜事/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
-<meta property="og:description" content="记录一下Pentaho及VNCServer安装过程">
-<meta property="og:updated_time" content="2017-04-04T20:20:32.000Z">
+<meta property="og:description" content="人生新篇章啦">
+<meta property="og:image" content="http://waterfordlanding-apts.com/wp-content/uploads/sites/9/2013/06/Siara_Waterford_2_2D_web.jpg">
+<meta property="og:image" content="http://waterfordlanding-apts.com/wp-content/uploads/sites/9/2013/06/Siara_Waterford_2_3D_web-300x300.jpg">
+<meta property="og:image" content="http://lp.hm.com/hmprod?set=key[source],value[/environment/2017/8ZZ_0587_001R.jpg]&set=key[rotate],value[0]&set=key[width],value[4764]&set=key[height],value[5570]&set=key[x],value[0]&set=key[y],value[-1]&set=key[type],value[FASHION_FRONT]&set=key[hmver],value[1]&call=url[file:/product/large]">
+<meta property="og:image" content="https://s-media-cache-ak0.pinimg.com/564x/a2/68/8a/a2688acf9077d88a595dc711aed2af6e.jpg">
+<meta property="og:image" content="https://s-media-cache-ak0.pinimg.com/564x/ed/c1/82/edc182bd2722f2a9746ad3ca097eea65.jpg">
+<meta property="og:updated_time" content="2017-06-10T01:34:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Install Pentaho with GUI on EC2 Linux Instance">
-<meta name="twitter:description" content="记录一下Pentaho及VNCServer安装过程">
+<meta name="twitter:title" content="五月六月 新鲜事">
+<meta name="twitter:description" content="人生新篇章啦">
+<meta name="twitter:image" content="http://waterfordlanding-apts.com/wp-content/uploads/sites/9/2013/06/Siara_Waterford_2_2D_web.jpg">
 
 
 
@@ -125,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/09/五月六月-新鲜事/"/>
 
 
 
 
 
-  <title> Install Pentaho with GUI on EC2 Linux Instance | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 五月六月 新鲜事 | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -260,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/09/五月六月-新鲜事/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -281,7 +287,7 @@
             
             
               
-                Install Pentaho with GUI on EC2 Linux Instance
+                五月六月 新鲜事
               
             
           </h1>
@@ -296,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-09T16:52:09+08:00">
-                2017-03-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-09T10:22:10+08:00">
+                2017-05-09
               </time>
             
 
@@ -319,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
+                  <a href="/categories/无用功/" itemprop="url" rel="index">
+                    <span itemprop="name">无用功</span>
                   </a>
                 </span>
 
@@ -343,7 +349,7 @@
 
           
               <div class="post-description">
-                  记录一下Pentaho及VNCServer安装过程
+                  人生新篇章啦
               </div>
           
 
@@ -358,18 +364,42 @@
       
 
       
-        <p>In this post I will introduce how to install and visit the GUI interface from VNC client. I have been sitting here for 4 hours and were so frustrated for all the BUGS I saw.. Hopefully this post will help you get this done within one hour. </p>
-<p>Now let’s get started!!</p>
-<h4 id="Security-Group"><a href="#Security-Group" class="headerlink" title="Security Group"></a>Security Group<br></h4><p>When you run an instance, please edit the inbound traffic rules of security group:<br>Protocol: Customed TCP/IP, Port <strong>5901</strong>. <br><br>This step is critical for setting up VNC server which we will introduce later. See <a href="https://survivalguides.wordpress.com/2010/08/16/vnc-server-configuration/" target="_blank" rel="external">ref</a>.</p>
-<h4 id="Install-Java"><a href="#Install-Java" class="headerlink" title="Install Java"></a>Install Java</h4><p>Pentaho runs on Java. Installation instruction goes <a href="https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04" target="_blank" rel="external">here</a>.<br>Please, please check you’ve installed <strong>the SAME version of JDK and JRE</strong>!  If you get error message <a href="http://stackoverflow.com/questions/37612054/what-does-unsupported-major-minor-version-52-0-mean-and-how-do-i-fix-it" target="_blank" rel="external">“Unsupported major.minor version 52.0”</a> then it’s very likely the version doesn’t match. At least it was the problem for me. Well it’s also possible that there is something wrong with yout /etc/environment : either you didn’t set up JAVA_HOME and Path; or you forgot to run <code>source /etc/environment</code> to confirm your setup.</p>
-<h4 id="Download-the-bin"><a href="#Download-the-bin" class="headerlink" title="Download the bin"></a>Download the bin</h4><p>File is available at <a href="http://www.pentaho.com/download" target="_blank" rel="external"> here </a>. If you can’t download with <code>wget</code>; try transfer downloads to your instance using filezilla. It took only half an hour to download and transfer to instance.<br>After downloading (&amp; transfering), run<br><code>chmod a+x pentaho-business-analytics-7.0.0-x64.bin</code><br><br><code>./pentaho-business-analytics-7.0.0-x64.bin</code></p>
-<h4 id="Install-VNC-server-on-server-side"><a href="#Install-VNC-server-on-server-side" class="headerlink" title="Install VNC server on server side"></a>Install VNC server on server side</h4><p>Steps as in <a href="http://stackoverflow.com/questions/25657596/how-to-set-up-gui-on-amazon-ec2-ubuntu-server" target="_blank" rel="external">Reference</a>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sudo useradd -m pentaho</div><div class="line">sudo passwd pentaho</div><div class="line">sudo usermod -aG admin pentaho</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install ubuntu-desktop</div><div class="line">sudo apt-get install vnc4server</div><div class="line">su - pentaho</div><div class="line">vncserver</div><div class="line">vncserver -kill :1</div><div class="line">vim /home/pentaho/.vnc/xstartup</div></pre></td></tr></table></figure></p>
-<p>and then change the document xstartup tp:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">export XKL_XMODMAP_DISABLE=1</div><div class="line">unset SESSION_MANAGER</div><div class="line">unset DBUS_SESSION_BUS_ADDRESS</div><div class="line"></div><div class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup</div><div class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources</div><div class="line">xsetroot -solid grey</div><div class="line">vncconfig -iconic &amp;</div><div class="line"></div><div class="line">gnome-panel &amp;</div><div class="line">gnome-settings-daemon &amp;</div><div class="line">metacity &amp;</div><div class="line">nautilus &amp;</div><div class="line">gnome-terminal &amp;</div></pre></td></tr></table></figure></p>
-<p>start VNC server again. </p>
-<p><strong>Very Important: user name to start VNC server should be the same as username to run ./spoon.sh</strong>. Else will encounter <a href="http://unix.stackexchange.com/questions/140113/org-eclipse-swt-swterror-no-more-handles-gtk-init-check-failed-while-runnin?rq=1" target="_blank" rel="external">org.eclipse.swt.SWTError</a>.</p>
-<h4 id="Download-VNC-client"><a href="#Download-VNC-client" class="headerlink" title="Download VNC client"></a>Download VNC client</h4><p>I found <a href="https://www.realvnc.com/download/viewer/" target="_blank" rel="external"> RealVNC</a> simple and good to use. After installation, open:<br>${your public DNS}<strong>:1</strong></p>
-<h4 id="Open-Pentaho"><a href="#Open-Pentaho" class="headerlink" title="Open Pentaho"></a>Open Pentaho</h4><p>In VNC client, open terminal.<br>Navigate using<br><code>cd /computer/home/pentaho/Pentaho/design-tools/data-integration/</code><br>Final step: run<br><code>./spoon.sh</code></p>
-<h4 id="DONE"><a href="#DONE" class="headerlink" title="DONE!!!!"></a>DONE!!!!</h4>
+        <p>05/09:<br></p>
+<p>在看小说、学术、和写博客之间拉扯，最终还是决定先把思绪倾倒。我着实是一个很奇怪的人，当没有朋友的时候会自怜，当交际多的时候会自厌。穿着一身22岁时候的面具，说着没长进的话语，看到自己空洞的灵魂。好……无力。所以我想多写，我问自己是谁的时候只能多写，让我的重心通过笔端泄入地平面。</p>
+<p>人的浮躁往往来源于说的委实太多，做与思考却太少。今天早晨和万胖聊天是关于为何我不能做一个开心而高情商的宝宝，可真正的答案我想想其实也知道。这样的谈话就是浮夸。爱圣经。“我亲爱的弟兄，这是你们所知道的。但你们各人要快快地听，慢慢地说，慢慢地动怒，因为人的怒气不能成就神的义。”（雅各书1:19-20）“惟用爱心说诚实话，凡事长进，连于元首基督。“（以弗所书4:15）”不轻易发怒的，胜过勇士；治服己心的，强如取城。“（箴言16：32）我不想逃，我想定个目标。一年一年时光过去，我不信我不能长成基督的模样。今年，说话这件小事，放进祷告中。</p>
+<p>说来，这个月的两件大事，即将毕业和商定订婚。很幸运，在今年的CMU学年中还能见证到上帝的恩典。我为雨桐祷告过，为詹婧祷告过，为我自己祷告过。不管是不是基督徒，是不是明白上帝应许祷告是一样怎样的事情，但我明白，我见证，我记住。原来我在一个群体中是一个代祷的管道，原来即便事情也许在福音的版图中无关紧要上帝也是关注的。毕竟上帝是爱，祂怜悯照顾了我们的感受。所以这份工作又是上帝给的。不确定是不是我眼中的最好，但是上帝眼中的最好，我一定能一点一点体会到。愿我继续能成为祝福的管道。</p>
+<p>说到订婚，也有很多话要说。这两个月甜蜜流于嘴边，这样不好。何必徒徒挂在嘴边惹人艳羡，不如独自感受、刻骨铭心。很感激万胖，在长久以来对我的包容，直到我醒来，我知道，我明白他对我的包容意味着什么。从最开始说翻脸就翻脸的脾气，到后来时不时的低落，和永无止休的吃醋，我女生的情绪性的坏毛病渐渐好转，我是终于能有锚定住船。我们之间有那么多的故事，一点一滴的小瞬间，构成我爱你。未来几十年和一个人过也许是一件很可怕的事情，但如果那是和你，我想我还是很期待的。我希望你幸福，也很开心你未来的幸福有我参与。林林种种，构成一句话，余生请多多指教啦。</p>
+<p>最后，还想诘问自己，除了自我剖析，除了谈情说爱，除了学术汇报，我的笔下还能不能有新的主题了？还是看的书太少呀。希望以后能客观点。嘤嘤嘤！</p>
+<p>06/09: <br></p>
+<p>最近的重心一直在未来的家居设计上。想要学习家居的灵感来自于在Buffalo住的<a href="https://www.airbnb.com.sg/rooms/18226094" target="_blank" rel="external">Airbnb</a>。大大高高又舒适的床，地毯，小摆件，抱枕，壁画，甚至厕所里摆着一束小草。对我而言追求美并不是一件容易的事情，大概是因为长得丑吧（咦）。搭配家居与搭配衣服给我的感觉一样吃力。不过还是很愿意学习，为了罗尼~比心~</p>
+<p>看了小一周后给自己两个原则：</p>
+<ul>
+<li>先确定功能再思考布局</li>
+<li>先确定配色再挑选家居</li>
+</ul>
+<p>以下是目前进展~</p>
+<p>首先上我的户型图图～</p>
+<p><img src="http://waterfordlanding-apts.com/wp-content/uploads/sites/9/2013/06/Siara_Waterford_2_2D_web.jpg" alt="户型图"></p>
+<p><img src="http://waterfordlanding-apts.com/wp-content/uploads/sites/9/2013/06/Siara_Waterford_2_3D_web-300x300.jpg" alt="房子布局"></p>
+<p>（图片来源：waterford landing）</p>
+<p>由于是一个人住，这样的房型算是很均衡啦，感觉空间足够大，能够瞎发挥儿。</p>
+<p>第一站是卧室。在仔细思索我个人生活习惯后，我决定了卧室的基础摆设：</p>
+<ul>
+<li>大大大大大床</li>
+<li>两个藤木脏衣篓 </li>
+<li>化妆柜和全身铜镜</li>
+</ul>
+<p>基调是森林，绿色和木头色。决定留着那个墙壁上的小植物。一些小物，包括一台手机，一筒挂式纸巾（鼻炎患者的悲哀），一个香薰加湿器（更森林一点）就是极好。</p>
+<p><img src="http://lp.hm.com/hmprod?set=key[source],value[/environment/2017/8ZZ_0587_001R.jpg]&amp;set=key[rotate],value[0]&amp;set=key[width],value[4764]&amp;set=key[height],value[5570]&amp;set=key[x],value[0]&amp;set=key[y],value[-1]&amp;set=key[type],value[FASHION_FRONT]&amp;set=key[hmver],value[1]&amp;call=url[file:/product/large]" alt="床"></p>
+<p>（图片来源：h&amp;m home）</p>
+<p>第二站是客厅。一人居……我的客厅并不需要沙发，也不需要电视。需要一台很长的桌子，一半办公，一半吃饭，显示屏在中间，吃饭的时候也可以看看电影。另一个方向，大概需要很多柜子，几个软座，一片绿意和一点留白。外加门口一个舒服得不得了的软软的座椅，可以坐着换双鞋。</p>
+<p><img src="https://s-media-cache-ak0.pinimg.com/564x/a2/68/8a/a2688acf9077d88a595dc711aed2af6e.jpg" alt="客厅"></p>
+<p>（图片来源：<a href="https://www.pinterest.com/pin/270075308884371194/" target="_blank" rel="external">pinterest</a>)</p>
+<p>第三站是dining room。既然我的客厅已经完美履行了吃饭的功能，我的dining room也许就适合做一个小小的练功房。瑜伽垫，小哑铃，几面镜子，还要想办法把ipad挂在墙上。</p>
+<p><img src="https://s-media-cache-ak0.pinimg.com/564x/ed/c1/82/edc182bd2722f2a9746ad3ca097eea65.jpg" alt="home gym"></p>
+<p>（图片来源：<a href="https://www.pinterest.com/pin/3166662220874441/" target="_blank" rel="external">pinterest</a>)</p>
+<p>好啦。计划完毕！希望有足够的资金嘤嘤嘤～</p>
+
       
     </div>
 
@@ -396,12 +426,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-        </div>
-      
 
       
         
@@ -411,18 +435,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/09/DS-Interview-Linear-Regression/" rel="next" title="DS Interview: Linear Regression">
-                <i class="fa fa-chevron-left"></i> DS Interview: Linear Regression
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/09/Yoga-Yoga/" rel="prev" title="Yoga! Yoga!">
-                Yoga! Yoga! <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/10/偶有所得/" rel="prev" title="偶有所得">
+                偶有所得 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -470,17 +490,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -542,22 +553,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Security-Group"><span class="nav-number">1.</span> <span class="nav-text">Security Group</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-Java"><span class="nav-number">2.</span> <span class="nav-text">Install Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-the-bin"><span class="nav-number">3.</span> <span class="nav-text">Download the bin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-VNC-server-on-server-side"><span class="nav-number">4.</span> <span class="nav-text">Install VNC server on server side</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Download-VNC-client"><span class="nav-number">5.</span> <span class="nav-text">Download VNC client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Open-Pentaho"><span class="nav-number">6.</span> <span class="nav-text">Open Pentaho</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DONE"><span class="nav-number">7.</span> <span class="nav-text">DONE!!!!</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
