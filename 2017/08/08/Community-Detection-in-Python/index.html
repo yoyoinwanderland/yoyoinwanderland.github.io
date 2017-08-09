@@ -1,0 +1,916 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,network analytics," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="A study note for performing community detection in Python using networkX and iGraph">
+<meta name="keywords" content="Python,network analytics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Community Detection in Python">
+<meta property="og:url" content="http://yoursite.com/2017/08/08/Community-Detection-in-Python/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="A study note for performing community detection in Python using networkX and iGraph">
+<meta property="og:updated_time" content="2017-08-09T02:52:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Community Detection in Python">
+<meta name="twitter:description" content="A study note for performing community detection in Python using networkX and iGraph">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/08/Community-Detection-in-Python/"/>
+
+
+
+
+
+  <title> Community Detection in Python | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/Community-Detection-in-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Community Detection in Python
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T19:48:15-04:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  A study note for performing community detection in Python using networkX and iGraph
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="NetworkX-vs-IGraph"><a href="#NetworkX-vs-IGraph" class="headerlink" title="NetworkX vs. IGraph"></a>NetworkX vs. IGraph</h2><h3 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h3><ul>
+<li>NetworkX: implemented in Python</li>
+<li>IGraph: implemented in C</li>
+</ul>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><p>IGraph wins.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IGraph</th>
+<th>NetworkX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-source shortest path</td>
+<td>0.012 s</td>
+<td>0.152 s</td>
+</tr>
+<tr>
+<td>PageRank</td>
+<td>0.093 s</td>
+<td>3.949 s</td>
+</tr>
+<tr>
+<td>K-core</td>
+<td>0.022 s</td>
+<td>0.714 s</td>
+</tr>
+<tr>
+<td>Minimum spanning tree</td>
+<td>0.044 s</td>
+<td>2.045 s</td>
+</tr>
+<tr>
+<td>Betweenness</td>
+<td>946.8 s (edge) + 353.9 s (vertex) (~ 21.6 mins)</td>
+<td>32676.4 s (edge)  22650.4 s (vertex) (~15.4 hours)</td>
+</tr>
+</tbody>
+</table>
+<p>  See <a href="https://graph-tool.skewed.de/performance" target="_blank" rel="external">ref</a></p>
+<h3 id="No-of-Community-Detection-Algorithms"><a href="#No-of-Community-Detection-Algorithms" class="headerlink" title="No. of Community Detection Algorithms"></a>No. of Community Detection Algorithms</h3><p>IGraph wins.</p>
+<ul>
+<li>NetworkX: only optimal modularity.</li>
+<li>IGraph: nine algorithms including optimal modularity; edge betweenness etc.</li>
+</ul>
+<h3 id="Ease-of-Programming"><a href="#Ease-of-Programming" class="headerlink" title="Ease of Programming"></a>Ease of Programming</h3><p>NetworkX wins.</p>
+<h4 id="Load-a-graph"><a href="#Load-a-graph" class="headerlink" title="Load a graph"></a>Load a graph</h4><ul>
+<li>NetworkX can simply load a graph from a list of edge tuples.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">edges = [(1,2),(2,3),(3,4),(4,5)]</div><div class="line">G = nx.Graph()</div><div class="line"></div><div class="line"># add edges from txt </div><div class="line">G.add_edges_from(edges)</div></pre></td></tr></table></figure>
+<ul>
+<li>IGraph needs to first load vertices and then a list of edge tuples</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># create graph</div><div class="line">g = Graph()</div><div class="line"></div><div class="line"># in order to add edges, we have to add all the vertices first</div><div class="line"></div><div class="line">#iterate through edges and put all the vertices in a list</div><div class="line">vertex = []</div><div class="line">for edge in edges:</div><div class="line">    vertex.extend(edge)</div><div class="line"></div><div class="line">g.add_vertices( list( set(vertex))) # add a list of unique vertices to the graph</div><div class="line">g.add_edges(edges) # add the edges to the graph. </div><div class="line">&quot;&quot;&quot;</div><div class="line">Note: add_edges is much quicker than add_edge. for every time add_edge is performed, the entire data structure in C has to be renewed with a new series ordering.</div><div class="line">&quot;&quot;&quot;</div><div class="line"></div><div class="line">print g</div></pre></td></tr></table></figure>
+<h4 id="Get-information-from-existing-graph"><a href="#Get-information-from-existing-graph" class="headerlink" title="Get information from existing graph"></a>Get information from existing graph</h4><ul>
+<li>NetworkX</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">## get no. of neighbors of a node by node name</div><div class="line">node_index = G.vs.index(target_node) </div><div class="line">neighbors = G.adjacency_list()[node_index]</div></pre></td></tr></table></figure>
+<ul>
+<li>IGraph</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">## get no. of neighbors of a node by node name</div><div class="line">node_index = g.vs.find(target_node).index  #find index by nodename</div><div class="line">neighbors = []</div><div class="line"></div><div class="line"># g.incident(node_index) gives a series of edges that passes the target node index</div><div class="line"># iterate through the edges, and append the other node into neighbors list</div><div class="line"></div><div class="line">for edge in g.es[g.incident(node_index)]: </div><div class="line">	if edge.target == node_index:</div><div class="line">		neighbors.append(g.vs[edge.source][&quot;name&quot;])</div><div class="line">    else:</div><div class="line">    	neighbors.append(g.vs[edge.target][&quot;name&quot;])</div></pre></td></tr></table></figure>
+<h2 id="Community-Detection-Algorithms"><a href="#Community-Detection-Algorithms" class="headerlink" title="Community Detection Algorithms"></a>Community Detection Algorithms</h2><p>A list of algorithms available in IGraph include:</p>
+<ul>
+<li><a href="http://tuvalu.santafe.edu/~aaronc/modularity/" target="_blank" rel="external">Optimal Modularity</a></li>
+<li><a href="https://arxiv.org/abs/cond-mat/0112110" target="_blank" rel="external">Edge Betweenness (2001)</a></li>
+<li><a href="https://arxiv.org/abs/cond-mat/0408187" target="_blank" rel="external">Fast Greedy (2004)</a></li>
+<li><a href="https://arxiv.org/abs/physics/0512106" target="_blank" rel="external">Walktrap (2005)</a></li>
+<li><a href="https://arxiv.org/abs/physics/0605087" target="_blank" rel="external">Eigenvectors (2006)</a></li>
+<li><a href="https://arxiv.org/abs/cond-mat/0603718" target="_blank" rel="external">Spinglass (2006)</a></li>
+<li><a href="https://arxiv.org/abs/0709.2938" target="_blank" rel="external">Label Propagation (2007)</a></li>
+<li><a href="https://arxiv.org/abs/0803.0476" target="_blank" rel="external">Multi-level (2008)</a></li>
+<li><a href="https://arxiv.org/abs/0906.1405" target="_blank" rel="external">Info Map (2008)</a></li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li><p>For directed graph: go with <strong>Info Map</strong>. Else, pls continue to read.</p>
+</li>
+<li><p>If compuational resources is not a big problem, and the graph is &lt; 700 vertices &amp; 3500 edges, go with <strong>Edge Betweenness</strong>; it yields the best result.</p>
+</li>
+<li><p>If cares about modularity, any of the remaining algorithms will apply;</p>
+<ul>
+<li>If the graph is particularly small: &lt; 100 vertices, then go with <strong>optimal modularity</strong>;</li>
+<li>If you want a first try-on algorithm, go with <strong>fast greedy</strong> or <strong>walktrap</strong></li>
+<li>If the graph is bigger than 100 vertices and not a de-generated graph, and you want something more accurate than fast greedy or walktrap, go with <strong>leading eigenvectors</strong></li>
+<li>If you are looking for a solution that is similar to K-means clustering, then go for <strong>Spinglass</strong></li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h3 id="Optimal-Modularity"><a href="#Optimal-Modularity" class="headerlink" title="Optimal Modularity"></a>Optimal Modularity</h3><ul>
+<li><p><strong>Definition of modularity</strong>: </p>
+<blockquote>
+<p>Modularity compares the number of edges inside a cluster with the expected number of edges that one would find in the cluster if the network were a random network with the same number of nodes and where each node keeps its degree, but edges are otherwise randomly attached.</p>
+</blockquote>
+<p> Modularity is a measure of the segmentation of a network into partitions. The higher the modularity, the denser in-group connections are and the sparser the inter-group connections are. </p>
+</li>
+<li><p><strong>Methodology</strong>: </p>
+<p>GNU linear programming kit.</p>
+</li>
+<li><p><strong>Evaluation</strong>: </p>
+<ul>
+<li>Better for smaller communities with less than 100 vertices for the reasons of implementation choice.</li>
+<li>Resolution limit: when the network is large enough, small communities tend to be combined even if they are well-shaped.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Fast-Greedy"><a href="#Fast-Greedy" class="headerlink" title="Fast Greedy"></a>Fast Greedy</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>Bottom up hierarchical decomposition process. It will merge two current communities iteratively, with the goal to achieve the maximum modularity gain at local optimal.</p>
+</li>
+<li><p><strong>Evaluation</strong>: </p>
+<ul>
+<li>Pretty fast, can merge a sparse graph at linear time.</li>
+<li>Resolution limit: when the network is large enough, small communities tend to be combined even if they are well-shaped.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Walktrap"><a href="#Walktrap" class="headerlink" title="Walktrap"></a>Walktrap</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>Similar to fast greedy. It is believed that when we walk some random steps, it is large likely that we are still in the same community as where we were before. This method firstly performs a random walk 3-4-5, and merge using modularity  with methods similar to fast greedy.</p>
+</li>
+<li><p><strong>Evaluation</strong>:</p>
+<ul>
+<li>A bit slower than fast greedy;</li>
+<li>A bit more accurate than fast greedy.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Multi-level"><a href="#Multi-level" class="headerlink" title="Multi-level"></a>Multi-level</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>Similar to fast greedy, just that nodes are not combined, they move around communities to make dicision if they will contribute to the modularity score if they stay.</p>
+</li>
+</ul>
+<h3 id="Eigenvectors"><a href="#Eigenvectors" class="headerlink" title="Eigenvectors"></a>Eigenvectors</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>A top down approach that seeks to maximize modularity. It concerns decomposing a modularity matrix. </p>
+</li>
+<li><p><strong>Evaluation</strong>:</p>
+<ul>
+<li>More accurate than fast greedy</li>
+<li>Slower than fast greedy</li>
+<li>Limitation: not stable on degenerated graphs (might not work!)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Label-Propogation"><a href="#Label-Propogation" class="headerlink" title="Label Propogation"></a>Label Propogation</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>A bit like k-clustering, with initialization k different points. It uses an iterative method (again just like k-means): the target label will be assigned with the most “vote” of the lables from its neighbors; until the current label is the most frequent label.</p>
+</li>
+</ul>
+<ul>
+<li><strong>Evaluation</strong>:<ul>
+<li>Very fast</li>
+<li>Like K-Means, random initialization yields different results. Therefore have to run multiple times (suggested 1000+) to achieve a consensus clustering.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Edge-Betweenness"><a href="#Edge-Betweenness" class="headerlink" title="Edge Betweenness"></a>Edge Betweenness</h3><ul>
+<li><p><strong>Definition of edge betweenness</strong>:</p>
+<blockquote>
+<p>Number of shortest path that passes the edge.</p>
+</blockquote>
+<p>It’s not difficult to imagin that, if there is an edge that connects two different groups, then that edge will has to be passed through multiple times when we count the shortest path. Therefore, by removing the edge that contains with the highest number of shortest path, we are disconnecting two groups.</p>
+</li>
+<li><p><strong>Methodology</strong>:</p>
+<p>Top down hierarchical decomposition process.</p>
+</li>
+<li><p><strong>Evalution</strong>:</p>
+<ul>
+<li>Generally this approach gives the most satisfying results from my experience.</li>
+<li>Pretty slow method. The computation for edge betweenness is pretty complex, and it will have to be computed again after removing each edge. Suitable for graph with less than 700 vertices and 3500 edges.</li>
+<li>It produces a dendrogram with no reminder to choose the appropriate number of communities. (But for IGraph it does a function that output the optimal count for a dendrogram).</li>
+</ul>
+</li>
+</ul>
+<h3 id="Spinglass"><a href="#Spinglass" class="headerlink" title="Spinglass"></a>Spinglass</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<p>Complicated enough for me to ignore..</p>
+</li>
+<li><p><strong>Evaluation</strong>:</p>
+<ul>
+<li>Not fast</li>
+<li>has a bunch of hyperparameters to tune from</li>
+</ul>
+</li>
+</ul>
+<h3 id="Infomap"><a href="#Infomap" class="headerlink" title="Infomap"></a>Infomap</h3><ul>
+<li><p><strong>Methodology</strong>:</p>
+<blockquote>
+<p>It is based on information theoretic principles; it tries to build a grouping which provides the shortest description length for a random walk on the graph, where the description length is measured by the expected number of bits per vertex required to encode the path of a random walk.</p>
+</blockquote>
+</li>
+<li><p><strong>Evaluation</strong>:</p>
+<ul>
+<li>Used for directed graph analytics</li>
+</ul>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://graph-tool.skewed.de/performance" target="_blank" rel="external">Graph-tool performance comparison</a></li>
+<li><a href="http://igraph.org/python/doc/igraph.Graph-class.html" target="_blank" rel="external">Python IGraph Manual</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Modularity_(networks" target="_blank" rel="external">Modularity (Networks)</a>)</li>
+<li><a href="https://stackoverflow.com/questions/9471906/what-are-the-differences-between-community-detection-algorithms-in-igraph/" target="_blank" rel="external">Tamas’ answer to “What are the differences between community detection algorithms?”</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/network-analytics/" rel="tag"># network analytics</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/07/八月-从头始/" rel="prev" title="八月 从头始">
+                八月 从头始 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NetworkX-vs-IGraph"><span class="nav-number">1.</span> <span class="nav-text">NetworkX vs. IGraph</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation"><span class="nav-number">1.1.</span> <span class="nav-text">Implementation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">1.2.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#No-of-Community-Detection-Algorithms"><span class="nav-number">1.3.</span> <span class="nav-text">No. of Community Detection Algorithms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ease-of-Programming"><span class="nav-number">1.4.</span> <span class="nav-text">Ease of Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Load-a-graph"><span class="nav-number">1.4.1.</span> <span class="nav-text">Load a graph</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Get-information-from-existing-graph"><span class="nav-number">1.4.2.</span> <span class="nav-text">Get information from existing graph</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Community-Detection-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Community Detection Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">2.1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimal-Modularity"><span class="nav-number">2.2.</span> <span class="nav-text">Optimal Modularity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fast-Greedy"><span class="nav-number">2.3.</span> <span class="nav-text">Fast Greedy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Walktrap"><span class="nav-number">2.4.</span> <span class="nav-text">Walktrap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-level"><span class="nav-number">2.5.</span> <span class="nav-text">Multi-level</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eigenvectors"><span class="nav-number">2.6.</span> <span class="nav-text">Eigenvectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label-Propogation"><span class="nav-number">2.7.</span> <span class="nav-text">Label Propogation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Edge-Betweenness"><span class="nav-number">2.8.</span> <span class="nav-text">Edge Betweenness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spinglass"><span class="nav-number">2.9.</span> <span class="nav-text">Spinglass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Infomap"><span class="nav-number">2.10.</span> <span class="nav-text">Infomap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
