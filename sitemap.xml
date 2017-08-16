@@ -2,6 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/16/Learn-ML-from-Sklearn-Preprocessing/</loc>
+    
+    <lastmod>2017-08-16T18:16:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/07/%E5%85%AB%E6%9C%88-%E4%BB%8E%E5%A4%B4%E5%A7%8B/</loc>
+    
+    <lastmod>2017-08-16T17:49:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/19/TensorFlow-Review-Notes/</loc>
+    
+    <lastmod>2017-08-14T14:51:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/27/Optimizing-SQL-Statements/</loc>
+    
+    <lastmod>2017-08-14T14:51:41.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/20/Kalman-Filter-and-Applications/</loc>
+    
+    <lastmod>2017-08-14T14:50:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/</loc>
+    
+    <lastmod>2017-08-14T14:50:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/DS-Interview-Linear-Regression/</loc>
+    
+    <lastmod>2017-08-14T14:50:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/DS-Interview-Classification/</loc>
+    
+    <lastmod>2017-08-14T14:50:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/</loc>
+    
+    <lastmod>2017-08-14T14:49:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/08/Community-Detection-in-Python/</loc>
+    
+    <lastmod>2017-08-14T14:49:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/03/21/%E4%B8%89%E6%9C%88-%E6%B5%AE%E4%B8%96%E7%BB%98/</loc>
     
     <lastmod>2017-08-09T13:56:09.000Z</lastmod>
@@ -12,13 +82,6 @@
     <loc>http://yoursite.com/2017/02/09/%E4%BA%8C%E6%9C%88-%E4%BC%97%E7%94%9F%E7%9B%B8/</loc>
     
     <lastmod>2017-08-09T13:56:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/07/%E5%85%AB%E6%9C%88-%E4%BB%8E%E5%A4%B4%E5%A7%8B/</loc>
-    
-    <lastmod>2017-08-09T13:55:55.000Z</lastmod>
     
   </url>
   
@@ -44,30 +107,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/08/08/Community-Detection-in-Python/</loc>
-    
-    <lastmod>2017-08-09T02:52:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/06/24/%E5%AD%A6%E5%8C%BB%E5%81%B6%E5%BE%97/</loc>
     
     <lastmod>2017-07-13T08:40:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/06/25/Learn-Machine-Learning-from-Scikit-Learn/</loc>
-    
-    <lastmod>2017-06-28T09:06:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/</loc>
-    
-    <lastmod>2017-04-13T22:02:09.000Z</lastmod>
     
   </url>
   
@@ -100,49 +142,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/19/TensorFlow-Review-Notes/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/Install-Pentaho-with-GUI-on-EC2-Linux-Instance/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/DS-Interview-Classification/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/03/10/This-is-my-prayer/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/DS-Interview-Linear-Regression/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/27/Optimizing-SQL-Statements/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/20/Kalman-Filter-and-Applications/</loc>
     
     <lastmod>2017-04-04T20:20:32.000Z</lastmod>
     
