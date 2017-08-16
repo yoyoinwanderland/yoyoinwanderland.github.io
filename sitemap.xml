@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/08/16/Learn-ML-from-Sklearn-Preprocessing/</loc>
+    <loc>http://yoursite.com/2017/06/25/Learn-ML-from-Sklearn-Preprocessing/</loc>
     
-    <lastmod>2017-08-16T18:16:29.000Z</lastmod>
+    <lastmod>2017-08-16T18:19:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/16/Learn-ML-from-Sklearn-CV/</loc>
+    
+    <lastmod>2017-08-16T18:18:11.000Z</lastmod>
     
   </url>
   
@@ -135,14 +142,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/09/Yoga-Yoga/</loc>
+    <loc>http://yoursite.com/2017/03/10/This-is-my-prayer/</loc>
     
     <lastmod>2017-04-04T20:20:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/03/10/This-is-my-prayer/</loc>
+    <loc>http://yoursite.com/2017/03/09/Yoga-Yoga/</loc>
     
     <lastmod>2017-04-04T20:20:32.000Z</lastmod>
     
