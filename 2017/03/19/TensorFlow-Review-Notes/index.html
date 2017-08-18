@@ -1,0 +1,950 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Machine Learning,TensorFlow,CNN," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="为了明天面试理清思路,复（预）习一下TensorFlow">
+<meta name="keywords" content="Machine Learning,TensorFlow,CNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TensorFlow Review Notes">
+<meta property="og:url" content="http://yoursite.com/2017/03/19/TensorFlow-Review-Notes/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="为了明天面试理清思路,复（预）习一下TensorFlow">
+<meta property="og:image" content="http://cs231n.github.io/assets/nn1/sigmoid.jpeg">
+<meta property="og:image" content="http://cs231n.github.io/assets/cnn/maxpool.jpeg">
+<meta property="og:image" content="http://cs231n.github.io/assets/cnn/convnet.jpeg">
+<meta property="og:updated_time" content="2017-08-14T14:51:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TensorFlow Review Notes">
+<meta name="twitter:description" content="为了明天面试理清思路,复（预）习一下TensorFlow">
+<meta name="twitter:image" content="http://cs231n.github.io/assets/nn1/sigmoid.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/19/TensorFlow-Review-Notes/"/>
+
+
+
+
+
+  <title> TensorFlow Review Notes | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/19/TensorFlow-Review-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                TensorFlow Review Notes
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-19T20:05:22-04:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  为了明天面试理清思路,复（预）习一下TensorFlow
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><h3 id="What-is-TensorFlow"><a href="#What-is-TensorFlow" class="headerlink" title="What is TensorFlow?"></a>What is TensorFlow?</h3><p>TensorFlow is a open source machine learning library developed by Google. It’s capable for various deep learning, reinforcement learning tasks and enables GPU mode for faster computation. It provides Java, Python, Go and C++ APIs.</p>
+<h3 id="Comparison-between-Python-Deep-Learning-Frameworks"><a href="#Comparison-between-Python-Deep-Learning-Frameworks" class="headerlink" title="Comparison between Python Deep Learning Frameworks"></a>Comparison between Python Deep Learning Frameworks</h3><ul>
+<li><strong>Theano:</strong> a pretty old deep learning framework written in Java. Raw Theano might not be perfect but It has many easy-to-use APIs built on top of it, such as Keras and Lasagne.<ul>
+<li>(+) RNN fits nicely</li>
+<li>(-) Long compile time for large models</li>
+<li>(-) Single GPU support</li>
+<li>(-) Many Bugs on AWS</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>TensorFlow:</strong> a newly created machine learning framework to replace Theano - but TensorFlow and Theano share some amount of the same creators so they are pretty similar. <ul>
+<li>(+) Supports more than deep learning tasks - can do reinforcement learning</li>
+<li>(+) Faster model compile time than Theano</li>
+<li>(+) Supports multiple GPU for data and model parallelism</li>
+<li>(-) Computational graph is written in Python, thus pretty slow</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>Caffe:</strong> mainly used for visual recognition tasks. </p>
+<ul>
+<li>(+) Large amount of existing models</li>
+<li>(+) CNN fits nicely</li>
+<li>(+) Good for image processing</li>
+<li>(+) Easy to tune or train models</li>
+<li>(-) needs to write extra codes for GPU models</li>
+<li>(-) RNN doesn’t fit well so not good for text or sound applications</li>
+</ul>
+</li>
+<li><p><strong>Deeplearning4J:</strong> a deep learning library written in Java. It includes distributed version for Hadoop and Spark.</p>
+<ul>
+<li>(+) Supports distributed parallel computing</li>
+<li>(+) CNN fits nicely</li>
+<li>(-) Takes 4X computation time than the other three frameworks</li>
+</ul>
+</li>
+<li><p><strong>Keras:</strong> An easy-to-use Wrapper API for Theano, TensorFlow and Deeplearning4J. It supports all the functionality that TensorFlow supports!</p>
+</li>
+</ul>
+<h2 id="Pre-trained-Models"><a href="#Pre-trained-Models" class="headerlink" title="Pre-trained Models"></a>Pre-trained Models</h2><h3 id="What-are-Pre-trained-Models"><a href="#What-are-Pre-trained-Models" class="headerlink" title="What are Pre-trained Models?"></a>What are Pre-trained Models?</h3><p>Pre-trained models are those models that people train on a very large datasets, such as ImageNet (it has 1.2 million images and 1000 categories). We could either use it as a start point for the deep learning tasks to raise accuracy, or use them as a feature extraction tool and feed the features generated with pre-train models into other machine learning models (e.g. SVM).</p>
+<h3 id="Pre-trained-Models-A-Comparison"><a href="#Pre-trained-Models-A-Comparison" class="headerlink" title="Pre-trained Models: A Comparison"></a>Pre-trained Models: A Comparison</h3><p>Some of the pre-trained models for image tasks include: ResNet, VGG, AlexNet, GoogLeNet. <br>We use top-1-error and top-5-error to represent the accuracy on ImageNet. Top-1-error is just 1- accuracy; top-5-error measures if the true label resides in the 5-most-probable labels predicted.</p>
+<table>
+<thead>
+<tr>
+<th>Release</th>
+<th style="text-align:center"><strong>Model Name</strong></th>
+<th style="text-align:center">Top-1 Error</th>
+<th style="text-align:center">Top-5 Error</th>
+<th style="text-align:center">Images per second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td style="text-align:center">ResNet 50</td>
+<td style="text-align:center">24.6</td>
+<td style="text-align:center">7.7</td>
+<td style="text-align:center">396.3</td>
+</tr>
+<tr>
+<td>2015</td>
+<td style="text-align:center">ResNet 101</td>
+<td style="text-align:center">23.4</td>
+<td style="text-align:center">7.0</td>
+<td style="text-align:center">247.3</td>
+</tr>
+<tr>
+<td>2015</td>
+<td style="text-align:center">ResNet 152</td>
+<td style="text-align:center">23.0</td>
+<td style="text-align:center">6.7</td>
+<td style="text-align:center">172.5</td>
+</tr>
+<tr>
+<td>2014</td>
+<td style="text-align:center">VGG 19</td>
+<td style="text-align:center">28.7</td>
+<td style="text-align:center">9.9</td>
+<td style="text-align:center">166.2</td>
+</tr>
+<tr>
+<td>2014</td>
+<td style="text-align:center">VGG 16</td>
+<td style="text-align:center">28.5</td>
+<td style="text-align:center">9.9</td>
+<td style="text-align:center">200.2</td>
+</tr>
+<tr>
+<td>2014</td>
+<td style="text-align:center">GoogLeNet</td>
+<td style="text-align:center">34.2</td>
+<td style="text-align:center">12.9</td>
+<td style="text-align:center">770.6</td>
+</tr>
+<tr>
+<td>2012</td>
+<td style="text-align:center">AlexNet</td>
+<td style="text-align:center">42.6</td>
+<td style="text-align:center">19.6</td>
+<td style="text-align:center">1379.8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Parameter-Tuning"><a href="#Parameter-Tuning" class="headerlink" title="Parameter Tuning"></a>Parameter Tuning</h2><h3 id="Losses"><a href="#Losses" class="headerlink" title="Losses"></a>Losses</h3><ul>
+<li><p><strong>Regression</strong>: Mean_squared_error, Mean_absolute_error, mean_absolute_percentage_error, mean_squared_logarithmic_error</p>
+</li>
+<li><p><strong>Classification</strong>: <br><br>two most commonly used: squared_hinge, cross entropy for softmax output<br>1) hinge: hinge, squared_hinge<br>2) cross entropy: categorical_crossentropy, sparse_categorical_crossentropy, binary_crossentropy</p>
+</li>
+</ul>
+<h3 id="Optimizers"><a href="#Optimizers" class="headerlink" title="Optimizers"></a>Optimizers</h3><ul>
+<li><p><strong>Batch Size</strong>: It means the number of training examples in one forward-backward training phase. If the batch size is small, it requires less memory and the network trains faster (the parameters will be updated once a batch). If the batch size is large, the training takes more time but will be more accurate. </p>
+</li>
+<li><p><strong>Learning Rate</strong>: If the learning rate is small, it will takes so long to reach the optimal solution; if the learning rate is large, it will stuck at some points and fail to reach optimal. So the best practice is to use a time based learning rate - it will decrease after each epoch. How? Use parameter <strong>decay</strong> - a common choice is 1e-2. <br> $$ lr = self.lr <em> (1. / (1. + self.decay </em> self.iterations)) $$</p>
+</li>
+<li><p><strong>Momentum</strong> (used in SGD optimizer): It helps accelerating convergence and avoid local optimal. A typical value is 0.9 .</p>
+</li>
+</ul>
+<h2 id="Key-Layers"><a href="#Key-Layers" class="headerlink" title="Key Layers"></a>Key Layers</h2><h3 id="Dense-Layer"><a href="#Dense-Layer" class="headerlink" title="Dense Layer"></a>Dense Layer</h3><p>According to Keras official documentation, for dense layers we have $$ output = activation(dot(input, kernel) + bias) $$ </p>
+<p>Some of the key activation functions are as follows:</p>
+<ul>
+<li><p><strong>Sigmoid</strong><br>Sigmoid function pushes large positive numbers to 1 while large negative numbers to 0. However it has two fallbacks: 1) It will kill the gradient. If the value of a neuron is either 0 or 1, the gradient for the neuron will become so closed to zero that, it will “kill” the multiplication results for all gradients in back propagation computation. 2) The sigmoid output are all positive. It will cause the gradient on weights become all positive or all negative.</p>
+<p><img src="http://cs231n.github.io/assets/nn1/sigmoid.jpeg" alt="sigmoid"> [source: 3]</p>
+</li>
+<li><p><strong>Tanh</strong><br>Tanh activation is a scaled version of sigmoid function: $$tanh(x)=2σ(2x)−1tanh⁡(x)=2σ(2x)−1$$ Therefore it is zero centered with range [-1,1]. It still have the problem of killing gradient, but generally it is preferred to sigmoid activation.</p>
+</li>
+<li><p><strong>ReLU</strong><br>Short for Rectified Linear Units. A popular choice. It threshold upon 0.  $$ max (0, x) $$  Comparing to the previous two activation methods, it’s much quicker to converge and involves much less computation time due to linearity. And it doesn’t have the issue of non-zero centered. However, it should be noted, if the learning rate is set to be high, part of the neurons will “die” - they will be not activated during the whole training phase. With the learning rate set to be smaller, it won’t be much an issue.</p>
+</li>
+<li><p><strong>SoftMax</strong><br>A very common choice for multi-class output activation.</p>
+</li>
+</ul>
+<h3 id="Batch-Normalization-Layer"><a href="#Batch-Normalization-Layer" class="headerlink" title="Batch Normalization Layer"></a>Batch Normalization Layer</h3><p>Batch normalization is a common practice in deep learning. In machine learning tasks, scaling with zero mean and one standard deviation will make the performance better. However, in deep learning, even if we normalize the data at the very beginning, the data distribution will change a lot in deeper layers. Therefore with batch normalization layer, we could always do data preprocessing again. It is often used right after the fully connected layer or convolutional layer, before the non-linear layers. It makes a significant difference and becomes much more robust to bad initializations. </p>
+<h3 id="Drop-Out-Layer"><a href="#Drop-Out-Layer" class="headerlink" title="Drop Out Layer"></a>Drop Out Layer</h3><p>Drop out layer is a common choice to prevent over fitting. It’s fast and effective. It will keep some neurons activated or 0 according to probabilities. </p>
+<h3 id="Convolutional-Layer"><a href="#Convolutional-Layer" class="headerlink" title="Convolutional Layer"></a>Convolutional Layer</h3><p>Convolutional layer produces output with <a href="http://setosa.io/ev/image-kernels/" target="_blank" rel="external">image kernels</a>. Basically it will produce dot product for the image kernel and a sliding window of the input. One 3-D demonstration for the convolutional layers could be found <a href="http://scs.ryerson.ca/~aharley/vis/conv/" target="_blank" rel="external">here</a> and computational demo could be found <a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="external">here</a>. </p>
+<h3 id="Pooling-Layer"><a href="#Pooling-Layer" class="headerlink" title="Pooling Layer"></a>Pooling Layer</h3><p>Pooling layer is often used after convolutional layer for down sampling. It reduces the amount of parameters carried forward while retaining the most useful information; thus it also prevents overfitting. A demonstration for max pooling could be shown in following picture: <img src="http://cs231n.github.io/assets/cnn/maxpool.jpeg" alt="pooling">[source: 3]</p>
+<h2 id="Sample-Architecture-and-Codes"><a href="#Sample-Architecture-and-Codes" class="headerlink" title="Sample Architecture and Codes"></a>Sample Architecture and Codes</h2><p>Sample architecture for convolutional neural network is as follows:</p>
+<p><img src="http://cs231n.github.io/assets/cnn/convnet.jpeg" alt="CNN"> [source: 3]</p>
+<p>Sample codes for MNIST solution using keras deep learning as follows:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line"><span class="string">'''Transfer learning toy example:</span></div><div class="line">1- Train a simple convnet on the MNIST dataset the first 5 digits [0..4].</div><div class="line">2- Freeze convolutional layers and fine-tune dense layers</div><div class="line">   for the classification of digits [5..9].</div><div class="line">Run on GPU: THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 python mnist_transfer_cnn.py</div><div class="line">Get to 99.8% test accuracy after 5 epochs</div><div class="line">for the first five digits classifier</div><div class="line">and 99.2% for the last five digits after transfer + fine-tuning.</div><div class="line">'''</div><div class="line"></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</div><div class="line"></div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> keras</div><div class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</div><div class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense, Dropout, Activation, Flatten</div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, MaxPooling2D</div><div class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend <span class="keyword">as</span> K</div><div class="line"></div><div class="line">now = datetime.datetime.now</div><div class="line"></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">num_classes = <span class="number">5</span></div><div class="line">epochs = <span class="number">5</span></div><div class="line"></div><div class="line"><span class="comment"># input image dimensions</span></div><div class="line">img_rows, img_cols = <span class="number">28</span>, <span class="number">28</span></div><div class="line"><span class="comment"># number of convolutional filters to use</span></div><div class="line">filters = <span class="number">32</span></div><div class="line"><span class="comment"># size of pooling area for max pooling</span></div><div class="line">pool_size = <span class="number">2</span></div><div class="line"><span class="comment"># convolution kernel size</span></div><div class="line">kernel_size = <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> K.image_data_format() == <span class="string">'channels_first'</span>:</div><div class="line">    input_shape = (<span class="number">1</span>, img_rows, img_cols)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    input_shape = (img_rows, img_cols, <span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_model</span><span class="params">(model, train, test, num_classes)</span>:</span></div><div class="line">    x_train = train[<span class="number">0</span>].reshape((train[<span class="number">0</span>].shape[<span class="number">0</span>],) + input_shape)</div><div class="line">    x_test = test[<span class="number">0</span>].reshape((test[<span class="number">0</span>].shape[<span class="number">0</span>],) + input_shape)</div><div class="line">    x_train = x_train.astype(<span class="string">'float32'</span>)</div><div class="line">    x_test = x_test.astype(<span class="string">'float32'</span>)</div><div class="line">    x_train /= <span class="number">255</span></div><div class="line">    x_test /= <span class="number">255</span></div><div class="line">    print(<span class="string">'x_train shape:'</span>, x_train.shape)</div><div class="line">    print(x_train.shape[<span class="number">0</span>], <span class="string">'train samples'</span>)</div><div class="line">    print(x_test.shape[<span class="number">0</span>], <span class="string">'test samples'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># convert class vectors to binary class matrices</span></div><div class="line">    y_train = keras.utils.to_categorical(train[<span class="number">1</span>], num_classes)</div><div class="line">    y_test = keras.utils.to_categorical(test[<span class="number">1</span>], num_classes)</div><div class="line"></div><div class="line">    model.compile(loss=<span class="string">'categorical_crossentropy'</span>,</div><div class="line">                  optimizer=<span class="string">'adadelta'</span>,</div><div class="line">                  metrics=[<span class="string">'accuracy'</span>])</div><div class="line"></div><div class="line">    t = now()</div><div class="line">    model.fit(x_train, y_train,</div><div class="line">              batch_size=batch_size, epochs=epochs,</div><div class="line">              verbose=<span class="number">1</span>,</div><div class="line">              validation_data=(x_test, y_test))</div><div class="line">    print(<span class="string">'Training time: %s'</span> % (now() - t))</div><div class="line">    score = model.evaluate(x_test, y_test, verbose=<span class="number">0</span>)</div><div class="line">    print(<span class="string">'Test score:'</span>, score[<span class="number">0</span>])</div><div class="line">    print(<span class="string">'Test accuracy:'</span>, score[<span class="number">1</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># the data, shuffled and split between train and test sets</span></div><div class="line">(x_train, y_train), (x_test, y_test) = mnist.load_data()</div><div class="line"></div><div class="line"><span class="comment"># create two datasets one with digits below 5 and one with 5 and above</span></div><div class="line">x_train_lt5 = x_train[y_train &lt; <span class="number">5</span>]</div><div class="line">y_train_lt5 = y_train[y_train &lt; <span class="number">5</span>]</div><div class="line">x_test_lt5 = x_test[y_test &lt; <span class="number">5</span>]</div><div class="line">y_test_lt5 = y_test[y_test &lt; <span class="number">5</span>]</div><div class="line"></div><div class="line">x_train_gte5 = x_train[y_train &gt;= <span class="number">5</span>]</div><div class="line">y_train_gte5 = y_train[y_train &gt;= <span class="number">5</span>] - <span class="number">5</span></div><div class="line">x_test_gte5 = x_test[y_test &gt;= <span class="number">5</span>]</div><div class="line">y_test_gte5 = y_test[y_test &gt;= <span class="number">5</span>] - <span class="number">5</span></div><div class="line"></div><div class="line"><span class="comment"># define two groups of layers: feature (convolutions) and classification (dense)</span></div><div class="line">feature_layers = [</div><div class="line">    Conv2D(filters, kernel_size,</div><div class="line">           padding=<span class="string">'valid'</span>,</div><div class="line">           input_shape=input_shape),</div><div class="line">    Activation(<span class="string">'relu'</span>),</div><div class="line">    Conv2D(filters, kernel_size),</div><div class="line">    Activation(<span class="string">'relu'</span>),</div><div class="line">    MaxPooling2D(pool_size=pool_size),</div><div class="line">    Dropout(<span class="number">0.25</span>),</div><div class="line">    Flatten(),</div><div class="line">]</div><div class="line"></div><div class="line">classification_layers = [</div><div class="line">    Dense(<span class="number">128</span>),</div><div class="line">    Activation(<span class="string">'relu'</span>),</div><div class="line">    Dropout(<span class="number">0.5</span>),</div><div class="line">    Dense(num_classes),</div><div class="line">    Activation(<span class="string">'softmax'</span>)</div><div class="line">]</div><div class="line"></div><div class="line"><span class="comment"># create complete model</span></div><div class="line">model = Sequential(feature_layers + classification_layers)</div><div class="line"></div><div class="line"><span class="comment"># train model for 5-digit classification [0..4]</span></div><div class="line">train_model(model,</div><div class="line">            (x_train_lt5, y_train_lt5),</div><div class="line">            (x_test_lt5, y_test_lt5), num_classes)</div><div class="line"></div><div class="line"><span class="comment"># freeze feature layers and rebuild model</span></div><div class="line"><span class="keyword">for</span> l <span class="keyword">in</span> feature_layers:</div><div class="line">    l.trainable = <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># transfer: train dense layers for new classification task [5..9]</span></div><div class="line">train_model(model,</div><div class="line">            (x_train_gte5, y_train_gte5),</div><div class="line">            (x_test_gte5, y_test_gte5), num_classes)</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/fchollet/keras/blob/master/examples/mnist_transfer_cnn.py" target="_blank" rel="external">code source: keras documentation</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a href="https://deeplearning4j.org/compare-dl4j-torch7-pylearn#comparing-frameworks-deeplearning4j-torch-theano-tensorflow-caffe-paddle-mxnet-keras--cntkhttps://deeplearning4j.org/compare-dl4j-torch7-pylearn#tensorflow" target="_blank" rel="external">Comparing Frameworks: Deeplearning4j, Torch, Theano, TensorFlow, Caffe, Paddle, MxNet, Keras &amp; CNTK</a></p>
+</li>
+<li><p><a href="https://www.researchgate.net/publication/302955130_Deep_Learning_with_Theano_Torch_Caffe_TensorFlow_and_Deeplearning4J_Which_One_Is_the_Best_in_Speed_and_Accuracy" target="_blank" rel="external">Deep Learning with Theano, Torch, Caffe, TensorFlow, and Deeplearning4J: Which One Is the Best in Speed and Accuracy?</a></p>
+</li>
+<li><p><a href="http://cs231n.github.io/transfer-learning/" target="_blank" rel="external">CS231n Convolutional Neural Networks for Visual Recognition</a></p>
+</li>
+<li><p><a href="http://www.vlfeat.org/matconvnet/pretrained/" target="_blank" rel="external">Pretrained Models</a></p>
+</li>
+<li><p><a href="http://sebastianruder.com/optimizing-gradient-descent/index.html#momentum" target="_blank" rel="external">An overview of gradient descent optimization algorithms</a></p>
+</li>
+<li><p><a href="https://github.com/fchollet/keras/" target="_blank" rel="external">Keras: Deep Learning library for TensorFlow and Theano</a></p>
+<p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/Kalman-Filter-and-Applications/" rel="next" title="Kalman Filter and Its Applications">
+                <i class="fa fa-chevron-left"></i> Kalman Filter and Its Applications
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/10/This-is-my-prayer/" rel="prev" title="This is my prayer">
+                This is my prayer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Definitions"><span class="nav-number">1.</span> <span class="nav-text">Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-TensorFlow"><span class="nav-number">1.1.</span> <span class="nav-text">What is TensorFlow?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-between-Python-Deep-Learning-Frameworks"><span class="nav-number">1.2.</span> <span class="nav-text">Comparison between Python Deep Learning Frameworks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-trained-Models"><span class="nav-number">2.</span> <span class="nav-text">Pre-trained Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-Pre-trained-Models"><span class="nav-number">2.1.</span> <span class="nav-text">What are Pre-trained Models?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre-trained-Models-A-Comparison"><span class="nav-number">2.2.</span> <span class="nav-text">Pre-trained Models: A Comparison</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parameter-Tuning"><span class="nav-number">3.</span> <span class="nav-text">Parameter Tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Losses"><span class="nav-number">3.1.</span> <span class="nav-text">Losses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimizers"><span class="nav-number">3.2.</span> <span class="nav-text">Optimizers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Layers"><span class="nav-number">4.</span> <span class="nav-text">Key Layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dense-Layer"><span class="nav-number">4.1.</span> <span class="nav-text">Dense Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Batch-Normalization-Layer"><span class="nav-number">4.2.</span> <span class="nav-text">Batch Normalization Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drop-Out-Layer"><span class="nav-number">4.3.</span> <span class="nav-text">Drop Out Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolutional-Layer"><span class="nav-number">4.4.</span> <span class="nav-text">Convolutional Layer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pooling-Layer"><span class="nav-number">4.5.</span> <span class="nav-text">Pooling Layer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Architecture-and-Codes"><span class="nav-number">5.</span> <span class="nav-text">Sample Architecture and Codes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
