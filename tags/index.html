@@ -237,47 +237,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            Search
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-
-
-
-
-    </div>
   
 </nav>
 
@@ -308,7 +270,7 @@
             15 tags in total
         </div>
         <div class="tag-cloud-tags">
-          <a href="/tags/CNN/" style="font-size: 12px; color: #ccc">CNN</a> <a href="/tags/Data-Science-Interviews/" style="font-size: 21px; color: #6f6f6f">Data Science Interviews</a> <a href="/tags/Data-Warehousing/" style="font-size: 16.5px; color: #9d9d9d">Data Warehousing</a> <a href="/tags/Kalman-Filter/" style="font-size: 12px; color: #ccc">Kalman Filter</a> <a href="/tags/Linux/" style="font-size: 12px; color: #ccc">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 30px; color: #111">Machine Learning</a> <a href="/tags/Model-Selection/" style="font-size: 12px; color: #ccc">Model Selection</a> <a href="/tags/MySQL/" style="font-size: 12px; color: #ccc">MySQL</a> <a href="/tags/Network-Analytics/" style="font-size: 12px; color: #ccc">Network Analytics</a> <a href="/tags/Preprocessing/" style="font-size: 12px; color: #ccc">Preprocessing</a> <a href="/tags/Python-Packages/" style="font-size: 25.5px; color: #404040">Python Packages</a> <a href="/tags/TensorFlow/" style="font-size: 12px; color: #ccc">TensorFlow</a> <a href="/tags/Yoga/" style="font-size: 12px; color: #ccc">Yoga</a> <a href="/tags/未来梦/" style="font-size: 12px; color: #ccc">未来梦</a> <a href="/tags/肺经/" style="font-size: 12px; color: #ccc">肺经</a>
+          <a href="/tags/CNN/" style="font-size: 12px; color: #ccc">CNN</a> <a href="/tags/Data-Science-Interviews/" style="font-size: 24px; color: #4f4f4f">Data Science Interviews</a> <a href="/tags/Data-Warehousing/" style="font-size: 18px; color: #8e8e8e">Data Warehousing</a> <a href="/tags/Kalman-Filter/" style="font-size: 12px; color: #ccc">Kalman Filter</a> <a href="/tags/Linux/" style="font-size: 12px; color: #ccc">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 30px; color: #111">Machine Learning</a> <a href="/tags/Model-Selection/" style="font-size: 12px; color: #ccc">Model Selection</a> <a href="/tags/MySQL/" style="font-size: 12px; color: #ccc">MySQL</a> <a href="/tags/Network-Analytics/" style="font-size: 12px; color: #ccc">Network Analytics</a> <a href="/tags/Preprocessing/" style="font-size: 12px; color: #ccc">Preprocessing</a> <a href="/tags/Python-Packages/" style="font-size: 24px; color: #4f4f4f">Python Packages</a> <a href="/tags/TensorFlow/" style="font-size: 12px; color: #ccc">TensorFlow</a> <a href="/tags/Yoga/" style="font-size: 12px; color: #ccc">Yoga</a> <a href="/tags/未来梦/" style="font-size: 12px; color: #ccc">未来梦</a> <a href="/tags/肺经/" style="font-size: 12px; color: #ccc">肺经</a>
         </div>
       </div>
     
@@ -355,7 +317,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -513,7 +475,24 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
@@ -553,36 +532,6 @@
   
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
 
 
 
