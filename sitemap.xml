@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
+    
+    <lastmod>2017-08-29T15:42:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/03/09/Pentaho/</loc>
     
     <lastmod>2017-08-29T15:40:23.000Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2017/03/09/Interview-Classification/</loc>
     
     <lastmod>2017-08-29T15:39:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/14/Deep-Learning-2/</loc>
-    
-    <lastmod>2017-08-29T15:39:52.000Z</lastmod>
     
   </url>
   
