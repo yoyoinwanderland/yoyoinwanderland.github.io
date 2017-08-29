@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://adeshpande3.github.io/assets/GoogLeNet3.png">
 <meta property="og:image" content="https://adeshpande3.github.io/assets/ResNet.gif">
 <meta property="og:image" content="https://adeshpande3.github.io/assets/ResNet.png">
-<meta property="og:updated_time" content="2017-08-29T15:45:35.000Z">
+<meta property="og:updated_time" content="2017-08-29T18:27:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn CNN from Giants">
 <meta name="twitter:description" content="Learning note for classic CNN models">
@@ -562,7 +562,7 @@
 <p>Note that, All hidden layers are equipped with the rectiﬁcation (ReLU (Krizhevsky et al., 2012)) non-linearity. the ReLU activation function is not shown for brevity. </p>
 <ul>
 <li><p><strong>Changes from AlexNet</strong></p>
-<p>|                                  | AlexNet                       | VGG                                      |<br>| ——————————– | —————————– | —————————————- |<br>| <strong>Layers</strong>                       | 5 Conv, 3 FC layers           | 16 Conv, 3 FC layers                     |<br>| <strong>Convolutional Filters</strong>        | 11*11; stride = 4            | a stack of conv layers with 3*3 kernels, stide = |<br>| <strong>Padding</strong>                      | None                          | 1                                        |<br>| <strong>Pooling</strong>                      | Overlapping Max Pooling       | Non-overlapping Max Pooling              |<br>| <strong>Local Response Normalization</strong> | Yes - it improves performance | No - it doesn’t improve performance but increase memory &amp; computation time |</p>
+<p>|                                  | AlexNet                       | VGG                                      |<br>| ——————————– | —————————– | —————————————- |<br>| <strong>Layers</strong>                       | 5 Conv, 3 FC layers           | 16 Conv, 3 FC layers                     |<br>| <strong>Convolutional Filters</strong>        | 11*11; stride = 4            | a stack of conv layers with 3*3 kernels, stide =1 |<br>| <strong>Padding</strong>                      | None                          | 1                                        |<br>| <strong>Pooling</strong>                      | Overlapping Max Pooling       | Non-overlapping Max Pooling              |<br>| <strong>Local Response Normalization</strong> | Yes - it improves performance | No - it doesn’t improve performance but increase memory &amp; computation time |</p>
 </li>
 <li><p><strong>Training Schema</strong></p>
 <p>|                    | AlexNet             | VGG                     |<br>| —————— | ——————- | ———————– |<br>| <strong>Batch size</strong>     | 128                 | <strong>256</strong>                 |<br>| <strong>Momentum</strong>       | 0.9                 | 0.9                     |<br>| <strong>Weight decay</strong>   | 0.0005              | 0.0005                  |<br>| <strong>Initialization</strong> | N(0,0.01); bias = 1 | N(0,0.01); <strong>bias = 0</strong> |</p>
