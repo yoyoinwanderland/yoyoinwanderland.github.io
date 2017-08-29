@@ -1,0 +1,921 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Machine Learning,Data Science Interviews," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Key notes from Heinz Data Science Job Hunting Team">
+<meta name="keywords" content="Machine Learning,Data Science Interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Science Interview Questions from Giants">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/Interview-from-Giants/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Key notes from Heinz Data Science Job Hunting Team">
+<meta property="og:updated_time" content="2017-08-27T19:54:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Science Interview Questions from Giants">
+<meta name="twitter:description" content="Key notes from Heinz Data Science Job Hunting Team">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/06/Interview-from-Giants/"/>
+
+
+
+
+
+  <title> Data Science Interview Questions from Giants | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/Interview-from-Giants/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Data Science Interview Questions from Giants
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-06T10:45:14-04:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Key notes from Heinz Data Science Job Hunting Team
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This post is to answer a collection of data science interview questions posted on <a href="http://www.learndatasci.com/data-science-interview-questions/" target="_blank" rel="external">LearnDataSci</a>. Special thanks to my CMU friends <a href="http://hexiaoyuhaha.github.io" target="_blank" rel="external">Xiaoyu</a>, <a href="https://www.linkedin.com/in/shuting-amanda-zhang-b9a33879/" target="_blank" rel="external">Shuting</a>, <a href="https://www.linkedin.com/in/qianyi-hu-cindy/" target="_blank" rel="external">Qianyi</a>.</p>
+<h2 id="General-Questions"><a href="#General-Questions" class="headerlink" title="General Questions"></a>General Questions</h2><h3 id="Apple"><a href="#Apple" class="headerlink" title="Apple"></a>Apple</h3><ul>
+<li><p><strong>Suppose you’re given millions of users that each have hundreds of transactions and these millions of transactions are for tens of thousands of products. How would you group the users together in meaningful segments?</strong> </p>
+<p> This depends on business objective. If the management aim to know different degrees of engagement, then sales amount, purchase frequency, purchase range are valuable inputs to cluster on. If the team wants to group “neighbours” in terms of product preferences, the transaction records could be a large one hot encoding matrix to be clustered on.</p>
+</li>
+</ul>
+<h3 id="Microsoft"><a href="#Microsoft" class="headerlink" title="Microsoft"></a>Microsoft</h3><ul>
+<li><p><strong>Describe a project you’ve worked on and how it made a difference.</strong></p>
+</li>
+<li><p><strong>How would you approach a categorical feature with high-cardinality?</strong></p>
+<p> Categorical feature should always be dealt with one hot encoding. When it has high cardinality, first thing to do is to understand the goal of the task, what categorical feature represents and its distribution. If this is a prediction task and we want to improve accuracy, feature reduction such as PCA might be a good choice; while if it’s a causality analysis task, feature selection algorithms such as lasso (logistic) regression is more appropriate.  In terms of feature meaning, if, say, the feature represents age range and it’s divided into many little ranges, some combinations could be made. If we observe the distribution with bar chart and we find some of the categories take the majority of all the records, then maybe we could combine all the rest into one category. </p>
+<p> <em>Additional answers from <a href="https://www.quora.com/In-scikit-learn-what-is-the-best-way-to-handle-categorical-features-of-high-cardinality-Using-one-hot-encoder-seems-to-blow-up-my-feature-space-Does-assigning-a-number-to-each-cardinality-work-better-or-do-we-run-into-the-risk-of-the-ML-algorithm-assuming-some-ordering-in-these-numeric-labels" target="_blank" rel="external">ref</a>:</em></p>
+<ul>
+<li>When using Scikit-learn, DictEncoder helps to tranform categorical features to one hot encoding sparse matrix thus saving memory - as the matrix is supposed to be very sparse.</li>
+<li><p>Tree-based algorithms can deal with categorical variables. For high-cardinality categorical feature, random forest is recommended. It bootstraps for features and records, thus it removes some noisy / unuseful features.</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p><strong>What would you do to summarize a Twitter feed?</strong></p>
+<p> A twitter feed always states either an event, or a mood. So we can either do a POS tagging with NLTK, and then select either adjective plus noun, noun plus noun if not found then adjective only and make these as summation; or we can use named entity analytics (HMM) using NLTK and sentiement analysis using Stanford NLP tool. </p>
+<p> ​</p>
+</li>
+<li><p><strong>What are the steps for wrangling and cleaning data before applying machine learning algorithms?</strong> <a href="http://www.cs.ccsu.edu/~markov/ccsu_courses/datamining-3.html" target="_blank" rel="external">ref</a></p>
+<p> For numerical data, the normal things we do include:</p>
+<ul>
+<li>Data joining. Sometimes we are provided with multiple sources of files we need to combine them;</li>
+<li>Manipulate missing data: there are several ways to deal with missing data: we can either delete rows containing missing data if it won’t lose important info; or we can use zero/ average fill it; or we can use a regression to estimate missing data.</li>
+<li>Deal with outliers: firstly observe the meaning of the feature and if the value all make sense, if no then remove it; if yes, smooth with regression line, or use clustering; then remove outliers</li>
+<li><p>Data normalization is always useful in any prediction tasks</p>
+<p>For text data:</p>
+</li>
+<li><p>Standarization: Stem (remove the ending) or lemmatize (go back to the original form) it</p>
+</li>
+<li>one hot encoding: transform to term frequency matrix or tf-idf matrix</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>How do you measure distance between data points?</strong></p>
+<p> For numerical data, we can use Minkowski distance. When P=1 it’s mahanttan distance and P=2 it’s euclidean distance. So as P increases it penalizes more on big differences (outliers for linear regression, misclassified items for classification).</p>
+<p> For text data, we can use cosine similarity for tokenized matrix.</p>
+</li>
+<li><p><strong>Define variance.</strong></p>
+<p> Variance is the disperse from the mean. </p>
+</li>
+<li><p><strong>Describe the differences between and use cases for box plots and histograms.</strong></p>
+<p> For box plots we can see the ranges as well as the percentiles with just one line, so it’s good for distribution comparison between different categories. With histogram we can see the distributions (i.e. the shape) of the data.</p>
+</li>
+</ul>
+<h3 id="Twitter"><a href="#Twitter" class="headerlink" title="Twitter"></a>Twitter</h3><ul>
+<li><p><strong>What features would you use to build a recommendation algorithm for users?</strong></p>
+<p> There are two ways: one based on the most-in-common friends’ followees. If most of your friends are connected with someone, but you are not yet connected, it’s likely you are from the same friends circle just not added as friends. second based on shared interested. The person (particularly friends’ followee) who shares most topic sharing or reposts with each other are likely to become friends. </p>
+</li>
+</ul>
+<h3 id="Uber"><a href="#Uber" class="headerlink" title="Uber"></a>Uber</h3><ul>
+<li><p><strong>Pick any product or app that you really like and describe how you would improve it.</strong></p>
+<p> YouVersion bible - prayer function.</p>
+</li>
+<li><p><strong>How would you find an anomaly in a distribution ?</strong> <a href="http://scikit-learn.org/stable/modules/outlier_detection.html#outlier-detection" target="_blank" rel="external">Ref</a></p>
+<p>  There are two kinds of anomaly detection: </p>
+<ul>
+<li>Novelty detection:  to detect meaningful anomaly patterns in a clean dataset. This is normally used in fraud detection in banking/ insurance/ telecom industries. One of the common ways is to use an elliptic envolope with assumption that the data comes from certain “shape” of distribution such as Gaussian.</li>
+<li>Outlier detection: to identify outliers from a noisy dataset.  There are several ways, like visualization with one or two dimensional data, fitting an elliptic envolope, or an isolation forest for high dimensional data.</li>
+</ul>
+</li>
+<li><p><strong>How would you go about investigating if a certain trend in a distribution is due to an anomaly?</strong></p>
+</li>
+<li><p><strong>How would you estimate the impact Uber has on traffic and driving conditions?</strong></p>
+<p>  A/B testing on regions with/ without uber driving. Useful metrics: average time waiting for taxi, traffic conjunction duration in peak hours etc.​</p>
+</li>
+<li><p><strong>What metrics would you consider using to track if Uber’s paid advertising strategy to acquire new customers actually works? How would you then approach figuring out an ideal customer acquisition cost?</strong></p>
+<p>  Metric: Clickthrough rate and conversion rate. Normlly customer acquisition cost is calculated using $ Total market campaign / No of customers acquired$, but it should be noted that the as total market campain increases, the curve won’t be a straight line, instead it should be diminishing. The ideal customer acquisition cost can be calculated before the turning point. </p>
+</li>
+</ul>
+<h3 id="LinkedIn"><a href="#LinkedIn" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><ul>
+<li><strong>Can you explain what REST is?</strong> </li>
+</ul>
+<h2 id="Machine-Learning"><a href="#Machine-Learning" class="headerlink" title="Machine Learning"></a>Machine Learning</h2><h3 id="Google"><a href="#Google" class="headerlink" title="Google"></a>Google</h3><ul>
+<li><p><strong>Why do you use feature selection?</strong></p>
+<p>Three reasons:</p>
+<ul>
+<li>Due to Ocam’s Razor, the simpler the better</li>
+<li>Normally the number of rows should be less than the number of features</li>
+<li>Multicolinearity: We assume the features are independent from each other but in reality this is not the case.</li>
+</ul>
+</li>
+<li><p><strong>What is the effect on the coefficients of logistic regression if two predictors are highly correlated? What are the confidence intervals of the coefficients?</strong></p>
+<p>This causes four problems: unstable coefficients, interpretation problems for coefficients, causes R^2 to increase, and inflated P-value on correlated coefficients. </p>
+<p>Confidence interval is, with large number of experiments, coefficients will fall into the certain range. It’s not where true value of coefficients will reside.</p>
+</li>
+<li><p><strong>What’s the difference between Gaussian Mixture Model and K-Means?</strong></p>
+<p>Gaussian mixture model is a soft clustering method while k-means is a hard clustering method.</p>
+<p>Gaussian is based on EM - the probabilities resides in certain cluster. K-means is based on distance.</p>
+</li>
+<li><p><strong>How do you pick k for K-Means?</strong></p>
+<p>Plot SSE (Sum of square error) onto graph and choose the point after the steepest step.</p>
+</li>
+<li><p><strong>How do you know when Gaussian Mixture Model is applicable?</strong></p>
+<p>K-means produces less accurate results than Gaussian mixture model. So if the resources are enough, kmeans is a good first step to determine initlization points.</p>
+</li>
+<li><p><strong>Assuming a clustering model’s labels are known, how do you evaluate the performance of the model?</strong></p>
+<p>Cross entropy loss. It measures how “pure” each cluster is.</p>
+</li>
+</ul>
+<h3 id="Microsoft-1"><a href="#Microsoft-1" class="headerlink" title="Microsoft"></a>Microsoft</h3><ul>
+<li><p><strong>What’s an example of a machine learning project you’re proud of?</strong></p>
+</li>
+<li><p><strong>Choose any machine learning algorithm and describe it.</strong></p>
+</li>
+<li><p><strong>Describe how Gradient Boosting works.</strong></p>
+</li>
+<li><p><strong>Describe the decision tree model.</strong></p>
+</li>
+<li><p><strong>What is a neural network?</strong></p>
+<p>It is a classification method that model brain neuras to solve complex classification problems. Back propagation is a “learn from mistake” algorithm for neural network training. Back propagation, in its nature, is gradient descent. It compares the output with the label, and “propagate” the error back onto the previous layers and adjust the weights accordingly.</p>
+</li>
+<li><p><strong>Explain the Bias-Variance Tradeoff</strong></p>
+<p>$MSE = bias + variance$</p>
+</li>
+<li><p><strong>How do you deal with unbalanced binary classification?</strong></p>
+<p>Oversampling the samller class and undersample the big class. Similarly, we could give more weights to smaller class when calculating objective losses. In scikit-learn, there is a parameter class_weight and it could be set as “balanced”.</p>
+</li>
+<li><p><strong>What’s the difference between L1 and L2 regularization?</strong></p>
+<p>L1 regularization gives sparse estimation by giving a Lapace prior for coefficients. It will force most of coefficients to be zero.<br>L2 regularization will retain all predictors with Gaussian prior for coefficients. Some of the coefficients get larger and some get smaller. It’s easier to compute.</p>
+</li>
+</ul>
+<h3 id="Uber-1"><a href="#Uber-1" class="headerlink" title="Uber"></a>Uber</h3><ul>
+<li><p><strong>What sort features could you give an Uber driver to predict if they will accept a ride request or not? What supervised learning algorithm would you use to solve the problem and how would compare the results of the algorithm?</strong></p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="LinkedIn-1"><a href="#LinkedIn-1" class="headerlink" title="LinkedIn"></a>LinkedIn</h3><ul>
+<li><p><strong>Name and describe three different kernel functions and in what situation you would use each.</strong></p>
+<p>RBF, linear, Polynomial, chi-squared</p>
+</li>
+<li><p><strong>Describe a method used in machine learning.</strong></p>
+</li>
+<li><p><strong>How do you deal with sparse data?</strong></p>
+</li>
+</ul>
+<h3 id="IBM"><a href="#IBM" class="headerlink" title="IBM"></a>IBM</h3><ul>
+<li><p><strong>How do you prevent overfitting?</strong></p>
+<ul>
+<li>simple model</li>
+<li>regularization</li>
+<li>feature selection</li>
+<li>feature reduction</li>
+</ul>
+</li>
+<li><p><strong>How do you deal with outliers in your data?</strong></p>
+<ul>
+<li>If the outlier is an error: delete it </li>
+<li>If it’s outliers: depends on the business goal - if you want a more accurate linear model: remove it at this moment but keep the records</li>
+</ul>
+</li>
+<li><p><strong>How do you analyze the performance of the predictions generated by regression models versus classification models?</strong></p>
+<p>Regression:</p>
+<ul>
+<li>MSE</li>
+<li>Adjusted $R^2$</li>
+<li>Percentage error</li>
+</ul>
+<p>Classification:</p>
+<ul>
+<li>Confusion matrix</li>
+<li>​</li>
+</ul>
+</li>
+<li><p><strong>How do you assess logistic regression versus simple linear regression models?</strong></p>
+</li>
+<li><p><strong>What’s the difference between supervised learning and unsupervised learning?</strong></p>
+</li>
+<li><p><strong>What is cross-validation and why would you use it?</strong></p>
+</li>
+<li><p><strong>What’s the name of the matrix used to evaluate predictive models?</strong></p>
+</li>
+<li><p><strong>What relationships exist between a logistic regression’s coefficient and the Odds Ratio?</strong></p>
+</li>
+<li><p><strong>What’s the relationship between Principal Component Analysis (PCA) and Linear &amp; Quadratic Discriminant Analysis (LDA &amp; QDA)</strong></p>
+</li>
+<li><p><strong>If you had a categorical dependent variable and a mixture of categorical and continuous independent variables, what algorithms, methods, or tools would you use for analysis?</strong></p>
+</li>
+<li><p><strong>What’s the difference between logistic and linear regression? How do you avoid local minima?</strong></p>
+</li>
+</ul>
+<h3 id="Salesforce"><a href="#Salesforce" class="headerlink" title="Salesforce"></a>Salesforce</h3><ul>
+<li><strong>What data and models would would you use to measure attrition/churn? How would you measure the performance of your models?</strong></li>
+</ul>
+<ol>
+<li>Explain a machine learning algorithm as if you’re talking to a non-technical person.</li>
+</ol>
+<h3 id="Capital-One"><a href="#Capital-One" class="headerlink" title="Capital One"></a>Capital One</h3><ol>
+<li>How would you build a model to predict credit card fraud?</li>
+<li>How do you handle missing or bad data?</li>
+<li>How would you derive new features from features that already exist?</li>
+<li>If you’re attempting to predict a customer’s gender, and you only have 100 data points, what problems could arise?</li>
+<li>Suppose you were given two years of transaction history. What features would you use to predict credit risk?</li>
+<li>Design an AI program for Tic-tac-toe</li>
+</ol>
+<h3 id="Zillow"><a href="#Zillow" class="headerlink" title="Zillow"></a>Zillow</h3><ol>
+<li>Explain overfitting and what steps you can take to prevent it.</li>
+<li>Why does SVM need to maximize the margin between support vectors?</li>
+</ol>
+<p>​</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Data-Science-Interviews/" rel="tag"># Data Science Interviews</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/08/四月-芳菲尽/" rel="next" title="四月 芳菲尽">
+                <i class="fa fa-chevron-left"></i> 四月 芳菲尽
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/27/Optimizing-SQL/" rel="prev" title="Optimizing SQL Statements">
+                Optimizing SQL Statements <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General-Questions"><span class="nav-number">1.</span> <span class="nav-text">General Questions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Apple"><span class="nav-number">1.1.</span> <span class="nav-text">Apple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft"><span class="nav-number">1.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Twitter"><span class="nav-number">1.3.</span> <span class="nav-text">Twitter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber"><span class="nav-number">1.4.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn"><span class="nav-number">1.5.</span> <span class="nav-text">LinkedIn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine-Learning"><span class="nav-number">2.</span> <span class="nav-text">Machine Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Google"><span class="nav-number">2.1.</span> <span class="nav-text">Google</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Microsoft-1"><span class="nav-number">2.2.</span> <span class="nav-text">Microsoft</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uber-1"><span class="nav-number">2.3.</span> <span class="nav-text">Uber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedIn-1"><span class="nav-number">2.4.</span> <span class="nav-text">LinkedIn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IBM"><span class="nav-number">2.5.</span> <span class="nav-text">IBM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Salesforce"><span class="nav-number">2.6.</span> <span class="nav-text">Salesforce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Capital-One"><span class="nav-number">2.7.</span> <span class="nav-text">Capital One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zillow"><span class="nav-number">2.8.</span> <span class="nav-text">Zillow</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

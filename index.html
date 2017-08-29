@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/Learn-ML-from-Sklearn-CV/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/Sklearn-CV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -282,7 +282,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/08/16/Learn-ML-from-Sklearn-CV/" itemprop="url">
+                <a class="post-title-link" href="/2017/08/16/Sklearn-CV/" itemprop="url">
                   Learn ML from Sklearn: Cross Validation
                 </a>
               
@@ -339,7 +339,7 @@
           study notes for scikit-learn 2
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/08/16/Learn-ML-from-Sklearn-CV/">
+            <a class="btn" href="/2017/08/16/Sklearn-CV/">
               Read more &raquo;
             </a>
           </div>
@@ -387,7 +387,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/Community-Detection-in-Python/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/14/Deep-Learning-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -409,7 +409,413 @@
             
               
                 
-                <a class="post-title-link" href="/2017/08/08/Community-Detection-in-Python/" itemprop="url">
+                <a class="post-title-link" href="/2017/08/14/Deep-Learning-2/" itemprop="url">
+                  Learn CNN from Giants
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-14T10:47:49-04:00">
+                2017-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Let’s start with the best tutorials for deep learning and CNNs.</p>
+<ul>
+<li>Genreal Tutorials:<ul>
+<li><a href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/" target="_blank" rel="external">An Intuitive Explanation of Convolutional Neural Networks</a> by Ujjwal Karn</li>
+<li><a href="http://deeplearning.stanford.edu/wiki/index.php/UFLDL_Tutorial" target="_blank" rel="external">Unsupervised Feature Learning &amp; Deep Learning Tutorial</a> by Andrew NG</li>
+<li><a href="http://cs231n.github.io" target="_blank" rel="external">CS231n Convolutional Neural Network for Visual Recognition</a> by Feifei Li</li>
+<li><a href="http://deeplearning.net/tutorial/contents.html#" target="_blank" rel="external">Deep Learning Tutorial</a> by Theano Development Team</li>
+</ul>
+</li>
+<li>Classic Papers:<ul>
+<li><a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="external">AlexNet</a> by Alex Krizhevsky, Ilya Sutskever&amp; Geoffrey Hinton from University of Toronto</li>
+<li><a href="https://arxiv.org/pdf/1409.1556v6.pdf" target="_blank" rel="external">VGG: Very Deep Convolutional Neural Networks for Large-Scale Image Recognition</a> by Visual Geometry Group, University of Oxford</li>
+<li><a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf" target="_blank" rel="external">GoogLeNet: Going Deeper with Convolutions</a> by Google Inc</li>
+<li><a href="https://arxiv.org/pdf/1512.03385v1.pdf" target="_blank" rel="external">ResNet: Deep Residual Learning for Image Recognition</a> by Microsoft</li>
+</ul>
+</li>
+</ul>
+<h2 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h2><p><a href="https://adeshpande3.github.io/adeshpande3.github.io/about/" target="_blank" rel="external">Adit</a> has a good summary of its importance:</p>
+<blockquote>
+<p>The one that started it all.</p>
+<p>2012 marked the first year where a CNN was used to achieve a top 5 test error rate of 15.4% (Top 5 error is the rate at which, given an image, the model does not output the correct label with its top 5 predictions). The next best entry achieved an error of 26.2%, which was an astounding improvement that pretty much shocked the computer vision community. Safe to say, CNNs became household names in the competition from then on out.</p>
+</blockquote>
+<h3 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics"></a>Statistics</h3><ul>
+<li>Year: 2012</li>
+<li>Data: 1.2 million images from ImageNet LSVRC-2010</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Top 1 Error</th>
+<th>Top 5 Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlexNet</td>
+<td>37.5%</td>
+<td>17.0%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/AlexNet.png" alt="AlexNet">                                    </p>
+<p>​                                <a href="https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a> </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Layers</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Convolutional</strong>: 96 kernels of 11*11*3, stride 4</td>
+<td>response normalized &amp; pooled</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Convolutional</strong>: 256 kernels of 5*5*48</td>
+<td>response normalized &amp; pooled</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Convolutional</strong>: 384 kernels of 3*3*256</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Convolutional</strong>: 384 kernels of 3*3*192</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Convolutional:</strong> 256 kernels of 3*3*192</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Fully connected</strong>: 4096 neurons</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Fully connected</strong>: 4096 neurons</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Fully connected</strong>: 4096 neurons</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Output layers: 1000, softmax</td>
+</tr>
+</tbody>
+</table>
+<p>Note that, later in the more successful version <a href="https://arxiv.org/pdf/1311.2901v3.pdf" target="_blank" rel="external">ZF Net</a>, the <strong>size of kernel is modified from 11*11*3 to 7*7*3</strong> to capture more details in the image.</p>
+<ul>
+<li>training schema</li>
+</ul>
+<blockquote>
+<p>We use stochastic gradient descent with a batch size of 128 examples, momentum of 0.9, and weight decay of 0.0005.</p>
+<p>We initialized the weights in each layer from a zero-mean Gaussian distribution with standard deviation 0.01. We initialized the neuron biases in the second, fourth, and ﬁfth convolutional layers, as well as in the fully-connected hidden layers, with the constant 1. This initialization accelerates the early stages of learning by providing the ReLUs with positive inputs. We initialized the neuron biases in the remaining layers with the constant 0.</p>
+</blockquote>
+<h3 id="Main-Take-aways"><a href="#Main-Take-aways" class="headerlink" title="Main Take-aways"></a>Main Take-aways</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>Save Time</th>
+<th>Increase Accuracy</th>
+<th>Reduce Overfitting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ReLU</strong></td>
+<td><strong>6 times faster</strong> than Tahn/ Sigmoid activations</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Multiple GPUs</strong></td>
+<td>☑️</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Drop Out layer</strong></td>
+<td><strong>1/2 of time</strong> required to converge</td>
+<td></td>
+<td>☑️</td>
+</tr>
+<tr>
+<td><strong>Local Response Normalization</strong></td>
+<td></td>
+<td>Top1: <strong>1.4%</strong>; Top5: <strong>1.2%</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Overlapping Pooling</strong></td>
+<td></td>
+<td>Top1: <strong>0.4%</strong>; Top5: <strong>0.3%</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Data Augmentation</strong></td>
+<td></td>
+<td></td>
+<td>☑️</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><strong>Data Augmentation Methodologies</strong></p>
+<blockquote>
+<p>Extracting random 224 × 224 patches (and their horizontal reﬂections) from the 256×256 images and training our network on these extracted patches 4.</p>
+<p>Altering the intensities of the RGB channels in training images…. We perform PCA on the set of RGB pixel values, To each training image, we add multiples of the found principal components, with magnitudes proportional to the corresponding eigenvalues times a random variable drawn from a Gaussian with mean zero and standard deviation 0.1.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h2><p>VGG is the first paper that discusses about the depth of CNN architecture. It extends the number of layers to 19 and uses very small (3*3) convolutional filters. It also states that VGG model could be used as a part in other machine learning pipeline as deep features.</p>
+<h3 id="Statistics-1"><a href="#Statistics-1" class="headerlink" title="Statistics"></a>Statistics</h3><ul>
+<li>Year: 2014</li>
+<li>Data: 1.3 million images from ImageNet ILSVRC-2012</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Top 1 Error</th>
+<th>Top 5 Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlexNet</td>
+<td>37.5%</td>
+<td>17.0%</td>
+</tr>
+<tr>
+<td><strong>VGG</strong></td>
+<td><strong>23.7%</strong></td>
+<td><strong>7.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="Architecture-1"><a href="#Architecture-1" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/VGGNet.png" alt="vgg"></p>
+<p>​                                <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a></p>
+<p>Note that, All hidden layers are equipped with the rectiﬁcation (ReLU (Krizhevsky et al., 2012)) non-linearity. the ReLU activation function is not shown for brevity. </p>
+<ul>
+<li><p><strong>Changes from AlexNet</strong></p>
+<p>|                                  | AlexNet                       | VGG                                      |<br>| ——————————– | —————————– | —————————————- |<br>| <strong>Layers</strong>                       | 5 Conv, 3 FC layers           | 16 Conv, 3 FC layers                     |<br>| <strong>Convolutional Filters</strong>        | 11*11; stride = 4            | a stack of conv layers with 3*3 kernels, stide = |<br>| <strong>Padding</strong>                      | None                          | 1                                        |<br>| <strong>Pooling</strong>                      | Overlapping Max Pooling       | Non-overlapping Max Pooling              |<br>| <strong>Local Response Normalization</strong> | Yes - it improves performance | No - it doesn’t improve performance but increase memory &amp; computation time |</p>
+</li>
+<li><p><strong>Training Schema</strong></p>
+<p>|                    | AlexNet             | VGG                     |<br>| —————— | ——————- | ———————– |<br>| <strong>Batch size</strong>     | 128                 | <strong>256</strong>                 |<br>| <strong>Momentum</strong>       | 0.9                 | 0.9                     |<br>| <strong>Weight decay</strong>   | 0.0005              | 0.0005                  |<br>| <strong>Initialization</strong> | N(0,0.01); bias = 1 | N(0,0.01); <strong>bias = 0</strong> |</p>
+</li>
+</ul>
+<h3 id="Main-Take-aways-1"><a href="#Main-Take-aways-1" class="headerlink" title="Main Take-aways"></a>Main Take-aways</h3><ul>
+<li><p><strong>Deep CNN!</strong></p>
+</li>
+<li><p>Why would we use stack of <strong>multiple 3*3 Convolutional layers</strong> (without spatial pooling in between) instead of larger one layer kernel?</p>
+<ul>
+<li><p><strong>Same receptive filed.</strong></p>
+<p>Receptive filed is well explained by <a href="https://www.quora.com/profile/Novel-Martis" target="_blank" rel="external">Novel Martis</a> in <a href="https://www.quora.com/What-is-a-CNN’s-receptive-field" target="_blank" rel="external">this post</a>. For example, in the below image, the input for B(2,2) is A(1:3, 1:3). The input for C(3,3) is B(2:4, 2:4) -&gt; A(1:5,1:5). The receptive field for 2 convolutional layers will be 5*5, and 3 convolutional layers will be 7*7.</p>
+<p><img src="https://qph.ec.quoracdn.net/main-qimg-34686eb9aa41d84ec784164601174be5" alt="receptive field"></p>
+<p>​                                <a href="https://www.quora.com/What-is-a-CNN’s-receptive-field" target="_blank" rel="external">Image Source</a></p>
+</li>
+<li><p><strong>More discriminative function.</strong></p>
+<p>There are three ReLU layers instead of one.</p>
+</li>
+<li><p><strong>Less parameters.</strong></p>
+<p>Suppose we have C channels. Stack of three 3*3 kernels will have $3<em>(3^2) = 27$ parameters, and one layer of 7\</em>7 kernel will have $7^2 = 49$ parameters; which is 81% more.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Inception"><a href="#Inception" class="headerlink" title="Inception"></a>Inception</h2><p>Inception goes beyond the idea “we need to go deeper” but comes up with a “network-in-network” inception module. There are two drawbacks of the previous most popular deeper and wider neural network -  that it might easily go overfitting especially when there’re no enough training examples, and that it takes up too much computational resources. The authors are motivated to build more efficient yet accurate (or more accurate) algorithms by replacing the fully connected layers with dense structures.</p>
+<h3 id="Statistics-2"><a href="#Statistics-2" class="headerlink" title="Statistics"></a>Statistics</h3><ul>
+<li><p>Year: 2015</p>
+</li>
+<li><p>Data: 1.3 million images from ImageNet ILSVRC 2014</p>
+<p>|               | Top 1 Error | Top 5 Error |<br>| ————- | ———– | ———– |<br>| VGG           | 23.7%       | 7.3%        |<br>| <strong>Inception</strong> |             | <strong>6.7%</strong>    |</p>
+</li>
+</ul>
+<h3 id="Architecture-2"><a href="#Architecture-2" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/GoogLeNet2.png" alt="Inception"></p>
+<p>​                                <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image source</a></p>
+<ul>
+<li><p><strong>Inception Module:</strong></p>
+<p>So the green box above is an inception module, which could be presented as the picture below. The idea behind is that the authors try to find a dense structure that can best approximate the optimal local sparse structure. So the idea is well outlined in <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Adit’s blog</a>: previously in stacked CNNs, different sizes of convolutional layers and max pooling layers are to be chosen; here we have them all. For example, if inside one picture, there is a person stands nearer the camera while there is a cat that is far away from the camera, it would be beneficial to have both of a larger image kernel to capture the nearer person and a smaller kernel to capture the cat. Therefore with the inception module, parameters are less, yet more powerful than simply stacked convolution.</p>
+<p><img src="https://adeshpande3.github.io/assets/GoogLeNet3.png" alt="inception-block"></p>
+<p>​                                <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image source</a></p>
+</li>
+</ul>
+<h3 id="Main-Take-Aways"><a href="#Main-Take-Aways" class="headerlink" title="Main Take-Aways"></a>Main Take-Aways</h3><ul>
+<li><p>The idea of CNN doesn’t have to be stacked up sequentially.</p>
+</li>
+<li><p>Get rid of fully connected layer (use average pooling instead) thus saves a lot of parameters and computational time.</p>
+</li>
+<li><p>The massive usage of <strong>1*1 convoluational kernel</strong>:</p>
+<ul>
+<li><p>Dimensional reduction</p>
+<p>The 1*1 kernel is reducing a great amount of image  dimensions. For example, if there is 224*224*60 input that goes through a 1*1*10 image kernel, then the output size will just be 224*224*10. </p>
+</li>
+<li><p>Less parameters, less chance of overfitting</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h2><p>ResNet aims to solve the problem of <strong><em>degradation</em></strong>. </p>
+<p>Basically, the authors of ReNet found that with increased number of layers, the accuracy get saturated thus degradation occurs. Previously the degragation was thought to be overfitting, but it isn’t: The training error <u>increase</u> rather than <u>decrease</u>. This is counterintuitive. The authors believe that, “the degradation problem (of training accuracy) suggests that the solvers might have difﬁculties in approximating identity mappings by multiple nonlinear layers.” Therefore he is motivated to create an easier way to optimize the deep CNNs.</p>
+<h3 id="Statistics-3"><a href="#Statistics-3" class="headerlink" title="Statistics"></a>Statistics</h3><ul>
+<li><p>Year: 2015</p>
+</li>
+<li><p>Data: ILSVRC 2015</p>
+<p>|            | Top 5 Error                              |<br>| ———- | —————————————- |<br>| Inception  | 6.7%                                     |<br>| <strong>ResNet</strong> | <strong>3.6%</strong>  beats human recognition: 5%-10% |</p>
+</li>
+</ul>
+<h3 id="Architecture-3"><a href="#Architecture-3" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/ResNet.gif" alt="ResNet"></p>
+<p>​                                <a href="https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a></p>
+<ul>
+<li><p><strong>Residual Block</strong></p>
+<p><img src="https://adeshpande3.github.io/assets/ResNet.png" alt="residual block"></p>
+<p><a href="https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a></p>
+<p>It performs <strong><em>shortcut  identity mapping</em></strong>. I will reference Adit’s wonderful explanation here:</p>
+<blockquote>
+<p>The idea behind a residual block is that you have your input x go through conv-relu-conv series. This will give you some F(x). That result is then added to the original input x. Let’s call that H(x) = F(x) + x. In traditional CNNs, your H(x) would just be equal to F(x) right? So, instead of just computing that transformation (straight from x to F(x)), we’re computing the term that you have to <em>add</em>, F(x), to your input, x. Basically, the mini module shown below is computing a “delta” or a slight change to the original input x to get a slightly altered representation (When we think of traditional CNNs, we go from x to F(x) which is a completely new representation that doesn’t keep any information about the original x). The authors believe that “it is easier to optimize the residual mapping than to optimize the original, unreferenced mapping”.</p>
+<p>Another reason for why this residual block might be effective is that during the backward pass of backpropagation, the gradient will flow easily through the graph because we have addition operations, which distributes the gradient.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">The 9 Deep Learning Papers You Need to Know About</a></li>
+<li><a href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/" target="_blank" rel="external">An Intuitive Explanation of Convolutional Neural Networks</a></li>
+<li><a href="http://cs231n.github.io" target="_blank" rel="external">CS231n Convolutional Neural Network for Visual Recognition</a> by Feifei Li</li>
+<li><a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf" target="_blank" rel="external">AlexNet</a> by Alex Krizhevsky, Ilya Sutskever&amp; Geoffrey Hinton from University of Toronto</li>
+<li><a href="https://arxiv.org/pdf/1409.1556v6.pdf" target="_blank" rel="external">VGG: Very Deep Convolutional Neural Networks for Large-Scale Image Recognition</a> by Visual Geometry Group, University of Oxford</li>
+<li><a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf" target="_blank" rel="external">GoogLeNet: Going Deeper with Convolutions</a> by Google Inc</li>
+<li><a href="https://arxiv.org/pdf/1512.03385v1.pdf" target="_blank" rel="external">ResNet: Deep Residual Learning for Image Recognition</a> by Microsoft</li>
+<li><a href="https://blog.athelas.com/a-brief-history-of-cnns-in-image-segmentation-from-r-cnn-to-mask-r-cnn-34ea83205de4" target="_blank" rel="external">A Brief History of CNNs in Image Segmentation: from R-CNN to Mask R-CNN</a></li>
+<li><a href="https://courses.cs.washington.edu/courses/cse590v/14au/cse590v_wk1_rcnn.pdf" target="_blank" rel="external">R-CNN for Object Detection</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+	
+    
+        
+	
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/08/Community-Detection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/08/Community-Detection/" itemprop="url">
                   Community Detection in Python
                 </a>
               
@@ -466,7 +872,7 @@
           A study note for performing community detection in Python using networkX and iGraph
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/08/08/Community-Detection-in-Python/">
+            <a class="btn" href="/2017/08/08/Community-Detection/">
               Read more &raquo;
             </a>
           </div>
@@ -516,7 +922,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/Learn-ML-from-Sklearn-Preprocessing/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/Sklearn-Preprocessing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -538,7 +944,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/25/Learn-ML-from-Sklearn-Preprocessing/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/25/Sklearn-Preprocessing/" itemprop="url">
                   Learn ML from Sklearn Preprocessing
                 </a>
               
@@ -595,7 +1001,7 @@
           study notes for scikit-learn 1
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/25/Learn-ML-from-Sklearn-Preprocessing/">
+            <a class="btn" href="/2017/06/25/Sklearn-Preprocessing/">
               Read more &raquo;
             </a>
           </div>
@@ -923,7 +1329,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/Data-Science-Interview-Questions-from-Giants/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/06/Interview-from-Giants/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yoyo">
@@ -945,7 +1351,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/06/Data-Science-Interview-Questions-from-Giants/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/06/Interview-from-Giants/" itemprop="url">
                   Data Science Interview Questions from Giants
                 </a>
               
@@ -1002,156 +1408,7 @@
           Key notes from Heinz Data Science Job Hunting Team
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/04/06/Data-Science-Interview-Questions-from-Giants/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Optimizing-SQL-Statements/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/27/Optimizing-SQL-Statements/" itemprop="url">
-                  Optimizing SQL Statements
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T10:32:50-04:00">
-                2017-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          MySQL Query Optimization Notes for Database of One Billion Entries
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/27/Optimizing-SQL-Statements/">
+            <a class="btn" href="/2017/04/06/Interview-from-Giants/">
               Read more &raquo;
             </a>
           </div>
@@ -1193,7 +1450,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1238,7 +1495,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1249,7 +1506,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1260,7 +1517,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

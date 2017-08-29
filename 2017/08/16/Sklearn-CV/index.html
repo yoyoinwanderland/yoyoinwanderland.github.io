@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python Packages,Machine Learning,Model Selection," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="study notes for scikit-learn 2">
+<meta name="keywords" content="Python Packages,Machine Learning,Model Selection">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn ML from Sklearn: Cross Validation">
+<meta property="og:url" content="http://yoursite.com/2017/08/16/Sklearn-CV/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="study notes for scikit-learn 2">
+<meta property="og:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_validation_curve_0011.png">
+<meta property="og:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_learning_curve_0021.png">
+<meta property="og:updated_time" content="2017-08-27T19:55:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Learn ML from Sklearn: Cross Validation">
+<meta name="twitter:description" content="study notes for scikit-learn 2">
+<meta name="twitter:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_validation_curve_0011.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/16/Sklearn-CV/"/>
+
+
+
+
+
+  <title> Learn ML from Sklearn: Cross Validation | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/16/Sklearn-CV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Learn ML from Sklearn: Cross Validation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T09:56:23-04:00">
+                2017-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  study notes for scikit-learn 2
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Overfitting-in-Two-Ways"><a href="#Overfitting-in-Two-Ways" class="headerlink" title="Overfitting in Two Ways"></a>Overfitting in Two Ways</h2><ul>
+<li><p>Learn parameters and test the model in the same dataset</p>
+<p>Solution: train-test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.4, random_state=0)</div></pre></td></tr></table></figure>
+</li>
+<li><p>Tune the hyperparameters and test the model in the same dataset</p>
+<blockquote>
+<p>When evaluating different settings (“hyperparameters”) for estimators, such as the <code>C</code> setting that must be manually set for an SVM, there is still a risk of overfitting <em>on the test set</em> because the parameters can be tweaked until the estimator performs optimally. This way, knowledge about the test set can “leak” into the model and evaluation metrics no longer report on generalization performance. </p>
+</blockquote>
+<p>Solution: Train-validation-test, Cross validation </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scores = cross_val_score(model, iris.data, iris.target, cv=5, scoring=&apos;f1_macro&apos;)</div></pre></td></tr></table></figure>
+<p>Note: from my point of view, cross validation is not a very clean solution for  hyperparameter tuning. A small test set is still needed to see the generalization error. But it is a good way to see if the model is stable. If the validation error varies amongst different left out samples, then there might be some problems.</p>
+</li>
+</ul>
+<h3 id="Visualize-Overfitting-amp-Underfitting"><a href="#Visualize-Overfitting-amp-Underfitting" class="headerlink" title="Visualize Overfitting &amp; Underfitting"></a>Visualize Overfitting &amp; Underfitting</h3><h4 id="Effect-of-a-hyper-parameter"><a href="#Effect-of-a-hyper-parameter" class="headerlink" title="Effect of a hyper-parameter"></a>Effect of a hyper-parameter</h4><p><img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_validation_curve_0011.png" alt="overfitting hyperparameter"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import numpy as np</div><div class="line">from sklearn.model_selection import validation_curve</div><div class="line">from sklearn.linear_model import Ridge</div><div class="line"></div><div class="line">train_scores, valid_scores = validation_curve(Ridge(), X, y, &quot;alpha&quot;, np.logspace(-7, 3, 3))</div></pre></td></tr></table></figure>
+<h4 id="Effect-of-the-number-of-training-samples"><a href="#Effect-of-the-number-of-training-samples" class="headerlink" title="Effect of the number of training samples"></a>Effect of the number of training samples</h4><p><img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_learning_curve_0021.png" alt="overfitting training no"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sklearn.model_selection import learning_curve</div><div class="line">from sklearn.svm import SVC</div><div class="line"></div><div class="line">train_sizes, train_scores, valid_scores = learning_curve(</div><div class="line">     SVC(kernel=&apos;linear&apos;), X, y, train_sizes=[50, 80, 110], cv=5)</div></pre></td></tr></table></figure>
+<h2 id="K-Folds"><a href="#K-Folds" class="headerlink" title="K Folds"></a>K Folds</h2><h3 id="K-Fold"><a href="#K-Fold" class="headerlink" title="K-Fold"></a>K-Fold</h3><blockquote>
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold" target="_blank" rel="external"><code>KFold</code></a> divides all the samples in k groups of samples, called folds ( if <code>k=n</code> this is equivalent to the <em>Leave One Out</em> strategy), of equal sizes (if possible). The prediction function is learned using <code>k - 1</code> folds, and the fold left out is used for test.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sklearn.model_selection import KFold</div><div class="line"></div><div class="line">kf = KFold(n_splits=10, random_state = 1)</div><div class="line">for train_index, test_index in kf.split(X):</div><div class="line">     X_train, y_train = X[train_index], y[train_index]</div></pre></td></tr></table></figure>
+<h3 id="Stratified-K-Fold"><a href="#Stratified-K-Fold" class="headerlink" title="Stratified K-Fold"></a>Stratified K-Fold</h3><p>Use stratified K-Fold when the class is unbalanced.</p>
+<blockquote>
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html#sklearn.model_selection.StratifiedKFold" target="_blank" rel="external"><code>StratifiedKFold</code></a> is a variation of <em>k-fold</em> which returns <em>stratified</em> folds: each set contains approximately the same percentage of samples of each target class as the complete set.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sklearn.model_selection import StratifiedKFold</div><div class="line"></div><div class="line">skf = StratifiedKFold(n_splits=10, random_state = 1)</div><div class="line">for train, test in skf.split(X, y):</div><div class="line">	X_train, y_train = X[train_index], y[train_index]</div></pre></td></tr></table></figure>
+<h3 id="Group-K-Fold"><a href="#Group-K-Fold" class="headerlink" title="Group K-Fold"></a>Group K-Fold</h3><blockquote>
+<p>An example would be when there is medical data collected from multiple patients, with multiple samples taken from each patient. And such data is likely to be dependent on the individual group. In our example, the patient id for each sample will be its group identifier.</p>
+<p>In this case we would like to know if a model trained on a particular set of groups generalizes well to the unseen groups. To measure this, we need to ensure that all the samples in the validation fold come from groups that are not represented at all in the paired training fold.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from sklearn.model_selection import GroupKFold</div><div class="line"></div><div class="line">X = [0.1, 0.2, 2.2, 2.4, 2.3, 4.55, 5.8, 8.8, 9, 10]</div><div class="line">y = [&quot;a&quot;, &quot;b&quot;, &quot;b&quot;, &quot;b&quot;, &quot;c&quot;, &quot;c&quot;, &quot;c&quot;, &quot;d&quot;, &quot;d&quot;, &quot;d&quot;]</div><div class="line">groups = [1, 1, 1, 2, 2, 2, 3, 3, 3, 3]</div><div class="line"></div><div class="line">gkf = GroupKFold(n_splits=5)</div><div class="line">for train, test in gkf.split(X, y, groups=groups):</div><div class="line">     print(&quot;%s %s&quot; % (train, test))</div></pre></td></tr></table></figure>
+<h3 id="Time-Series-Split"><a href="#Time-Series-Split" class="headerlink" title="Time Series Split"></a>Time Series Split</h3><blockquote>
+<p>Time series data is characterised by the correlation between observations that are near in time (<em>autocorrelation</em>). However, classical cross-validation techniques assume the samples are independent and identically distributed, and would result in unreasonable correlation between training and testing instances (yielding poor estimates of generalisation error) on time series data. Therefore, it is very important to evaluate our model for time series data on the “future” observations least like those that are used to train the model. </p>
+<p>Note that unlike standard cross-validation methods, successive training sets are supersets of those that come before them. Also, it adds all surplus data to the first training partition, which is always used to train the model.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">from sklearn.model_selection import TimeSeriesSplit</div><div class="line"></div><div class="line">X = np.array([[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]])</div><div class="line">tscv = TimeSeriesSplit(n_splits=3)</div><div class="line">for train, test in tscv.split(X):</div><div class="line">     print(&quot;%s %s&quot; % (train, test))</div><div class="line">#&gt;&gt;&gt; [0 1 2] [3]</div><div class="line">#&gt;&gt;&gt; [0 1 2 3] [4]</div><div class="line">#&gt;&gt;&gt; [0 1 2 3 4] [5]</div></pre></td></tr></table></figure>
+<h2 id="Tuning-Hyper-parameters"><a href="#Tuning-Hyper-parameters" class="headerlink" title="Tuning Hyper-parameters"></a>Tuning Hyper-parameters</h2><p>So Scikit-learn provides tools to tune hyper-parameters. That’s to say, we don’t have start with train-validation-test and then input different hyper-parameter and then print out validation error. We can input the desire model, and a list of hyper-parameters to choose from, and then scikit-learn will iterate and gives the best combination.</p>
+<blockquote>
+<p>Model selection by evaluating various parameter settings can be seen as a way to use the labeled data to “train” the parameters of the grid. When evaluating the resulting model it is important to do it on held-out samples that were not seen during the grid search process: it is recommended to split the data into a <strong>development set</strong> (to be fed to the <code>GridSearchCV</code> instance) and an <strong>evaluation set</strong> to compute performance metrics.</p>
+</blockquote>
+<p>There are two ways to tune hyper-parameters.</p>
+<h3 id="Grid-Search"><a href="#Grid-Search" class="headerlink" title="Grid Search"></a>Grid Search</h3><blockquote>
+<p>The grid search provided by <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" target="_blank" rel="external"><code>GridSearchCV</code></a> exhaustively generates candidates from a grid of parameter values specified with the <code>param_grid</code> parameter. </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># Split the dataset in two equal parts</div><div class="line">X_train, X_test, y_train, y_test = train_test_split(</div><div class="line">    X, y, test_size=0.3, random_state=0)</div><div class="line"></div><div class="line"># Set the parameters by cross-validation</div><div class="line">tuned_parameters = [&#123;&apos;kernel&apos;: [&apos;rbf&apos;], &apos;gamma&apos;: [1e-3, 1e-4],</div><div class="line">                     &apos;C&apos;: [1, 10, 100, 1000]&#125;,</div><div class="line">                    &#123;&apos;kernel&apos;: [&apos;linear&apos;], &apos;C&apos;: [1, 10, 100&#125;]</div><div class="line"></div><div class="line">clf = GridSearchCV(SVC(), tuned_parameters, cv=5,</div><div class="line">                       scoring=&apos;precision&apos;)</div><div class="line">clf.fit(X_train, y_train)</div><div class="line">print (clf.best_params_)</div><div class="line">print (clf.cv_results_[&apos;mean_test_score&apos;])</div><div class="line"></div><div class="line">y_true, y_pred = y_test, clf.predict(X_test)</div></pre></td></tr></table></figure>
+<h3 id="Randomized-Search"><a href="#Randomized-Search" class="headerlink" title="Randomized Search"></a>Randomized Search</h3><blockquote>
+<p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html#sklearn.model_selection.RandomizedSearchCV" target="_blank" rel="external"><code>RandomizedSearchCV</code></a> implements a randomized search over parameters, where each setting is sampled from a distribution over possible parameter values. This has two main benefits over an exhaustive search:</p>
+<ul>
+<li>A budget can be chosen independent of the number of parameters and possible values.</li>
+<li>Adding parameters that do not influence the performance does not decrease efficiency.</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">X_train, X_test, y_train, y_test = train_test_split(</div><div class="line">    X, y, test_size=0.3, random_state=0)</div><div class="line"></div><div class="line"># specify parameters and distributions to sample from</div><div class="line">param_dist = &#123;&quot;max_depth&quot;: [3, None],</div><div class="line">              &quot;max_features&quot;: sp_randint(1, 11),</div><div class="line">              &quot;min_samples_split&quot;: sp_randint(2, 11),</div><div class="line">              &quot;min_samples_leaf&quot;: sp_randint(1, 11),</div><div class="line">              &quot;bootstrap&quot;: [True, False],</div><div class="line">              &quot;criterion&quot;: [&quot;gini&quot;, &quot;entropy&quot;]&#125;</div><div class="line">              </div><div class="line">clf = RandomForestClassifier(n_estimators=20)</div><div class="line"></div><div class="line"># run randomized search</div><div class="line">random_search = RandomizedSearchCV(clf, param_dist, n_iter=20)</div><div class="line">random_search.fit(X, y)</div><div class="line"></div><div class="line">print (clf.best_params_)</div><div class="line">print (clf.cv_results_[&apos;mean_test_score&apos;])</div><div class="line"></div><div class="line">y_true, y_pred = y_test, clf.predict(X_test)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python-Packages/" rel="tag"># Python Packages</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Model-Selection/" rel="tag"># Model Selection</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/14/Deep-Learning-2/" rel="prev" title="Learn CNN from Giants">
+                Learn CNN from Giants <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overfitting-in-Two-Ways"><span class="nav-number">1.</span> <span class="nav-text">Overfitting in Two Ways</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualize-Overfitting-amp-Underfitting"><span class="nav-number">1.1.</span> <span class="nav-text">Visualize Overfitting & Underfitting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Effect-of-a-hyper-parameter"><span class="nav-number">1.1.1.</span> <span class="nav-text">Effect of a hyper-parameter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Effect-of-the-number-of-training-samples"><span class="nav-number">1.1.2.</span> <span class="nav-text">Effect of the number of training samples</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Folds"><span class="nav-number">2.</span> <span class="nav-text">K Folds</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-Fold"><span class="nav-number">2.1.</span> <span class="nav-text">K-Fold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stratified-K-Fold"><span class="nav-number">2.2.</span> <span class="nav-text">Stratified K-Fold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Group-K-Fold"><span class="nav-number">2.3.</span> <span class="nav-text">Group K-Fold</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Series-Split"><span class="nav-number">2.4.</span> <span class="nav-text">Time Series Split</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tuning-Hyper-parameters"><span class="nav-number">3.</span> <span class="nav-text">Tuning Hyper-parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-Search"><span class="nav-number">3.1.</span> <span class="nav-text">Grid Search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Randomized-Search"><span class="nav-number">3.2.</span> <span class="nav-text">Randomized Search</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
