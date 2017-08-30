@@ -2,65 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
+    <loc>http://yoursite.com/2017/03/09/Yoga/</loc>
     
-    <lastmod>2017-08-29T18:27:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/19/Deep-Learning-1/</loc>
-    
-    <lastmod>2017-08-29T15:48:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/Pentaho/</loc>
-    
-    <lastmod>2017-08-29T15:40:23.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/27/Optimizing-SQL/</loc>
-    
-    <lastmod>2017-08-29T15:40:16.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/20/Kalman-Filter/</loc>
-    
-    <lastmod>2017-08-29T15:40:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/Interview-Linear-Regression/</loc>
-    
-    <lastmod>2017-08-29T15:40:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/Interview-Classification/</loc>
-    
-    <lastmod>2017-08-29T15:39:58.000Z</lastmod>
+    <lastmod>2017-08-30T14:54:37.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/06/25/Sklearn-Preprocessing/</loc>
     
-    <lastmod>2017-08-29T15:39:34.000Z</lastmod>
+    <lastmod>2017-08-30T14:54:33.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2017/08/16/Sklearn-CV/</loc>
     
-    <lastmod>2017-08-29T15:39:20.000Z</lastmod>
+    <lastmod>2017-08-30T14:54:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Pentaho/</loc>
+    
+    <lastmod>2017-08-30T14:54:14.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/27/Optimizing-SQL/</loc>
+    
+    <lastmod>2017-08-30T14:54:05.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/20/Kalman-Filter/</loc>
+    
+    <lastmod>2017-08-30T14:53:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Interview-Linear-Regression/</loc>
+    
+    <lastmod>2017-08-30T14:53:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Interview-Classification/</loc>
+    
+    <lastmod>2017-08-30T14:53:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
+    
+    <lastmod>2017-08-30T14:53:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/19/Deep-Learning-1/</loc>
+    
+    <lastmod>2017-08-30T14:53:15.000Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2017-04-10T14:01:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/03/09/Yoga/</loc>
-    
-    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
     
   </url>
   
