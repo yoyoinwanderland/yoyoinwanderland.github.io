@@ -2,9 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/08/Community-Detection/</loc>
+    
+    <lastmod>2017-08-30T14:56:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
+    
+    <lastmod>2017-08-30T14:56:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Interview-Classification/</loc>
+    
+    <lastmod>2017-08-30T14:56:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Interview-Linear-Regression/</loc>
+    
+    <lastmod>2017-08-30T14:56:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/27/Optimizing-SQL/</loc>
+    
+    <lastmod>2017-08-30T14:56:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/09/Pentaho/</loc>
+    
+    <lastmod>2017-08-30T14:56:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/16/Sklearn-CV/</loc>
+    
+    <lastmod>2017-08-30T14:55:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/25/Sklearn-Preprocessing/</loc>
+    
+    <lastmod>2017-08-30T14:55:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/03/09/Yoga/</loc>
     
     <lastmod>2017-08-30T14:54:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/20/Kalman-Filter/</loc>
+    
+    <lastmod>2017-08-30T14:53:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/19/Deep-Learning-1/</loc>
+    
+    <lastmod>2017-08-30T14:53:15.000Z</lastmod>
     
   </url>
   
@@ -75,6 +145,13 @@
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2017-04-10T14:01:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/03/10/my-prayer/</loc>
+    
+    <lastmod>2017-04-04T20:20:32.000Z</lastmod>
     
   </url>
   
