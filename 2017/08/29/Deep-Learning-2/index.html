@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CNN,Machine learning," />
+  <meta name="keywords" content="Machine learning,CNN," />
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="Learning note for classic CNN models">
-<meta name="keywords" content="CNN,Machine learning">
+<meta name="keywords" content="Machine learning,CNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learn CNN from Giants">
 <meta property="og:url" content="http://yoursite.com/2017/08/29/Deep-Learning-2/index.html">
@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://adeshpande3.github.io/assets/GoogLeNet3.png">
 <meta property="og:image" content="https://adeshpande3.github.io/assets/ResNet.gif">
 <meta property="og:image" content="https://adeshpande3.github.io/assets/ResNet.png">
-<meta property="og:updated_time" content="2017-08-30T14:56:36.000Z">
+<meta property="og:updated_time" content="2017-09-14T20:55:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn CNN from Giants">
 <meta name="twitter:description" content="Learning note for classic CNN models">
@@ -572,13 +572,78 @@
 <p>​                                <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a></p>
 <p>Note that, All hidden layers are equipped with the rectiﬁcation (ReLU (Krizhevsky et al., 2012)) non-linearity. the ReLU activation function is not shown for brevity. </p>
 <ul>
-<li><p><strong>Changes from AlexNet</strong></p>
-<p>|                                  | AlexNet                       | VGG                                      |<br>| ——————————– | —————————– | —————————————- |<br>| <strong>Layers</strong>                       | 5 Conv, 3 FC layers           | 16 Conv, 3 FC layers                     |<br>| <strong>Convolutional Filters</strong>        | 11*11; stride = 4            | a stack of conv layers with 3*3 kernels, stide =1 |<br>| <strong>Padding</strong>                      | None                          | 1                                        |<br>| <strong>Pooling</strong>                      | Overlapping Max Pooling       | Non-overlapping Max Pooling              |<br>| <strong>Local Response Normalization</strong> | Yes - it improves performance | No - it doesn’t improve performance but increase memory &amp; computation time |</p>
-</li>
-<li><p><strong>Training Schema</strong></p>
-<p>|                    | AlexNet             | VGG                     |<br>| —————— | ——————- | ———————– |<br>| <strong>Batch size</strong>     | 128                 | <strong>256</strong>                 |<br>| <strong>Momentum</strong>       | 0.9                 | 0.9                     |<br>| <strong>Weight decay</strong>   | 0.0005              | 0.0005                  |<br>| <strong>Initialization</strong> | N(0,0.01); bias = 1 | N(0,0.01); <strong>bias = 0</strong> |</p>
-</li>
+<li><strong>Changes from AlexNet</strong></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AlexNet</th>
+<th>VGG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Layers</strong></td>
+<td>5 Conv, 3 FC layers</td>
+<td>16 Conv, 3 FC layers</td>
+</tr>
+<tr>
+<td><strong>Convolutional Filters</strong></td>
+<td>11*11; stride = 4</td>
+<td>a stack of conv layers with 3*3 kernels, stide =1</td>
+</tr>
+<tr>
+<td><strong>Padding</strong></td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Pooling</strong></td>
+<td>Overlapping Max Pooling</td>
+<td>Non-overlapping Max Pooling</td>
+</tr>
+<tr>
+<td><strong>Local Response Normalization</strong></td>
+<td>Yes - it improves performance</td>
+<td>No - it doesn’t improve performance but increase memory &amp; computation time</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Training Schema</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AlexNet</th>
+<th>VGG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Batch size</strong></td>
+<td>128</td>
+<td><strong>256</strong></td>
+</tr>
+<tr>
+<td><strong>Momentum</strong></td>
+<td>0.9</td>
+<td>0.9</td>
+</tr>
+<tr>
+<td><strong>Weight decay</strong></td>
+<td>0.0005</td>
+<td>0.0005</td>
+</tr>
+<tr>
+<td><strong>Initialization</strong></td>
+<td>N(0,0.01); bias = 1</td>
+<td>N(0,0.01); <strong>bias = 0</strong></td>
+</tr>
+</tbody>
+</table>
 <h3 id="Main-Take-aways-1"><a href="#Main-Take-aways-1" class="headerlink" title="Main Take-aways"></a>Main Take-aways</h3><ul>
 <li><p><strong>Deep CNN!</strong></p>
 </li>
@@ -603,9 +668,29 @@
 <li><p>Year: 2015</p>
 </li>
 <li><p>Data: 1.3 million images from ImageNet ILSVRC 2014</p>
-<p>|               | Top 1 Error | Top 5 Error |<br>| ————- | ———– | ———– |<br>| VGG           | 23.7%       | 7.3%        |<br>| <strong>Inception</strong> |             | <strong>6.7%</strong>    |</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Top 1 Error</th>
+<th>Top 5 Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VGG</td>
+<td>23.7%</td>
+<td>7.3%</td>
+</tr>
+<tr>
+<td><strong>Inception</strong></td>
+<td></td>
+<td><strong>6.7%</strong></td>
+</tr>
+</tbody>
+</table>
 <h3 id="Architecture-2"><a href="#Architecture-2" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/GoogLeNet2.png" alt="Inception"></p>
 <p>​                                <a href="https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image source</a></p>
 <ul>
@@ -636,9 +721,26 @@
 <li><p>Year: 2015</p>
 </li>
 <li><p>Data: ILSVRC 2015</p>
-<p>|            | Top 5 Error                              |<br>| ———- | —————————————- |<br>| Inception  | 6.7%                                     |<br>| <strong>ResNet</strong> | <strong>3.6%</strong>  beats human recognition: 5%-10% |</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Top 5 Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inception</td>
+<td>6.7%</td>
+</tr>
+<tr>
+<td><strong>ResNet</strong></td>
+<td><strong>3.6%</strong>  beats human recognition: 5%-10%</td>
+</tr>
+</tbody>
+</table>
 <h3 id="Architecture-3"><a href="#Architecture-3" class="headerlink" title="Architecture"></a>Architecture</h3><p><img src="https://adeshpande3.github.io/assets/ResNet.gif" alt="ResNet"></p>
 <p>​                                <a href="https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html" target="_blank" rel="external">Image Source</a></p>
 <ul>
@@ -690,9 +792,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CNN/" rel="tag"># CNN</a>
-          
             <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
           
         </div>
       

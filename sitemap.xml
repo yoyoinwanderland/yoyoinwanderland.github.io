@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
+    
+    <lastmod>2017-09-14T20:55:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/06/24/%E5%AD%A6%E5%8C%BB%E5%81%B6%E5%BE%97/</loc>
     
     <lastmod>2017-08-30T15:03:30.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2017/08/08/Community-Detection/</loc>
     
     <lastmod>2017-08-30T14:56:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/29/Deep-Learning-2/</loc>
-    
-    <lastmod>2017-08-30T14:56:36.000Z</lastmod>
     
   </url>
   
