@@ -1,0 +1,840 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Learn image processing techniques from OpenCV &amp; Adrian&apos;s blog posts.">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Image Processing Cheatsheet from PyImageSearch">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/Learn-OpenCV-1/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Learn image processing techniques from OpenCV &amp; Adrian&apos;s blog posts.">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2015/09/detecting_blur_header.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2015/09/gamma_correction_example.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/11/barcode_gradient_and_detection.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2015/05/drone_acquired_02.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2017/02/digit_reco_complete.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2015/11/mrz_output_04.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2016/10/omr_result_05.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/08/getperspective_transform_01.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/08/receipt-scanned.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2017/02/text_skew_pos41_results.png">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2017/01/seam_carving_vertical.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2017/05/image_difference_output_02.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/08/bright-area-retina-noise.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/05/jurassic-park-colors.jpg">
+<meta property="og:image" content="https://www.pyimagesearch.com/wp-content/uploads/2014/07/quant_kmeans_worldcup.jpg">
+<meta property="og:updated_time" content="2017-11-07T21:32:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image Processing Cheatsheet from PyImageSearch">
+<meta name="twitter:description" content="Learn image processing techniques from OpenCV &amp; Adrian&apos;s blog posts.">
+<meta name="twitter:image" content="https://www.pyimagesearch.com/wp-content/uploads/2015/09/detecting_blur_header.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/Learn-OpenCV-1/"/>
+
+
+
+
+
+  <title> Image Processing Cheatsheet from PyImageSearch | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/Learn-OpenCV-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Image Processing Cheatsheet from PyImageSearch
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-19T10:51:50-04:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Learn image processing techniques from OpenCV & Adrian's blog posts.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This blog summarizes image processing methods from <a href="pyimagesearch.com">pyimagesearch</a>. All the source codes and pictures come from the blog and I won’t take any credit for anything.</p>
+<h2 id="Image-Processing"><a href="#Image-Processing" class="headerlink" title="Image Processing"></a>Image Processing</h2><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a href="https://www.pyimagesearch.com/2015/09/07/blur-detection-with-opencv/" target="_blank" rel="external">Blur detection with OpenCV</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2015/09/detecting_blur_header.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2015/10/05/opencv-gamma-correction/" target="_blank" rel="external">OpenCV Gamma Correction</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2015/09/gamma_correction_example.jpg" alt="sample"></p>
+<h3 id="Codes"><a href="#Codes" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li><strong>Blur Detection</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.Laplacian(image, cv2.CV_64F).var()</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Gamma Correction</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def adjust_gamma(image, gamma=1.0):</div><div class="line">	# build a lookup table mapping the pixel values [0, 255] to</div><div class="line">	# their adjusted gamma values</div><div class="line">	invGamma = 1.0 / gamma</div><div class="line">	table = np.array([((i / 255.0) ** invGamma) * 255</div><div class="line">		for i in np.arange(0, 256)]).astype(&quot;uint8&quot;)</div><div class="line"> </div><div class="line">	# apply gamma correction using the lookup table</div><div class="line">	return cv2.LUT(image, table)</div></pre></td></tr></table></figure>
+<h2 id="Object-Detection"><a href="#Object-Detection" class="headerlink" title="Object Detection"></a>Object Detection</h2><h3 id="References-1"><a href="#References-1" class="headerlink" title="References"></a>References</h3><p><a href="https://www.pyimagesearch.com/2014/07/21/detecting-circles-images-using-opencv-hough-circles/" target="_blank" rel="external">Detecting Circles in Images using OpenCV and Hough Circles</a></p>
+<p><a href="https://www.pyimagesearch.com/2014/11/24/detecting-barcodes-images-python-opencv/" target="_blank" rel="external">Detecting Barcodes in Images with Python and OpenCV</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/11/barcode_gradient_and_detection.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2015/05/04/target-acquired-finding-targets-in-drone-and-quadcopter-video-streams-using-python-and-opencv/" target="_blank" rel="external">Target acquired: Finding targets in drone and quadcopter video streams using Python and OpenCV</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2015/05/drone_acquired_02.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2017/02/13/recognizing-digits-with-opencv-and-python/" target="_blank" rel="external">Recognizing digits with OpenCV and Python</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2017/02/digit_reco_complete.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2015/11/30/detecting-machine-readable-zones-in-passport-images/" target="_blank" rel="external">Detecting machine-readable zones in passport images</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2015/11/mrz_output_04.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2016/10/03/bubble-sheet-multiple-choice-scanner-and-test-grader-using-omr-python-and-opencv/" target="_blank" rel="external">Bubble sheet multiple choice scanner and test grader using OMR, Python and OpenCV</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2016/10/omr_result_05.jpg" alt="sample"></p>
+<h3 id="Codes-1"><a href="#Codes-1" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li><strong>Detecting Circles</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># detect circles in the image</div><div class="line">circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1.2, 100)</div><div class="line"> </div><div class="line"># ensure at least some circles were found</div><div class="line">if circles is not None:</div><div class="line">	# convert the (x, y) coordinates and radius of the circles to integers</div><div class="line">	circles = np.round(circles[0, :]).astype(&quot;int&quot;)</div><div class="line"> </div><div class="line">	# loop over the (x, y) coordinates and radius of the circles</div><div class="line">	for (x, y, r) in circles:</div><div class="line">		# draw the circle in the output image, then draw a rectangle</div><div class="line">		# corresponding to the center of the circle</div><div class="line">		cv2.circle(output, (x, y), r, (0, 255, 0), 4)</div><div class="line">		cv2.rectangle(output, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Detect squares in a video</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"># load the video</div><div class="line">camera = cv2.VideoCapture(args[&quot;video&quot;])</div><div class="line"> </div><div class="line"># keep looping</div><div class="line">while True:</div><div class="line">	# grab the current frame and initialize the status text</div><div class="line">	(grabbed, frame) = camera.read()</div><div class="line">	status = &quot;No Targets&quot;</div><div class="line"> </div><div class="line">	# check to see if we have reached the end of the</div><div class="line">	# video</div><div class="line">	if not grabbed:</div><div class="line">		break</div><div class="line"> </div><div class="line">	# convert the frame to grayscale, blur it, and detect edges</div><div class="line">	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</div><div class="line">	blurred = cv2.GaussianBlur(gray, (7, 7), 0)</div><div class="line">	edged = cv2.Canny(blurred, 50, 150)</div><div class="line"> </div><div class="line">	# find contours in the edge map</div><div class="line">	(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL,</div><div class="line">		cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">	</div><div class="line">     for c in cnts:</div><div class="line">      # approximate the contour</div><div class="line">        peri = cv2.arcLength(c, True)</div><div class="line">        approx = cv2.approxPolyDP(c, 0.01 * peri, True)</div><div class="line"></div><div class="line">        # ensure that the approximated contour is &quot;roughly&quot; rectangular</div><div class="line">        if len(approx) &gt;= 4 and len(approx) &lt;= 6:</div><div class="line">        # compute the bounding box of the approximated contour and</div><div class="line">        # use the bounding box to compute the aspect ratio</div><div class="line">        (x, y, w, h) = cv2.boundingRect(approx)</div><div class="line">        aspectRatio = w / float(h)</div><div class="line"></div><div class="line">        # compute the solidity of the original contour</div><div class="line">        area = cv2.contourArea(c)</div><div class="line">        hullArea = cv2.contourArea(cv2.convexHull(c))</div><div class="line">        solidity = area / float(hullArea)</div><div class="line"></div><div class="line">        # compute whether or not the width and height, solidity, and</div><div class="line">        # aspect ratio of the contour falls within appropriate bounds</div><div class="line">        keepDims = w &gt; 25 and h &gt; 25</div><div class="line">        keepSolidity = solidity &gt; 0.9</div><div class="line">        keepAspectRatio = aspectRatio &gt;= 0.8 and aspectRatio &lt;= 1.2</div><div class="line"></div><div class="line">        # ensure that the contour passes all our tests</div><div class="line">        if keepDims and keepSolidity and keepAspectRatio:</div><div class="line">        # draw an outline around the target and update the status</div><div class="line">        # text</div><div class="line">        cv2.drawContours(frame, [approx], -1, (0, 0, 255), 4)</div><div class="line">        status = &quot;Target(s) Acquired&quot;</div><div class="line">        # draw the status text on the frame</div><div class="line">        cv2.putText(frame, status, (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5,</div><div class="line">            (0, 0, 255), 2)</div><div class="line"> </div><div class="line">        # show the frame and record if a key is pressed</div><div class="line">        cv2.imshow(&quot;Frame&quot;, frame)</div><div class="line">        key = cv2.waitKey(1) &amp; 0xFF</div><div class="line"></div><div class="line">        # if the &apos;q&apos; key is pressed, stop the loop</div><div class="line">        if key == ord(&quot;q&quot;):</div><div class="line">            break</div><div class="line"></div><div class="line"># cleanup the camera and close any open windows</div><div class="line">camera.release()</div><div class="line">cv2.destroyAllWindows()</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Detectin Texture</strong> (Barcode in this case)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"># compute the Scharr gradient magnitude representation of the images</div><div class="line"># in both the x and y direction</div><div class="line">gradX = cv2.Sobel(gray, ddepth = cv2.cv.CV_32F, dx = 1, dy = 0, ksize = -1)</div><div class="line">gradY = cv2.Sobel(gray, ddepth = cv2.cv.CV_32F, dx = 0, dy = 1, ksize = -1)</div><div class="line"> </div><div class="line"># subtract the y-gradient from the x-gradient</div><div class="line"># to find regions that have high horizontal and low vertical gradients.</div><div class="line">gradient = cv2.subtract(gradX, gradY)</div><div class="line">gradient = cv2.convertScaleAbs(gradient)</div><div class="line"></div><div class="line"># blur and threshold the image</div><div class="line"># smooth out high frequency noise in the gradient </div><div class="line">blurred = cv2.blur(gradient, (9, 9))</div><div class="line">(_, thresh) = cv2.threshold(blurred, 225, 255, cv2.THRESH_BINARY)</div><div class="line"></div><div class="line"># construct a closing kernel and apply it to the thresholded image</div><div class="line"># this kernel has a width that is larger than the height</div><div class="line"># thus close the gaps between vertical stripes of the barcode</div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (21, 7))</div><div class="line">closed = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)</div><div class="line"></div><div class="line"># perform a series of erosions and dilations</div><div class="line"># erode the white pixels in the image, thus removing the small blobs</div><div class="line"># dilate the remaining white pixels and grow the white regions back out.</div><div class="line">closed = cv2.erode(closed, None, iterations = 4)</div><div class="line">closed = cv2.dilate(closed, None, iterations = 4)</div><div class="line"></div><div class="line"># find the contours in the thresholded image, then sort the contours</div><div class="line"># by their area, keeping only the largest one</div><div class="line">(cnts, _) = cv2.findContours(closed.copy(), cv2.RETR_EXTERNAL,</div><div class="line">	cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">c = sorted(cnts, key = cv2.contourArea, reverse = True)[0]</div><div class="line"></div><div class="line"># compute the rotated bounding box of the largest contour</div><div class="line">rect = cv2.minAreaRect(c)</div><div class="line">box = np.int0(cv2.cv.BoxPoints(rect))</div><div class="line"></div><div class="line"># draw a bounding box arounded the detected barcode and display the</div><div class="line"># image</div><div class="line">cv2.drawContours(image, [box], -1, (0, 255, 0), 3)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Detect Digits Areas</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"># extract the thermostat display, apply a perspective transform to it</div><div class="line">thresh = cv2.threshold(warped, 0, 255,</div><div class="line">	cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]</div><div class="line">kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (1, 5))</div><div class="line">thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)</div><div class="line"></div><div class="line"></div><div class="line"># find contours in the thresholded image, then initialize the</div><div class="line"># digit contours lists</div><div class="line">cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,</div><div class="line">	cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">cnts = cnts[0] if imutils.is_cv2() else cnts[1]</div><div class="line">digitCnts = []</div><div class="line"> </div><div class="line"># loop over the digit area candidates</div><div class="line">for c in cnts:</div><div class="line">	# compute the bounding box of the contour</div><div class="line">	(x, y, w, h) = cv2.boundingRect(c)</div><div class="line"> </div><div class="line">	# if the contour is sufficiently large, it must be a digit</div><div class="line">	if w &gt;= 15 and (h &gt;= 30 and h &lt;= 40):</div><div class="line">		digitCnts.append(c)</div><div class="line">		</div><div class="line"># sort the contours from left-to-right, then initialize the</div><div class="line"># actual digits themselves</div><div class="line">digitCnts = contours.sort_contours(digitCnts, method=&quot;left-to-right&quot;)[0]</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Detect Machine Readable Zones</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"># initialize a rectangular and square structuring kernel</div><div class="line">rectKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (13, 5))</div><div class="line">sqKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (21, 21))</div><div class="line"></div><div class="line">image = cv2.imread(imagePath)</div><div class="line">image = imutils.resize(image, height=600)</div><div class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line"># smooth the image using a 3x3 Gaussian, then apply the blackhat</div><div class="line"># morphological operator to find dark regions on a light background</div><div class="line">gray = cv2.GaussianBlur(gray, (3, 3), 0)</div><div class="line">blackhat = cv2.morphologyEx(gray, cv2.MORPH_BLACKHAT, rectKernel)</div><div class="line"></div><div class="line"># compute the Scharr gradient of the blackhat image and scale the</div><div class="line"># result into the range [0, 255]</div><div class="line"># extremely helpful in reducing false-positive MRZ detections</div><div class="line">gradX = cv2.Sobel(blackhat, ddepth=cv2.CV_32F, dx=1, dy=0, ksize=-1)</div><div class="line">gradX = np.absolute(gradX)</div><div class="line">(minVal, maxVal) = (np.min(gradX), np.max(gradX))</div><div class="line">gradX = (255 * ((gradX - minVal) / (maxVal - minVal))).astype(&quot;uint8&quot;)</div><div class="line"></div><div class="line"># apply a closing operation using the rectangular kernel to close</div><div class="line"># gaps in between letters -- then apply Otsu&apos;s thresholding method</div><div class="line">gradX = cv2.morphologyEx(gradX, cv2.MORPH_CLOSE, rectKernel)</div><div class="line">thresh = cv2.threshold(gradX, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]</div><div class="line"></div><div class="line"># perform another closing operation, this time using the square</div><div class="line"># kernel to close gaps between lines of the MRZ, then perform a</div><div class="line"># series of erosions to break apart connected components</div><div class="line">thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, sqKernel)</div><div class="line">thresh = cv2.erode(thresh, None, iterations=4)</div><div class="line"></div><div class="line"># during thresholding, it&apos;s possible that border pixels were</div><div class="line"># included in the thresholding, so let&apos;s set 5% of the left and</div><div class="line"># right borders to zero</div><div class="line">p = int(image.shape[1] * 0.05)</div><div class="line">thresh[:, 0:p] = 0</div><div class="line">thresh[:, image.shape[1] - p:] = 0</div><div class="line"></div><div class="line"># find contours in the thresholded image and sort them by their</div><div class="line"># size</div><div class="line">cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,</div><div class="line">cv2.CHAIN_APPROX_SIMPLE)[-2]</div><div class="line">cnts = sorted(cnts, key=cv2.contourArea, reverse=True)</div><div class="line"></div><div class="line"># loop over the contours</div><div class="line">for c in cnts:</div><div class="line">  # compute the bounding box of the contour and use the contour to</div><div class="line">  # compute the aspect ratio and coverage ratio of the bounding box</div><div class="line">  # width to the width of the image</div><div class="line">  (x, y, w, h) = cv2.boundingRect(c)</div><div class="line">  ar = w / float(h)</div><div class="line">  crWidth = w / float(gray.shape[1])</div><div class="line"></div><div class="line">  # check to see if the aspect ratio and coverage width are within</div><div class="line">  # acceptable criteria</div><div class="line">  if ar &gt; 5 and crWidth &gt; 0.75:</div><div class="line">      # pad the bounding box since we applied erosions and now need</div><div class="line">      # to re-grow it</div><div class="line">      pX = int((x + w) * 0.03)</div><div class="line">      pY = int((y + h) * 0.03)</div><div class="line">      (x, y) = (x - pX, y - pY)</div><div class="line">      (w, h) = (w + (pX * 2), h + (pY * 2))</div><div class="line"></div><div class="line">      # extract the ROI from the image and draw a bounding box</div><div class="line">      # surrounding the MRZ</div><div class="line">      roi = image[y:y + h, x:x + w].copy()</div><div class="line">      cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)</div><div class="line">      break</div></pre></td></tr></table></figure>
+<h2 id="Object-Transformation"><a href="#Object-Transformation" class="headerlink" title="Object Transformation"></a>Object Transformation</h2><h3 id="References-2"><a href="#References-2" class="headerlink" title="References"></a>References</h3><p><a href="https://www.pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-example/" target="_blank" rel="external">4 Point OpenCV getPerspective Transform Example</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/08/getperspective_transform_01.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/" target="_blank" rel="external">How to Build a Kick-Ass Mobile Document Scanner in Just 5 Minutes</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/08/receipt-scanned.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2017/02/20/text-skew-correction-opencv-python/" target="_blank" rel="external">Text skew correction with OpenCV and Python</a><img src="https://www.pyimagesearch.com/wp-content/uploads/2017/02/text_skew_pos41_results.png" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2017/01/23/seam-carving-with-opencv-python-and-scikit-image/" target="_blank" rel="external">Seam carving with OpenCV, Python, and scikit-image</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2017/01/seam_carving_vertical.jpg" alt="sample"></p>
+<h3 id="Codes-2"><a href="#Codes-2" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li><strong>Four Point Transformation</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">### Find Four Points and Call Function</div><div class="line"># convert the image to grayscale, blur it, and find edges</div><div class="line"># in the image</div><div class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</div><div class="line">gray = cv2.GaussianBlur(gray, (5, 5), 0)</div><div class="line">edged = cv2.Canny(gray, 75, 200)</div><div class="line"></div><div class="line"># find the contours in the edged image, keeping only the</div><div class="line"># largest ones, and initialize the screen contour</div><div class="line">(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:5]</div><div class="line"> </div><div class="line"># loop over the contours</div><div class="line">for c in cnts:</div><div class="line">	# approximate the contour</div><div class="line">	peri = cv2.arcLength(c, True)</div><div class="line">	approx = cv2.approxPolyDP(c, 0.02 * peri, True)</div><div class="line"> </div><div class="line">	# if our approximated contour has four points, then we</div><div class="line">	# can assume that we have found our screen</div><div class="line">	if len(approx) == 4:</div><div class="line">		screenCnt = approx</div><div class="line">		break</div><div class="line"> </div><div class="line"># show the contour (outline) of the piece of paper</div><div class="line">print &quot;STEP 2: Find contours of paper&quot;</div><div class="line">cv2.drawContours(image, [screenCnt], -1, (0, 255, 0), 2)</div><div class="line"></div><div class="line">warped = four_point_transform(orig, screenCnt.reshape(4, 2) * ratio)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">def order_points(pts):</div><div class="line">	# initialzie a list of coordinates that will be ordered</div><div class="line">	# such that the first entry in the list is the top-left,</div><div class="line">	# the second entry is the top-right, the third is the</div><div class="line">	# bottom-right, and the fourth is the bottom-left</div><div class="line">	rect = np.zeros((4, 2), dtype = &quot;float32&quot;)</div><div class="line"> </div><div class="line">	# the top-left point will have the smallest sum, whereas</div><div class="line">	# the bottom-right point will have the largest sum</div><div class="line">	s = pts.sum(axis = 1)</div><div class="line">	rect[0] = pts[np.argmin(s)]</div><div class="line">	rect[2] = pts[np.argmax(s)]</div><div class="line"> </div><div class="line">	# now, compute the difference between the points, the</div><div class="line">	# top-right point will have the smallest difference,</div><div class="line">	# whereas the bottom-left will have the largest difference</div><div class="line">	diff = np.diff(pts, axis = 1)</div><div class="line">	rect[1] = pts[np.argmin(diff)]</div><div class="line">	rect[3] = pts[np.argmax(diff)]</div><div class="line"> </div><div class="line">	# return the ordered coordinates</div><div class="line">	return rect</div><div class="line"></div><div class="line">def four_point_transform(image, pts):</div><div class="line">	# obtain a consistent order of the points and unpack them</div><div class="line">	# individually</div><div class="line">	rect = order_points(pts)</div><div class="line">	(tl, tr, br, bl) = rect</div><div class="line"> </div><div class="line">	# compute the width of the new image, which will be the</div><div class="line">	# maximum distance between bottom-right and bottom-left</div><div class="line">	# x-coordiates or the top-right and top-left x-coordinates</div><div class="line">	widthA = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))</div><div class="line">	widthB = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))</div><div class="line">	maxWidth = max(int(widthA), int(widthB))</div><div class="line"> </div><div class="line">	# compute the height of the new image, which will be the</div><div class="line">	# maximum distance between the top-right and bottom-right</div><div class="line">	# y-coordinates or the top-left and bottom-left y-coordinates</div><div class="line">	heightA = np.sqrt(((tr[0] - br[0]) ** 2) + ((tr[1] - br[1]) ** 2))</div><div class="line">	heightB = np.sqrt(((tl[0] - bl[0]) ** 2) + ((tl[1] - bl[1]) ** 2))</div><div class="line">	maxHeight = max(int(heightA), int(heightB))</div><div class="line"> </div><div class="line">	# now that we have the dimensions of the new image, construct</div><div class="line">	# the set of destination points to obtain a &quot;birds eye view&quot;,</div><div class="line">	# (i.e. top-down view) of the image, again specifying points</div><div class="line">	# in the top-left, top-right, bottom-right, and bottom-left</div><div class="line">	# order</div><div class="line">	dst = np.array([</div><div class="line">		[0, 0],</div><div class="line">		[maxWidth - 1, 0],</div><div class="line">		[maxWidth - 1, maxHeight - 1],</div><div class="line">		[0, maxHeight - 1]], dtype = &quot;float32&quot;)</div><div class="line"> </div><div class="line">	# compute the perspective transform matrix and then apply it</div><div class="line">	M = cv2.getPerspectiveTransform(rect, dst)</div><div class="line">	warped = cv2.warpPerspective(image, M, (maxWidth, maxHeight))</div><div class="line"> </div><div class="line">	# return the warped image</div><div class="line">	return warped</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Text Skew Correction</strong> </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"># convert the image to grayscale and flip the foreground</div><div class="line"># and background to ensure foreground is now &quot;white&quot; and</div><div class="line"># the background is &quot;black&quot;</div><div class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</div><div class="line">gray = cv2.bitwise_not(gray)</div><div class="line"> </div><div class="line"># threshold the image, setting all foreground pixels to</div><div class="line"># 255 and all background pixels to 0</div><div class="line">thresh = cv2.threshold(gray, 0, 255,</div><div class="line">	cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]</div><div class="line"></div><div class="line"># grab the (x, y) coordinates of all pixel values that</div><div class="line"># are greater than zero, then use these coordinates to</div><div class="line"># compute a rotated bounding box that contains all</div><div class="line"># coordinates</div><div class="line">coords = np.column_stack(np.where(thresh &gt; 0))</div><div class="line">angle = cv2.minAreaRect(coords)[-1]</div><div class="line"> </div><div class="line"># the `cv2.minAreaRect` function returns values in the</div><div class="line"># range [-90, 0); as the rectangle rotates clockwise the</div><div class="line"># returned angle trends to 0 -- in this special case we</div><div class="line"># need to add 90 degrees to the angle</div><div class="line">if angle &lt; -45:</div><div class="line">	angle = -(90 + angle)</div><div class="line"> </div><div class="line"># otherwise, just take the inverse of the angle to make</div><div class="line"># it positive</div><div class="line">else:</div><div class="line">	angle = -angle</div><div class="line"></div><div class="line"># rotate the image to deskew it</div><div class="line">(h, w) = image.shape[:2]</div><div class="line">center = (w // 2, h // 2)</div><div class="line">M = cv2.getRotationMatrix2D(center, angle, 1.0)</div><div class="line">rotated = cv2.warpAffine(image, M, (w, h),</div><div class="line">	flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)</div></pre></td></tr></table></figure>
+<h2 id="Template-Matching"><a href="#Template-Matching" class="headerlink" title="Template Matching"></a>Template Matching</h2><h3 id="References-3"><a href="#References-3" class="headerlink" title="References"></a>References</h3><p><a href="https://www.pyimagesearch.com/2015/01/26/multi-scale-template-matching-using-python-opencv/" target="_blank" rel="external">Multi-scale Template Matching using Python and OpenCV</a></p>
+<p><a href="https://www.pyimagesearch.com/2017/06/19/image-difference-with-opencv-and-python/" target="_blank" rel="external">Image Difference with OpenCV and Python</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2017/05/image_difference_output_02.jpg" alt="sample"></p>
+<h3 id="Codes-3"><a href="#Codes-3" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li><strong>Robust Template Matching</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&quot;&quot;&quot;</div><div class="line">1. Loop over the input image at multiple scales (i.e. make the input image progressively smaller and smaller).</div><div class="line">2. Apply template matching using cv2.matchTemplate and keep track of the match with the largest correlation coefficient (along with the x, y-coordinates of the region with the largest correlation coefficient).</div><div class="line">3. After looping over all scales, take the region with the largest correlation coefficient and use that as your “matched” region.</div><div class="line"></div><div class="line">While we can handle variations in translation and scaling, our approach will not be robust to changes in rotation or non-affine transformations.</div><div class="line"></div><div class="line">If we are concerned about rotation on non-affine transformations we are better off taking the time to detect keypoints, extract local invariant descriptors, and apply keypoint matching.</div><div class="line">&quot;&quot;&quot;</div><div class="line">template = cv2.imread(args[&quot;template&quot;])</div><div class="line">template = cv2.cvtColor(template, cv2.COLOR_BGR2GRAY)</div><div class="line">template = cv2.Canny(template, 50, 200)</div><div class="line">(tH, tW) = template.shape[:2]</div><div class="line"></div><div class="line">image = cv2.imread(imagePath)</div><div class="line">	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</div><div class="line">	found = None</div><div class="line"> </div><div class="line">	# loop over the scales of the image</div><div class="line">	for scale in np.linspace(0.2, 1.0, 20)[::-1]:</div><div class="line">		# resize the image according to the scale, and keep track</div><div class="line">		# of the ratio of the resizing</div><div class="line">		resized = imutils.resize(gray, width = int(gray.shape[1] * scale))</div><div class="line">		r = gray.shape[1] / float(resized.shape[1])</div><div class="line"> </div><div class="line">		# if the resized image is smaller than the template, then break</div><div class="line">		# from the loop</div><div class="line">		if resized.shape[0] &lt; tH or resized.shape[1] &lt; tW:</div><div class="line">			break</div><div class="line">			</div><div class="line">		# detect edges in the resized, grayscale image and apply template</div><div class="line">		# matching to find the template in the image</div><div class="line">		edged = cv2.Canny(resized, 50, 200)</div><div class="line">		result = cv2.matchTemplate(edged, template, cv2.TM_CCOEFF)</div><div class="line">		(_, maxVal, _, maxLoc) = cv2.minMaxLoc(result)</div><div class="line"> </div><div class="line">		# check to see if the iteration should be visualized</div><div class="line">		if args.get(&quot;visualize&quot;, False):</div><div class="line">			# draw a bounding box around the detected region</div><div class="line">			clone = np.dstack([edged, edged, edged])</div><div class="line">			cv2.rectangle(clone, (maxLoc[0], maxLoc[1]),</div><div class="line">				(maxLoc[0] + tW, maxLoc[1] + tH), (0, 0, 255), 2)</div><div class="line">			cv2.imshow(&quot;Visualize&quot;, clone)</div><div class="line">			cv2.waitKey(0)</div><div class="line"> </div><div class="line">		# if we have found a new maximum correlation value, then ipdate</div><div class="line">		# the bookkeeping variable</div><div class="line">		if found is None or maxVal &gt; found[0]:</div><div class="line">			found = (maxVal, maxLoc, r)</div><div class="line"> </div><div class="line">	# unpack the bookkeeping varaible and compute the (x, y) coordinates</div><div class="line">	# of the bounding box based on the resized ratio</div><div class="line">	(_, maxLoc, r) = found</div><div class="line">	(startX, startY) = (int(maxLoc[0] * r), int(maxLoc[1] * r))</div><div class="line">	(endX, endY) = (int((maxLoc[0] + tW) * r), int((maxLoc[1] + tH) * r))</div><div class="line"> </div><div class="line">	# draw a bounding box around the detected result and display the image</div><div class="line">	cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)</div><div class="line">	cv2.imshow(&quot;Image&quot;, image)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Image Difference</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># compute the Structural Similarity Index (SSIM) between the two</div><div class="line"># images, ensuring that the difference image is returned</div><div class="line">(score, diff) = compare_ssim(grayA, grayB, full=True)</div><div class="line">diff = (diff * 255).astype(&quot;uint8&quot;)</div><div class="line">print(&quot;SSIM: &#123;&#125;&quot;.format(score))</div><div class="line"></div><div class="line"># threshold the difference image, followed by finding contours to</div><div class="line"># obtain the regions of the two input images that differ</div><div class="line">thresh = cv2.threshold(diff, 0, 255,</div><div class="line">	cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]</div><div class="line">cnts = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,</div><div class="line">	cv2.CHAIN_APPROX_SIMPLE)</div><div class="line">cnts = cnts[0] if imutils.is_cv2() else cnts[1]</div><div class="line"></div><div class="line"># loop over the contours</div><div class="line">for c in cnts:</div><div class="line">	# compute the bounding box of the contour and then draw the</div><div class="line">	# bounding box on both input images to represent where the two</div><div class="line">	# images differ</div><div class="line">	(x, y, w, h) = cv2.boundingRect(c)</div><div class="line">	cv2.rectangle(imageA, (x, y), (x + w, y + h), (0, 0, 255), 2)</div><div class="line">	cv2.rectangle(imageB, (x, y), (x + w, y + h), (0, 0, 255), 2)</div></pre></td></tr></table></figure>
+<p>##Color Manipulation</p>
+<h3 id="References-4"><a href="#References-4" class="headerlink" title="References"></a>References</h3><p><a href="https://www.pyimagesearch.com/2014/09/29/finding-brightest-spot-image-using-python-opencv/" target="_blank" rel="external">Finding the Brightest Spot in an Image using Python and OpenCV</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/08/bright-area-retina-noise.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2014/05/26/opencv-python-k-means-color-clustering/" target="_blank" rel="external">OpenCV and Python K-Means Color Clustering</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/05/jurassic-park-colors.jpg" alt="sample"></p>
+<p><a href="https://www.pyimagesearch.com/2014/07/07/color-quantization-opencv-using-k-means-clustering/" target="_blank" rel="external">Color Quantization with OpenCV using K-Means Clustering</a></p>
+<p><img src="https://www.pyimagesearch.com/wp-content/uploads/2014/07/quant_kmeans_worldcup.jpg" alt="sample"></p>
+<h3 id="Codes-4"><a href="#Codes-4" class="headerlink" title="Codes"></a>Codes</h3><ul>
+<li><strong>Brightest color:</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</div><div class="line">gray = cv2.GaussianBlur(gray, (args[&quot;radius&quot;], args[&quot;radius&quot;]), 0)</div><div class="line">(minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(gray)</div><div class="line">image = orig.copy()</div><div class="line">cv2.circle(image, maxLoc, args[&quot;radius&quot;], (255, 0, 0), 2)</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>Color Quantization:</strong> </p>
+<p>Color quantization limits the number of colors remained in one picture. For example if there is sky blue and dark blue, they might be combined into some color in the middle of their RGB value. It removes redundant color information thus saves storage spaces. It’s useful in image search problems.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># convert the image from the RGB color space to the L*a*b*</div><div class="line"># color space -- since we will be clustering using k-means</div><div class="line"># which is based on the euclidean distance, we&apos;ll use the</div><div class="line"># L*a*b* color space where the euclidean distance implies</div><div class="line"># perceptual meaning</div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)</div><div class="line"> </div><div class="line"># reshape the image into a feature vector so that k-means</div><div class="line"># can be applied</div><div class="line">image = image.reshape((image.shape[0] * image.shape[1], 3))</div><div class="line"> </div><div class="line"># apply k-means using the specified number of clusters and</div><div class="line"># then create the quantized image based on the predictions</div><div class="line">clt = MiniBatchKMeans(n_clusters = args[&quot;clusters&quot;])</div><div class="line">labels = clt.fit_predict(image)</div><div class="line">quant = clt.cluster_centers_.astype(&quot;uint8&quot;)[labels]</div><div class="line"> </div><div class="line"># reshape the feature vectors to images</div><div class="line">quant = quant.reshape((h, w, 3))</div><div class="line">image = image.reshape((h, w, 3))</div><div class="line"> </div><div class="line"># convert from L*a*b* to RGB</div><div class="line">quant = cv2.cvtColor(quant, cv2.COLOR_LAB2BGR)</div><div class="line">image = cv2.cvtColor(image, cv2.COLOR_LAB2BGR)</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/29/Deep-Learning-2/" rel="prev" title="Learn CNN from Giants">
+                Learn CNN from Giants <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Processing"><span class="nav-number">1.</span> <span class="nav-text">Image Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">1.1.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codes"><span class="nav-number">1.2.</span> <span class="nav-text">Codes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection"><span class="nav-number">2.</span> <span class="nav-text">Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References-1"><span class="nav-number">2.1.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codes-1"><span class="nav-number">2.2.</span> <span class="nav-text">Codes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Transformation"><span class="nav-number">3.</span> <span class="nav-text">Object Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References-2"><span class="nav-number">3.1.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codes-2"><span class="nav-number">3.2.</span> <span class="nav-text">Codes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Matching"><span class="nav-number">4.</span> <span class="nav-text">Template Matching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#References-3"><span class="nav-number">4.1.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codes-3"><span class="nav-number">4.2.</span> <span class="nav-text">Codes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References-4"><span class="nav-number">4.3.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Codes-4"><span class="nav-number">4.4.</span> <span class="nav-text">Codes</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
