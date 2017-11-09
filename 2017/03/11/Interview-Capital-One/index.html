@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine Learning,Data Science Interviews," />
+  <meta name="keywords" content="Data Science Interviews,Machine Learning," />
 
 
 
@@ -90,7 +90,7 @@
 
 
 <meta name="description" content="Data Science Interview Questions for Capital One">
-<meta name="keywords" content="Machine Learning,Data Science Interviews">
+<meta name="keywords" content="Data Science Interviews,Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DS Interview Preparation: Capital One">
 <meta property="og:url" content="http://yoursite.com/2017/03/11/Interview-Capital-One/index.html">
@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png">
 <meta property="og:image" content="https://littleml.files.wordpress.com/2017/03/decision-forest.png">
 <meta property="og:image" content="https://littleml.files.wordpress.com/2017/03/boosting.png">
-<meta property="og:updated_time" content="2017-11-09T16:25:50.000Z">
+<meta property="og:updated_time" content="2017-11-09T16:52:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DS Interview Preparation: Capital One">
 <meta name="twitter:description" content="Data Science Interview Questions for Capital One">
@@ -387,9 +387,11 @@
 <li>distance between transaction address and mailing address,  </li>
 <li>fraud/ risk score.</li>
 </ul>
+<p>​</p>
 </li>
 <li><p><strong>Are false positives or false negatives more important?</strong></p>
 <p>False negative. The cost of false positive is just inspections and some calls to check with customer, but the cost of false negative will be thousands of dollars.</p>
+<p>​</p>
 </li>
 <li><p><strong>How would you build a model to predict credit card fraud? What are potential Issues.</strong></p>
 <p><strong>Inputs &amp; Outputs.</strong>: We will map the inputs to the output - in this case zero or one, or the probabilities of credit card fraud. If given years of transactions, the inputs can be the ones in Q1. If given payment information, the inputs can be:</p>
@@ -409,7 +411,6 @@
 <p><img src="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png" alt="metrics"></p>
 <p>​                <a href="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png" target="_blank" rel="external">Source Image</a></p>
 <p><strong>Model interpretation.</strong>: Oversample the fraud data or undersample the non-fraud data, and then apply decision tree and logistics regression.</p>
-<p>​</p>
 </li>
 </ol>
 <h2 id="ML-Questions"><a href="#ML-Questions" class="headerlink" title="ML Questions"></a>ML Questions</h2><ol>
@@ -422,21 +423,26 @@
 </ul>
 <p>For <strong>Data with Outliers:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;&apos;Code reference:</div><div class="line">https://github.com/IdoZehori/Credit-Score/blob/master/Credit%20score.ipynb</div><div class="line">&apos;&apos;&apos; </div><div class="line">def mad_based_outlier(points, thresh=3.5):</div><div class="line">    if len(points.shape) == 1:</div><div class="line">        points = points[:,None]</div><div class="line">    median = np.median(points, axis=0)</div><div class="line">    diff = np.sum((points - median)**2, axis=-1)</div><div class="line">    diff = np.sqrt(diff)</div><div class="line">    med_abs_deviation = np.median(diff)</div><div class="line"></div><div class="line">    modified_z_score = 0.6745 * diff / med_abs_deviation</div><div class="line"></div><div class="line">    return modified_z_score &gt; thresh</div><div class="line"></div><div class="line">def percentile_based_outlier(data, threshold=95):</div><div class="line">    diff = (100 - threshold) / 2.0</div><div class="line">    (minval, maxval) = np.percentile(data, [diff, 100 - diff])</div><div class="line">    return ((data &lt; minval) | (data &gt; maxval))</div><div class="line"></div><div class="line"></div><div class="line">def std_div(data, threshold=3):</div><div class="line">    std = data.std()</div><div class="line">    mean = data.mean()</div><div class="line">    isOutlier = []</div><div class="line">    for val in data:</div><div class="line">        if val/std &gt; threshold:</div><div class="line">            isOutlier.append(True)</div><div class="line">        else:</div><div class="line">            isOutlier.append(False)</div><div class="line">    return isOutlier</div><div class="line"></div><div class="line">def outlierVote(data):</div><div class="line">    x = percentile_based_outlier(data)</div><div class="line">    y = mad_based_outlier(data)</div><div class="line">    z = std_div(data)</div><div class="line">    temp = zip(data.index, x, y, z)</div><div class="line">    final = []</div><div class="line">    for i in range(len(temp)):</div><div class="line">        if temp[i].count(False) &gt;= 2:</div><div class="line">            final.append(False)</div><div class="line">        else:</div><div class="line">            final.append(True)</div><div class="line">    return final</div></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 <li><p><strong>How would you use existing features to add new features?</strong>   </p>
 <ul>
 <li>Transfer learning</li>
 <li>Transaction frequency, amount sum, times</li>
 </ul>
+<p>​</p>
 </li>
 <li><p><strong>If you’re attempting to predict a customer’s gender, and you only have 100 data points, what problems could arise?</strong></p>
 <p>Overfitting. We might learn too much into some particular patterns within this small sample set so we lose generalization abilities on other datasets.</p>
+<p>​</p>
 </li>
 <li><p><strong>Explain the bias-variance tradeoff. </strong> <a href="https://www.quora.com/What-is-an-intuitive-explanation-for-bias-variance-tradeoff" target="_blank" rel="external">Reference</a></p>
 <p>We call a model high bias if it’s robust to dataset, but it’s too simple so it can’t really get the prediction right. We call a model high variance if it can get things right but it’s too complicated so it’s super specific to datasets so lose the generalization ability to other datasets. Somewhere in the middle of too simple and too complicated we can find the right model, but going along one way or another will increase either bias or variance while decrease another one.</p>
+<p>​</p>
 </li>
 <li><p><strong>What does regularization do?</strong></p>
 <p>Regularization penalizes complex models. It prevents the model from overfitting.</p>
+<p>​</p>
 </li>
 <li><p><strong>Difference between random forest and gradient boosted tree.</strong>    </p>
 <p>Bagging and boosting are both ensemble methods to turn weak classifiers into a strong one. </p>
@@ -446,6 +452,7 @@
 </li>
 <li><p><strong>Boosting</strong>: to train a bunch of <em>different</em> weak learners from the <em>whole set</em> of training data. The whole idea is to iteratively add weights to examples that were wrongly classified by previous classifier combinations.</p>
 <p><img src="https://littleml.files.wordpress.com/2017/03/boosting.png" alt="boosting"><em>the above two images are from <a href="https://blog.bigml.com/2017/03/21/the-down-low-on-boosting/" target="_blank" rel="external">The Down Low on Boosting</a></em></p>
+<p>​</p>
 </li>
 </ul>
 </li>
@@ -506,9 +513,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-          
             <a href="/tags/Data-Science-Interviews/" rel="tag"># Data Science Interviews</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
         </div>
       
