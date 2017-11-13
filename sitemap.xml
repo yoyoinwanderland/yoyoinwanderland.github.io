@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/13/Deep-Learning-3/</loc>
+    
+    <lastmod>2017-11-13T19:19:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/07/%E5%85%AB%E6%9C%88-%E4%BB%8E%E5%A4%B4%E5%A7%8B/</loc>
+    
+    <lastmod>2017-11-11T14:09:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/03/11/Interview-Capital-One/</loc>
     
     <lastmod>2017-11-09T16:52:20.000Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://yoursite.com/2017/10/19/Learn-OpenCV-1/</loc>
     
     <lastmod>2017-11-07T21:41:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/07/%E5%85%AB%E6%9C%88-%E4%BB%8E%E5%A4%B4%E5%A7%8B/</loc>
-    
-    <lastmod>2017-09-19T21:04:24.000Z</lastmod>
     
   </url>
   
