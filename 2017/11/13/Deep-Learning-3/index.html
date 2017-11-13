@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/13/Deep-Learning-3/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
-<meta property="og:updated_time" content="2017-11-13T19:23:17.000Z">
+<meta property="og:updated_time" content="2017-11-13T19:26:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Structure DL Project">
 <meta name="twitter:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
@@ -380,14 +380,11 @@
 </ul>
 <h2 id="Design-the-System"><a href="#Design-the-System" class="headerlink" title="Design the System"></a>Design the System</h2><h3 id="Metric-of-Success"><a href="#Metric-of-Success" class="headerlink" title="Metric of Success"></a>Metric of Success</h3><p>One important thing is to use a single number evaluation metrics. </p>
 <ul>
-<li><p><strong>Case One</strong></p>
-<p>| Classifier | Precision | Recall |<br>| ———- | ——— | —— |<br>| A          | 95%       | 90%    |<br>| B          | 98%       | 85%    |</p>
-<p>​</p>
-<p>This brings confusion which classifier to choose. You better use F1 if you care about both metrics.</p>
-</li>
-<li><p><strong>Case Two</strong></p>
-<p>| Classifier | Accuracy | Running Time |<br>| ———- | ——– | ———— |<br>| A          | 90%      | 80 ms        |<br>| B          | 92%      | 90 ms        |<br>| C          | 95%      | 1,500 ms     |</p>
-<p>​</p>
+<li><strong>Case One</strong><br>| Classifier | Precision | Recall |<br>| ———- | ——— | —— |<br>| A          | 95%       | 90%    |<br>| B          | 98%       | 85%    |</li>
+</ul>
+<p>  This brings confusion which classifier to choose. You better use F1 if you care about both metrics.</p>
+<ul>
+<li><p><strong>Case Two</strong><br>| Classifier | Accuracy | Running Time |<br>| ———- | ——– | ———— |<br>| A          | 90%      | 80 ms        |<br>| B          | 92%      | 90 ms        |<br>| C          | 95%      | 1,500 ms     |</p>
 <p>We can make accuracy as optimizing metric and running time as satisficing metric.</p>
 </li>
 </ul>
@@ -440,29 +437,40 @@
 </ul>
 <h2 id="Bias-Variance-Analysis"><a href="#Bias-Variance-Analysis" class="headerlink" title="Bias/Variance Analysis"></a>Bias/Variance Analysis</h2><p><strong><u>Benchmark: BEST Human Level Performance</u></strong> (ask people to label images if you don’t know!)</p>
 <ul>
-<li><p><strong>Case One</strong></p>
-<p>| Human Level Performance | 1%      |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
-<p>​</p>
+<li><p><strong>Case One</strong><br>| Human Level Performance | 1%      |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
 <p>Prioritize to reduce bias</p>
 </li>
-<li><p><strong>Case Two</strong></p>
-<p>| Human Level Performance | 7.5%    |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
-<p>​</p>
+<li><p><strong>Case Two</strong><br>| Human Level Performance | 7.5%    |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
 <p>Prioritize to reduce variance</p>
 </li>
 <li><p><strong>Case Three</strong></p>
-<p>In this case, we have mismatched training and dev/test set. </p>
-<p>| Human Level Performance                  | 7.5%    |<br>| —————————————- | ——- |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>  |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong> |</p>
-<p>​</p>
-<p>We will have no idea if it’s variance or it’s the mismatched training and dev/test set. Instead, we analyze:</p>
-<p>| Human Level Performance                  | 7.5%     |<br>| —————————————- | ——– |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>   |<br>| <strong>Training-dev Error</strong> on mixed user images and internet images | <strong>9.6%</strong> |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong>  |</p>
-<p>​</p>
-<p>If the result as above, then we know our model has high variance that we want to minimize.</p>
-<p>| Human Level Performance                  | 7.5%     |<br>| —————————————- | ——– |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>   |<br>| <strong>Training-dev Error</strong> on mixed user images and internet images | <strong>8.1%</strong> |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong>  |</p>
-<p>​</p>
-<p>If the result is as above, then we know our model has a high data mismatch problem.</p>
+<p>In this case, we have mismatched training and dev/test set.<br>| Human Level Performance                  | 7.5%    |<br>| —————————————- | ——- |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>  |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong> |</p>
 </li>
 </ul>
+<p>  We will have no idea if it’s variance or it’s the mismatched training and dev/test set. Instead, we analyze:<br>| Human Level Performance                  | 7.5%     |<br>| —————————————- | ——– |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>   |<br>| <strong>Training-dev Error</strong> on mixed user images and internet images | <strong>9.6%</strong> |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong>  |<br>​    If the result as above, then we know our model has high variance that we want to minimize.</p>
+<table>
+<thead>
+<tr>
+<th>Human Level Performance</th>
+<th>7.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Error</strong> on mixed user images and internet images</td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td><strong>Training-dev Error</strong> on mixed user images and internet images</td>
+<td><strong>8.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Dev Error </strong>on only user images</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>  If the result is as above, then we know our model has a high data mismatch problem.</p>
 <h2 id="Error-Analysis"><a href="#Error-Analysis" class="headerlink" title="Error Analysis"></a>Error Analysis</h2><h3 id="How-to-Perform-Error-Analysis"><a href="#How-to-Perform-Error-Analysis" class="headerlink" title="How to Perform Error Analysis"></a>How to Perform Error Analysis</h3><p>Pick 100/ 500 mislabeled images, and then create a table as follows:    </p>
 <table>
 <thead>
