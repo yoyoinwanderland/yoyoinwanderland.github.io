@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine learning,CNN," />
+  <meta name="keywords" content="CNN,Machine learning," />
 
 
 
@@ -90,13 +90,13 @@
 
 
 <meta name="description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
-<meta name="keywords" content="Machine learning,CNN">
+<meta name="keywords" content="CNN,Machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Structure DL Project">
 <meta property="og:url" content="http://yoursite.com/2017/11/13/Deep-Learning-3/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
-<meta property="og:updated_time" content="2017-11-13T19:32:41.000Z">
+<meta property="og:updated_time" content="2017-11-13T19:34:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Structure DL Project">
 <meta name="twitter:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
@@ -405,10 +405,35 @@
 </table>
 <p> This brings confusion which classifier to choose. You better use F1 if you care about both metrics.</p>
 <ul>
-<li><p><strong>Case Two</strong><br>| Classifier | Accuracy | Running Time |<br>| ———- | ——– | ———— |<br>| A          | 90%      | 80 ms        |<br>| B          | 92%      | 90 ms        |<br>| C          | 95%      | 1,500 ms     |</p>
-<p>We can make accuracy as optimizing metric and running time as satisficing metric.</p>
-</li>
+<li><strong>Case Two</strong></li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Classifier</th>
+<th>Accuracy</th>
+<th>Running Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>90%</td>
+<td>80 ms</td>
+</tr>
+<tr>
+<td>B</td>
+<td>92%</td>
+<td>90 ms</td>
+</tr>
+<tr>
+<td>C</td>
+<td>95%</td>
+<td>1,500 ms</td>
+</tr>
+</tbody>
+</table>
+<p>  We can make accuracy as optimizing metric and running time as satisficing metric.</p>
 <h3 id="Structuring-the-Data"><a href="#Structuring-the-Data" class="headerlink" title="Structuring the Data"></a>Structuring the Data</h3><ul>
 <li><strong>Small data set</strong>: 60-20-20</li>
 <li><strong>> 100,000 examples</strong>: 98-1-1</li>
@@ -458,17 +483,96 @@
 </ul>
 <h2 id="Bias-Variance-Analysis"><a href="#Bias-Variance-Analysis" class="headerlink" title="Bias/Variance Analysis"></a>Bias/Variance Analysis</h2><p><strong><u>Benchmark: BEST Human Level Performance</u></strong> (ask people to label images if you don’t know!)</p>
 <ul>
-<li><p><strong>Case One</strong><br>| Human Level Performance | 1%      |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
-<p>Prioritize to reduce bias</p>
-</li>
-<li><p><strong>Case Two</strong><br>| Human Level Performance | 7.5%    |<br>| ———————– | ——- |<br>| <strong>Training Error</strong>      | <strong>8%</strong>  |<br>| <strong>Dev Error</strong>           | <strong>10%</strong> |</p>
-<p>Prioritize to reduce variance</p>
-</li>
+<li><strong>Case One</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Human Level Performance</th>
+<th>1%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Error</strong></td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td><strong>Dev Error</strong></td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>  Prioritize to reduce bias</p>
+<ul>
+<li><strong>Case Two</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Human Level Performance</th>
+<th>7.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Error</strong></td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td><strong>Dev Error</strong></td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>  Prioritize to reduce variance</p>
+<ul>
 <li><p><strong>Case Three</strong></p>
-<p>In this case, we have mismatched training and dev/test set.<br>| Human Level Performance                  | 7.5%    |<br>| —————————————- | ——- |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>  |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong> |</p>
+<p>In this case, we have mismatched training and dev/test set. </p>
 </li>
 </ul>
-<p>  We will have no idea if it’s variance or it’s the mismatched training and dev/test set. Instead, we analyze:<br>| Human Level Performance                  | 7.5%     |<br>| —————————————- | ——– |<br>| <strong>Training Error</strong> on mixed user images and internet images | <strong>8%</strong>   |<br>| <strong>Training-dev Error</strong> on mixed user images and internet images | <strong>9.6%</strong> |<br>| <strong>Dev Error </strong>on only user images        | <strong>10%</strong>  |<br>​    If the result as above, then we know our model has high variance that we want to minimize.</p>
+<table>
+<thead>
+<tr>
+<th>Human Level Performance</th>
+<th>7.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Error</strong> on mixed user images and internet images</td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td><strong>Dev Error </strong>on only user images</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>  We will have no idea if it’s variance or it’s the mismatched training and dev/test set. Instead, we analyze:</p>
+<table>
+<thead>
+<tr>
+<th>Human Level Performance</th>
+<th>7.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Training Error</strong> on mixed user images and internet images</td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td><strong>Training-dev Error</strong> on mixed user images and internet images</td>
+<td><strong>9.6%</strong></td>
+</tr>
+<tr>
+<td><strong>Dev Error </strong>on only user images</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>​    If the result as above, then we know our model has high variance that we want to minimize.</p>
 <table>
 <thead>
 <tr>
@@ -657,9 +761,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
-          
             <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+            <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
           
         </div>
       
