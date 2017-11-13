@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine learning,CNN," />
+  <meta name="keywords" content="CNN,Machine learning," />
 
 
 
@@ -90,13 +90,13 @@
 
 
 <meta name="description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
-<meta name="keywords" content="Machine learning,CNN">
+<meta name="keywords" content="CNN,Machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Structure DL Project">
 <meta property="og:url" content="http://yoursite.com/2017/11/13/Deep-Learning-3/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
-<meta property="og:updated_time" content="2017-11-13T19:26:32.000Z">
+<meta property="og:updated_time" content="2017-11-13T19:31:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Structure DL Project">
 <meta name="twitter:description" content="Learning note Andrew&apos;s course Structuring Machine Learning Projects">
@@ -380,9 +380,30 @@
 </ul>
 <h2 id="Design-the-System"><a href="#Design-the-System" class="headerlink" title="Design the System"></a>Design the System</h2><h3 id="Metric-of-Success"><a href="#Metric-of-Success" class="headerlink" title="Metric of Success"></a>Metric of Success</h3><p>One important thing is to use a single number evaluation metrics. </p>
 <ul>
-<li><strong>Case One</strong><br>| Classifier | Precision | Recall |<br>| ———- | ——— | —— |<br>| A          | 95%       | 90%    |<br>| B          | 98%       | 85%    |</li>
+<li><strong>Case One</strong></li>
 </ul>
-<p>  This brings confusion which classifier to choose. You better use F1 if you care about both metrics.</p>
+<table>
+<thead>
+<tr>
+<th>Classifier</th>
+<th>Precision</th>
+<th>Recall</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>95%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>B</td>
+<td>98%</td>
+<td>85%</td>
+</tr>
+</tbody>
+</table>
+<p> This brings confusion which classifier to choose. You better use F1 if you care about both metrics.</p>
 <ul>
 <li><p><strong>Case Two</strong><br>| Classifier | Accuracy | Running Time |<br>| ———- | ——– | ———— |<br>| A          | 90%      | 80 ms        |<br>| B          | 92%      | 90 ms        |<br>| C          | 95%      | 1,500 ms     |</p>
 <p>We can make accuracy as optimizing metric and running time as satisficing metric.</p>
@@ -636,9 +657,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
-          
             <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+            <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
           
         </div>
       
