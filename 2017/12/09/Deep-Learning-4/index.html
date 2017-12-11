@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CNN,Machine learning," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Notes from Andrew NG&apos;s second module. Some pratical codes are added.">
+<meta name="keywords" content="CNN,Machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Improving Deep Neural Networks">
+<meta property="og:url" content="http://yoursite.com/2017/12/09/Deep-Learning-4/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Notes from Andrew NG&apos;s second module. Some pratical codes are added.">
+<meta property="og:updated_time" content="2017-12-11T03:53:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Improving Deep Neural Networks">
+<meta name="twitter:description" content="Notes from Andrew NG&apos;s second module. Some pratical codes are added.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/09/Deep-Learning-4/"/>
+
+
+
+
+
+  <title> Improving Deep Neural Networks | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/09/Deep-Learning-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Improving Deep Neural Networks
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T15:09:24-05:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Notes from Andrew NG's second module. Some pratical codes are added.
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##Tuning Tips</p>
+<ul>
+<li><strong>Importance of hyper-parameters:</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Most Important</th>
+<th>Learning Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2nd</td>
+<td>Momentum, Mini-batch size</td>
+</tr>
+<tr>
+<td>3rd</td>
+<td>Hidden Units, Number of Layers, Learning rate decay</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Randomly choose hyper-parameter on a log scale. Don’t do grid search!</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">r = -4 * np.random.rand()  # r [-4, 0]</div><div class="line">theta = 10^r</div></pre></td></tr></table></figure>
+<h3 id="Mini-batch"><a href="#Mini-batch" class="headerlink" title="Mini-batch"></a>Mini-batch</h3><blockquote>
+<p>Small training set (m &lt;= 2000): Use batch gradient descent</p>
+<p>Large training set (m &gt; 2000): typical mini-batch size: <code>2^n</code>, for example, 64, 128, 256, 512</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/aymericdamien/TensorFlow-Examples/blob/master/notebooks/5_DataManagement/build_an_image_dataset.ipynb" target="_blank" rel="external"><strong>Tensorflow Example</strong></a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">## Cheatsheet from above link</div><div class="line"></div><div class="line">def (image_path_list, label_list):</div><div class="line">	imagepaths = tf.convert_to_tensor(image_path_list, dtype=tf.string)</div><div class="line">    labels = tf.convert_to_tensor(label_list, dtype=tf.int32)</div><div class="line">    # Build a TF Queue, shuffle data</div><div class="line">    # slice tensors into single instances and queue them up using threads.</div><div class="line">    image, label = tf.train.slice_input_producer([imagepaths, labels],</div><div class="line">                                                 shuffle=True)</div><div class="line"></div><div class="line">    # Read images from disk</div><div class="line">    image = tf.read_file(image)</div><div class="line">    image = tf.image.decode_jpeg(image, channels=CHANNELS)</div><div class="line"></div><div class="line">    # Resize images to a common size</div><div class="line">    image = tf.image.resize_images(image, [IMG_HEIGHT, IMG_WIDTH])</div><div class="line"></div><div class="line">    # Normalize</div><div class="line">    image = image * 1.0/127.5 - 1.0</div><div class="line"></div><div class="line">    # Create batches</div><div class="line">    X, Y = tf.train.batch([image, label], batch_size=batch_size,</div><div class="line">                          capacity=batch_size * 8,</div><div class="line">                          num_threads=4)</div><div class="line"></div><div class="line">    return X, Y</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">with tf.Session() as sess:</div><div class="line"></div><div class="line">    # Run the initializer</div><div class="line">    sess.run(init)</div><div class="line"></div><div class="line">    # Start the data queue</div><div class="line">    tf.train.start_queue_runners()</div><div class="line"></div><div class="line">    # Training cycle</div><div class="line">    for step in range(1, num_steps+1):</div><div class="line">            sess.run(train_op)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Keras Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">model.fit(x_train, y_train,</div><div class="line">          epochs=2000,</div><div class="line">          batch_size=128)</div></pre></td></tr></table></figure>
+<h3 id="Adam-Optimizer"><a href="#Adam-Optimizer" class="headerlink" title="Adam Optimizer"></a>Adam Optimizer</h3><p>Adam optimizer combines the advantages of both Momentum and RMSprop thus enabling quick convergence. </p>
+<blockquote>
+<p>Parameters: Learning rate: needs to be tuned</p>
+<p>Beta1: 0.9 (dw)</p>
+<p>Beta2: 0.999 (dw^2)</p>
+<p>Epsilon: 10^-8</p>
+</blockquote>
+<ul>
+<li><strong>Tensorflow Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">“”“</div><div class="line">default setting:</div><div class="line">__init__(</div><div class="line">    learning_rate=0.001,</div><div class="line">    beta1=0.9,</div><div class="line">    beta2=0.999,</div><div class="line">    epsilon=1e-08,</div><div class="line">    use_locking=False,</div><div class="line">    name=&apos;Adam&apos;</div><div class="line">)</div><div class="line">”“”</div><div class="line"></div><div class="line">optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Keras Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)</div></pre></td></tr></table></figure>
+<h3 id="Learning-Rate-Decay"><a href="#Learning-Rate-Decay" class="headerlink" title="Learning Rate Decay"></a>Learning Rate Decay</h3><p>learning rate changes with current epoch number. Some common algorithms are as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">lr = 0.95^epoch_num*alpha</div><div class="line">lr = k / np.sqrt(epoch_num)*alpha</div><div class="line">lr = alpha/(1+kt)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><a href="https://github.com/tensorflow/models/blob/master/tutorials/image/mnist/convolutional.py#L243" target="_blank" rel="external">TensorFlow Example</a></strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># Optimizer: set up a variable that&apos;s incremented once per batch and controls the learning rate decay.</div><div class="line">batch = tf.Variable(0, dtype=data_type())</div><div class="line">learning_rate = tf.train.exponential_decay(</div><div class="line">      0.01,                # Base learning rate.</div><div class="line">      batch * BATCH_SIZE,  # Current index into the dataset.</div><div class="line">      train_size,          # Decay step.</div><div class="line">      0.95,                # Decay rate.</div><div class="line">      staircase=True)</div><div class="line"># Use simple momentum for the optimization.</div><div class="line">optimizer = tf.train.MomentumOptimizer(learning_rate,</div><div class="line">                                         0.9).minimize(loss,</div><div class="line">                                                       global_step=batch)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Keras Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.95)</div></pre></td></tr></table></figure>
+<h3 id="Choose-Initialization"><a href="#Choose-Initialization" class="headerlink" title="Choose Initialization"></a>Choose Initialization</h3><p>The reason we want to refine initialization is to avoid vanishing and exploding gradient in deep networks. For example, let’s say g(z) = z, b = 0; then in a 15-layers NN we will have <code>y = (w^15) * x</code>; thus we will have either very large or very small gradient. One way to avoid is to take into account number of features that will feed into the current layer. Some recommended initializations include:</p>
+<p><code>np.sqrt(2/ (num_features_last_layer))</code></p>
+<p><code>np.sqrt( 2/ (number_features_last_layer + number_features_this_layer))</code></p>
+<ul>
+<li><strong>Tensorflow Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">W = tf.get_variable(&apos;W&apos;, shape=(512, 256), initializer=tf.contrib.layers.xavier_initializer())</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">tf.contrib.layers.fully_connected(</div><div class="line">    inputs,</div><div class="line">    num_outputs,</div><div class="line">    activation_fn=tf.nn.relu,</div><div class="line">    normalizer_fn=None,</div><div class="line">    normalizer_params=None,</div><div class="line">    weights_initializer=initializers.xavier_initializer(),</div><div class="line">    weights_regularizer=None,</div><div class="line">    biases_initializer=tf.zeros_initializer(),</div><div class="line">    biases_regularizer=None,</div><div class="line">    reuse=None,</div><div class="line">    variables_collections=None,</div><div class="line">    outputs_collections=None,</div><div class="line">    trainable=True,</div><div class="line">    scope=None</div><div class="line">)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>Keras Example</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">model.add(Dense(64,</div><div class="line">                kernel_initializer=&apos;random_uniform&apos;,</div><div class="line">                bias_initializer=&apos;zeros&apos;))</div><div class="line">&quot;&quot;&quot;</div><div class="line">Other choices include:</div><div class="line">keras.initializers.Zeros()</div><div class="line">keras.initializers.RandomNormal(mean=0.0, stddev=0.05, seed=None)</div><div class="line">keras.initializers.TruncatedNormal(mean=0.0, stddev=0.05, seed=None)</div><div class="line">lecun_uniform(seed=None)</div><div class="line">glorot_normal(seed=None) # Xavier normal initializer.</div><div class="line">...</div><div class="line">&quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<h2 id="Tensorflow-Tutorials"><a href="#Tensorflow-Tutorials" class="headerlink" title="Tensorflow Tutorials"></a>Tensorflow Tutorials</h2><ul>
+<li><a href="http://web.stanford.edu/class/cs20si/index.html" target="_blank" rel="external">Tensorflow for Deep Learning Research</a></li>
+<li><a href="https://www.tensorflow.org/versions/r0.12/api_docs/python/" target="_blank" rel="external">Tensorflow Python API</a></li>
+<li><a href="https://github.com/aymericdamien/TensorFlow-Examples" target="_blank" rel="external">Tensorflow Examples by aymericdamien</a></li>
+<li><a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank" rel="external">Tensorflow Tutorials by HvassLabs</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CNN/" rel="tag"># CNN</a>
+          
+            <a href="/tags/Machine-learning/" rel="tag"># Machine learning</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/13/Deep-Learning-3/" rel="prev" title="How to Structure DL Project">
+                How to Structure DL Project <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mini-batch"><span class="nav-number">1.</span> <span class="nav-text">Mini-batch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adam-Optimizer"><span class="nav-number">2.</span> <span class="nav-text">Adam Optimizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Rate-Decay"><span class="nav-number">3.</span> <span class="nav-text">Learning Rate Decay</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Choose-Initialization"><span class="nav-number">4.</span> <span class="nav-text">Choose Initialization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tensorflow-Tutorials"><span class="nav-number"></span> <span class="nav-text">Tensorflow Tutorials</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
