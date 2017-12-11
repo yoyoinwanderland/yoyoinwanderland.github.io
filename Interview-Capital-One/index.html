@@ -1,0 +1,882 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Machine Learning,Data Science Interviews," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Data Science Interview Questions for Capital One">
+<meta name="keywords" content="Machine Learning,Data Science Interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DS Interview Preparation: Capital One">
+<meta property="og:url" content="http://yoursite.com/Interview-Capital-One/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Data Science Interview Questions for Capital One">
+<meta property="og:image" content="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png">
+<meta property="og:image" content="https://littleml.files.wordpress.com/2017/03/decision-forest.png">
+<meta property="og:image" content="https://littleml.files.wordpress.com/2017/03/boosting.png">
+<meta property="og:updated_time" content="2017-11-09T16:52:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DS Interview Preparation: Capital One">
+<meta name="twitter:description" content="Data Science Interview Questions for Capital One">
+<meta name="twitter:image" content="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Interview-Capital-One/"/>
+
+
+
+
+
+  <title> DS Interview Preparation: Capital One | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Interview-Capital-One/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yoyo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DS Interview Preparation: Capital One
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T16:52:45-05:00">
+                2017-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Data Science Interview Questions for Capital One
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>The interviewer will cover 2-4 technical questions covering various topics relating to data science and Big data. This includes both abstract questions about mathematical concepts and problem solving/initiative, as well as experimental design and model building, and MapReduce. </p>
+<h2 id="Credit-Risk-Related"><a href="#Credit-Risk-Related" class="headerlink" title="Credit Risk Related"></a>Credit Risk Related</h2><ol>
+<li><p><strong>Suppose you were given two years of transaction history. What features would you use to predict credit risk?</strong></p>
+<ul>
+<li>Transaction amount, </li>
+<li>Transaction count,</li>
+<li>Transaction frequency, </li>
+<li>transaction category: bar, grocery, jwery etc.</li>
+<li>transaction channels: credit card, debit card, international wire transfer etc.</li>
+<li>distance between transaction address and mailing address,  </li>
+<li>fraud/ risk score.</li>
+</ul>
+<p>​</p>
+</li>
+<li><p><strong>Are false positives or false negatives more important?</strong></p>
+<p>False negative. The cost of false positive is just inspections and some calls to check with customer, but the cost of false negative will be thousands of dollars.</p>
+<p>​</p>
+</li>
+<li><p><strong>How would you build a model to predict credit card fraud? What are potential Issues.</strong></p>
+<p><strong>Inputs &amp; Outputs.</strong>: We will map the inputs to the output - in this case zero or one, or the probabilities of credit card fraud. If given years of transactions, the inputs can be the ones in Q1. If given payment information, the inputs can be:</p>
+<ul>
+<li>Past due: 0-30 days, 30-60 days, over 90 days. Number of occurance.</li>
+<li>Credit usage. Debt ratio.</li>
+<li>Monthly income.</li>
+<li>Age. Number of dependents.</li>
+</ul>
+<p><strong>Feature Engineering.</strong>: Deal with outliers, impute missing data.</p>
+<p><strong>Model for imbalanced data.</strong>: <a href="https://www.analyticsvidhya.com/blog/2017/03/imbalanced-classification-problem/" target="_blank" rel="external">reference</a></p>
+<ul>
+<li>Data level: We can either oversample/ undersample, </li>
+<li>Algorithm level: bagging based, or boosting based.or use tree ensembling methods.</li>
+</ul>
+<p><strong>Model metrics.</strong>: to maximize true positive rate and to minimize false negative rate. If we use accuracy, we might come across accuracy paradox.</p>
+<p><img src="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png" alt="metrics"></p>
+<p>​                <a href="https://openi.nlm.nih.gov/imgs/512/303/2559886/PMC2559886_1471-2164-9-S2-S21-4.png" target="_blank" rel="external">Source Image</a></p>
+<p><strong>Model interpretation.</strong>: Oversample the fraud data or undersample the non-fraud data, and then apply decision tree and logistics regression.</p>
+</li>
+</ol>
+<h2 id="ML-Questions"><a href="#ML-Questions" class="headerlink" title="ML Questions"></a>ML Questions</h2><ol>
+<li><p><strong>How do you handle missing or bad data?</strong></p>
+<p>For <strong>Missing Data:</strong></p>
+<ul>
+<li>Dropping rows</li>
+<li>Impute data, average, mediean (more robust for high magnitude), most frequent value</li>
+<li>Build model to predict if there is high correlation exists.</li>
+</ul>
+<p>For <strong>Data with Outliers:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&apos;&apos;&apos;Code reference:</div><div class="line">https://github.com/IdoZehori/Credit-Score/blob/master/Credit%20score.ipynb</div><div class="line">&apos;&apos;&apos; </div><div class="line">def mad_based_outlier(points, thresh=3.5):</div><div class="line">    if len(points.shape) == 1:</div><div class="line">        points = points[:,None]</div><div class="line">    median = np.median(points, axis=0)</div><div class="line">    diff = np.sum((points - median)**2, axis=-1)</div><div class="line">    diff = np.sqrt(diff)</div><div class="line">    med_abs_deviation = np.median(diff)</div><div class="line"></div><div class="line">    modified_z_score = 0.6745 * diff / med_abs_deviation</div><div class="line"></div><div class="line">    return modified_z_score &gt; thresh</div><div class="line"></div><div class="line">def percentile_based_outlier(data, threshold=95):</div><div class="line">    diff = (100 - threshold) / 2.0</div><div class="line">    (minval, maxval) = np.percentile(data, [diff, 100 - diff])</div><div class="line">    return ((data &lt; minval) | (data &gt; maxval))</div><div class="line"></div><div class="line"></div><div class="line">def std_div(data, threshold=3):</div><div class="line">    std = data.std()</div><div class="line">    mean = data.mean()</div><div class="line">    isOutlier = []</div><div class="line">    for val in data:</div><div class="line">        if val/std &gt; threshold:</div><div class="line">            isOutlier.append(True)</div><div class="line">        else:</div><div class="line">            isOutlier.append(False)</div><div class="line">    return isOutlier</div><div class="line"></div><div class="line">def outlierVote(data):</div><div class="line">    x = percentile_based_outlier(data)</div><div class="line">    y = mad_based_outlier(data)</div><div class="line">    z = std_div(data)</div><div class="line">    temp = zip(data.index, x, y, z)</div><div class="line">    final = []</div><div class="line">    for i in range(len(temp)):</div><div class="line">        if temp[i].count(False) &gt;= 2:</div><div class="line">            final.append(False)</div><div class="line">        else:</div><div class="line">            final.append(True)</div><div class="line">    return final</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p><strong>How would you use existing features to add new features?</strong>   </p>
+<ul>
+<li>Transfer learning</li>
+<li>Transaction frequency, amount sum, times</li>
+</ul>
+<p>​</p>
+</li>
+<li><p><strong>If you’re attempting to predict a customer’s gender, and you only have 100 data points, what problems could arise?</strong></p>
+<p>Overfitting. We might learn too much into some particular patterns within this small sample set so we lose generalization abilities on other datasets.</p>
+<p>​</p>
+</li>
+<li><p><strong>Explain the bias-variance tradeoff. </strong> <a href="https://www.quora.com/What-is-an-intuitive-explanation-for-bias-variance-tradeoff" target="_blank" rel="external">Reference</a></p>
+<p>We call a model high bias if it’s robust to dataset, but it’s too simple so it can’t really get the prediction right. We call a model high variance if it can get things right but it’s too complicated so it’s super specific to datasets so lose the generalization ability to other datasets. Somewhere in the middle of too simple and too complicated we can find the right model, but going along one way or another will increase either bias or variance while decrease another one.</p>
+<p>​</p>
+</li>
+<li><p><strong>What does regularization do?</strong></p>
+<p>Regularization penalizes complex models. It prevents the model from overfitting.</p>
+<p>​</p>
+</li>
+<li><p><strong>Difference between random forest and gradient boosted tree.</strong>    </p>
+<p>Bagging and boosting are both ensemble methods to turn weak classifiers into a strong one. </p>
+<ul>
+<li><p><strong>Bagging</strong>: to train a bunch of <em>same</em> weak learners from <em>a subset</em> of training data, and then take majority votes. The subset is taken using bootstrap method (sampling with replacement), and could be a subset of all training examples or a subset of all features.</p>
+<p><img src="https://littleml.files.wordpress.com/2017/03/decision-forest.png" alt="bagging"></p>
+</li>
+<li><p><strong>Boosting</strong>: to train a bunch of <em>different</em> weak learners from the <em>whole set</em> of training data. The whole idea is to iteratively add weights to examples that were wrongly classified by previous classifier combinations.</p>
+<p><img src="https://littleml.files.wordpress.com/2017/03/boosting.png" alt="boosting"><em>the above two images are from <a href="https://blog.bigml.com/2017/03/21/the-down-low-on-boosting/" target="_blank" rel="external">The Down Low on Boosting</a></em></p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Design an AI program for Tic-tac-toe</strong><br><a href="https://en.wikipedia.org/wiki/Tic-tac-toe" target="_blank" rel="external">https://en.wikipedia.org/wiki/Tic-tac-toe</a></p>
+</li>
+</ol>
+<h2 id="Statistics"><a href="#Statistics" class="headerlink" title="Statistics"></a>Statistics</h2><ol>
+<li><strong>Interpret this ANOVA table.</strong></li>
+</ol>
+<ol>
+<li><p><strong>What is VIF (in regression output)?</strong></p>
+<blockquote>
+<p>It is a measure of how much the variance of the estimated regression coefficient <em>bk</em> is “inflated” by the existence of correlation among the predictor variables in the model. A VIF of 1 means that there is no correlation among the <em>kth</em> predictor and the remaining predictor variables, and hence the variance of <em>bk</em> is not inflated at all. The general rule of thumb is that VIFs exceeding 4 warrant further investigation, while VIFs exceeding 10 are signs of serious multicollinearity requiring correction. <a href="https://onlinecourses.science.psu.edu/stat501/node/347" target="_blank" rel="external">Reference</a></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Engineering"><a href="#Engineering" class="headerlink" title="Engineering"></a>Engineering</h2><ul>
+<li><p><strong>Write pseudocode for map reduce</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">map(String key, String value)</div><div class="line">// key: document name</div><div class="line">// value: document contents</div><div class="line"> for each word w in value</div><div class="line">   EmitIntermediate(w, &quot;1&quot;)</div><div class="line"></div><div class="line">reduce(String key, Iterator values):</div><div class="line">// key: word</div><div class="line">// values: a list of counts</div><div class="line">  for each v in values:</div><div class="line">    result += ParseInt(v);</div><div class="line">    Emit(AsString(result));</div></pre></td></tr></table></figure>
+<p>​</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class WordCount &#123;	</div><div class="line">	public static class Map extends MapReduceBase implements Mapper&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</div><div class="line">	     private final static IntWritable one = new IntWritable(1);</div><div class="line">	     private Text word = new Text();</div><div class="line">	</div><div class="line">	     public void map(LongWritable key, Text value, OutputCollector&lt;Text, IntWritable&gt; output, Reporter reporter) throws IOException &#123;</div><div class="line">	       String line = value.toString();</div><div class="line">	       StringTokenizer tokenizer = new StringTokenizer(line);</div><div class="line">	       while (tokenizer.hasMoreTokens()) &#123;</div><div class="line">           word.set(tokenizer.nextToken());</div><div class="line">	         output.collect(word, one);</div><div class="line">	       &#125;</div><div class="line">	     &#125;</div><div class="line">	   &#125;</div><div class="line">public static class Reduce extends MapReduceBase implements Reducer&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</div><div class="line">	     public void reduce(Text key, Iterator&lt;IntWritable&gt; values, OutputCollector&lt;Text, IntWritable&gt; output, Reporter reporter) throws IOException &#123;</div><div class="line">	       int sum = 0;</div><div class="line">	       while (values.hasNext()) &#123;</div><div class="line">	         sum += values.next().get();</div><div class="line">	       &#125;</div><div class="line">	       output.collect(key, new IntWritable(sum));</div><div class="line">	     &#125;</div><div class="line">	   &#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<p>##Behavioral/ Project Walkthrough</p>
+<ol>
+<li><strong>Describe a time you worked on a team.</strong></li>
+<li><strong>How do you learn something new?</strong>   </li>
+<li><strong>Tell me about your experience in neural network?</strong>  </li>
+<li><strong>Tell me about a time that you had to persuade somebody</strong>   </li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Data-Science-Interviews/" rel="tag"># Data Science Interviews</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Deep-Learning-1/" rel="next" title="Deep Learning Review Notes">
+                <i class="fa fa-chevron-left"></i> Deep Learning Review Notes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/my-prayer/" rel="prev" title="This is my prayer">
+                This is my prayer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yoyo.jpg"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/yiyoulin/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yoyolin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Credit-Risk-Related"><span class="nav-number">1.</span> <span class="nav-text">Credit Risk Related</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ML-Questions"><span class="nav-number">2.</span> <span class="nav-text">ML Questions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statistics"><span class="nav-number">3.</span> <span class="nav-text">Statistics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Engineering"><span class="nav-number">4.</span> <span class="nav-text">Engineering</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

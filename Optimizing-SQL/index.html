@@ -1,0 +1,898 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL,Data Warehousing," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="MySQL Query Optimization Notes for Database of One Billion Entries">
+<meta name="keywords" content="MySQL,Data Warehousing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing SQL Statements">
+<meta property="og:url" content="http://yoursite.com/Optimizing-SQL/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="MySQL Query Optimization Notes for Database of One Billion Entries">
+<meta property="og:updated_time" content="2017-08-30T15:00:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Optimizing SQL Statements">
+<meta name="twitter:description" content="MySQL Query Optimization Notes for Database of One Billion Entries">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Optimizing-SQL/"/>
+
+
+
+
+
+  <title> Optimizing SQL Statements | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Optimizing-SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yoyo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Optimizing SQL Statements
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-27T10:32:50-04:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Miscellaneous/" itemprop="url" rel="index">
+                    <span itemprop="name">Miscellaneous</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  MySQL Query Optimization Notes for Database of One Billion Entries
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="PART-I-Database-Level"><a href="#PART-I-Database-Level" class="headerlink" title="PART I Database Level"></a>PART I Database Level</h2><h3 id="Choice-of-Storage-Engine"><a href="#Choice-of-Storage-Engine" class="headerlink" title="Choice of Storage Engine"></a>Choice of Storage Engine</h3><p>The most commonly used storage engines are:</p>
+<ul>
+<li><p><strong>InnoDB</strong>: Default setting for MySQL. </p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li><p><strong>A transactional storage engine</strong>.  That means it supports rollback / commit (All or Nothing), rather writing every change directly into disk (though by default auto commit is on, but you can use <code>SET AUTOCOMMIT=0;</code> ). </p>
+</li>
+<li><p><strong>Row-level locking</strong>. That means, it allows concurrent access to one table. Better to use when you will have multiple read/ write sections simultaneously.</p>
+</li>
+<li><p><strong>Foreign key constraints</strong>. It automatically checks foreign integrity.</p>
+</li>
+<li><p><strong>Supports large buffer pool for both DATA and index</strong>. While MyISAM only supports buffer for index.</p>
+</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li><p>Can’t be compressed for fast access in system table space. But it could have compress tables in general table space or file per table space.</p>
+</li>
+<li><p>No full text indexing</p>
+</li>
+</ul>
+</li>
+<li><p><strong>MyISAM</strong>: a non-transactional storage engine. </p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li><p><strong>It is designed for FAST READ</strong>. In a situation that the read is frequent while the write is little (read-write-ratio&lt;15%). Especially good for extensive SELECT queries. It’s frequently used in data warehousing. </p>
+</li>
+<li><p><strong>Full text indexing</strong></p>
+</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li><p><strong>No foreign key constraints.</strong></p>
+</li>
+<li><p><strong>Non-transactional</strong>. thus no roll-back capability.</p>
+</li>
+<li><p><strong>Row limit</strong>: $2^{32}$, about 4.3 billion records at maximum.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Besides, other available storage engines include:</p>
+<ul>
+<li><p><strong>CSV engine</strong>: stores data in CSV. Easily integrated with other applications.</p>
+</li>
+<li><p><strong>Archive storage engine</strong>: optimized for high speed inserting task.</p>
+</li>
+</ul>
+<p>To see support engines in the database, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show storage engines;</div></pre></td></tr></table></figure>
+<p>To see engines currently used for each table in the database,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW TABLE STATUS FROM $YourDatabaseName\G</div></pre></td></tr></table></figure>
+<p>Sample Output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW TABLE STATUS FROM airline\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">           Name: DIM_AIRLINE</div><div class="line">         Engine: InnoDB</div><div class="line">        Version: 10</div><div class="line">     Row_format: Dynamic</div><div class="line">           Rows: 16256</div><div class="line"> Avg_row_length: 97</div><div class="line">    Data_length: 1589248</div><div class="line">Max_data_length: 0</div><div class="line">   Index_length: 1835008</div><div class="line">      Data_free: 0</div><div class="line"> Auto_increment: NULL</div><div class="line">    Create_time: 2017-03-18 21:54:52</div><div class="line">    Update_time: NULL</div><div class="line">     Check_time: NULL</div><div class="line">      Collation: latin1_swedish_ci</div><div class="line">       Checksum: NULL</div><div class="line"> Create_options: </div><div class="line">        Comment: </div><div class="line">*************************** 2. row ***************************</div><div class="line">           Name: DIM_AIRPORT</div><div class="line">         Engine: InnoDB</div><div class="line">(and more)</div></pre></td></tr></table></figure>
+<p>To alter engine,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE $YourTableName ENGINE=&apos;MyISAM&apos;;</div></pre></td></tr></table></figure>
+<h3 id="Optimizing-Buffering-and-Caching"><a href="#Optimizing-Buffering-and-Caching" class="headerlink" title="Optimizing Buffering and Caching"></a>Optimizing Buffering and Caching</h3><p>The caching size should be large enough to hold frequently queried data and smaller than the memory size of the instance. </p>
+<ul>
+<li><p><strong>InnoDB</strong>: Default caching size: 128 MB</p>
+<p>Show the current caching size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT @@innodb_buffer_pool_size/1024/1024/1024;</div></pre></td></tr></table></figure>
+<p>Sample results:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+------------------------------------------+</div><div class="line">| @@innodb_buffer_pool_size/1024/1024/1024 |</div><div class="line">+------------------------------------------+</div><div class="line">|                           0.125000000000 |</div><div class="line">+------------------------------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Change the caching size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqld --innodb_buffer_pool_size=8G --innodb_buffer_pool_instances=16</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>MyISAM</strong>: Key cache buffer is designed for index only and allows concurrent access. </p>
+<p>Show the current key cache buffer size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &apos;key_buffer_size&apos;;</div><div class="line">+-----------------+----------+</div><div class="line">| Variable_name   | Value    |</div><div class="line">+-----------------+----------+</div><div class="line">| key_buffer_size | 16777216 |</div><div class="line">+-----------------+----------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Change the caching size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET GLOBAL key_buffer_size = 26777218;</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>A suggested strategy for MyISAM is, though, to divide cache into three parts: hot cache for read intensive index, cold cache for write intensive tables, and a default warm cache for other operations.</p>
+<p>​</p>
+</li>
+<li><p><strong>MySQL Query Cache</strong>: Stores query results. Useful when data tables doesn’t change a lot and queries are similar, such as web services.</p>
+<p>Show the current query cache size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES LIKE &apos;query_cache_size&apos;;</div><div class="line">+------------------+----------+</div><div class="line">| Variable_name    | Value    |</div><div class="line">+------------------+----------+</div><div class="line">| query_cache_size | 16777216 |</div><div class="line">+------------------+----------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure>
+<p>Change the caching size:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SET GLOBAL query_cache_size = 46777216;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="PART-II-Table-Creation"><a href="#PART-II-Table-Creation" class="headerlink" title="PART II Table Creation"></a>PART II Table Creation</h2><h3 id="Table-Compression"><a href="#Table-Compression" class="headerlink" title="Table Compression"></a>Table Compression</h3><p>Table compression is very useful for read-intensive applications. It helps particularly when there is a lot of character string columns. Why?</p>
+<blockquote>
+<p>“Because data compression enables smaller database size, reduced I/O, and improved throughput, at the small cost of increased CPU utilization.”</p>
+</blockquote>
+<p>Two ways to use compressed table for InnoDB:</p>
+<ul>
+<li><p>Upon table creation</p>
+<p>As compression is not enabled in the system table space (that is where there contains system files and we normally create tables), we need to create a general table space first.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-- Create a table space</div><div class="line">CREATE TABLESPACE `ts2` ADD DATAFILE &apos;ts2.ibd&apos; FILE_BLOCK_SIZE = 8192 Engine=InnoDB;</div><div class="line">-- Create a compressed table</div><div class="line">CREATE TABLE t4 (c1 INT PRIMARY KEY) TABLESPACE ts2 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Alter table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Alter table t4 ROW_FORMAT=COMPRESSED;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>For MyISAM engine, compressed table is generated with <a href="https://dev.mysql.com/doc/refman/5.5/en/myisampack.html" target="_blank" rel="external">myisampack</a> tool.</p>
+<h3 id="Right-Indexing"><a href="#Right-Indexing" class="headerlink" title="Right Indexing"></a>Right Indexing</h3><p>With clustered index, the table is sorted when being stored on disk. A non-clustered index is a row locator (RiD), it’s good to use in small table, but it finds a row required iterating through the whole table which is very bad for large table. </p>
+<p>In default, MySQL makes primary key as clustered index. Else MySQL will find the first all not null column as index (might be pretty long though!). </p>
+<p>According to MySQL documentation, </p>
+<blockquote>
+<p>“Accessing a row through the clustered index is fast because the index search leads directly to the page with all the row data. If a table is large, the clustered index architecture often saves a disk I/O operation when compared to storage organizations that store row data using a different page from the index record. (For example, <code>MyISAM</code> uses one file for data rows and another for index records.)”</p>
+</blockquote>
+<p>Other than clustered indexing (primary key), we could still set secondary indexing. The indexing will then contain <strong>data</strong> for the column which it indexes to, and the primary key.</p>
+<p>As you can see, without indexing, where clause has to go over the whole table to look up value.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">mysql&gt; explain select avg(carrier_delay) from FACT_FLIGHT_3_SAMPLE where unique_carrier = &apos;b6&apos; group by unique_carrier\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">           id: 1</div><div class="line">  select_type: SIMPLE</div><div class="line">        table: FACT_FLIGHT_3_SAMPLE</div><div class="line">   partitions: NULL</div><div class="line">         type: ALL</div><div class="line">possible_keys: NULL</div><div class="line">          key: NULL</div><div class="line">      key_len: NULL</div><div class="line">          ref: NULL</div><div class="line">         rows: 50000</div><div class="line">     filtered: 10.00</div><div class="line">        Extra: Using where</div><div class="line">1 row in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure>
+<p>When indexing is created for the column of interests, the where clause is executed without accessing the actual table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">mysql&gt; CREATE INDEX carrier_ix ON FACT_FLIGHT_3_SAMPLE (UNIQUE_CARRIER ASC);</div><div class="line">Query OK, 50000 rows affected (0.10 sec)</div><div class="line">Records: 50000  Duplicates: 0  Warnings: 0</div><div class="line"></div><div class="line">mysql&gt; explain select avg(carrier_delay) from FACT_FLIGHT_3_SAMPLE where unique_carrier = &apos;b6&apos; group by unique_carrier\G</div><div class="line">*************************** 1. row ***************************</div><div class="line">           id: 1</div><div class="line">  select_type: SIMPLE</div><div class="line">        table: FACT_FLIGHT_3_SAMPLE</div><div class="line">   partitions: NULL</div><div class="line">         type: ref</div><div class="line">possible_keys: carrier_ix</div><div class="line">          key: carrier_ix</div><div class="line">      key_len: 9</div><div class="line">          ref: const</div><div class="line">         rows: 1</div><div class="line">     filtered: 100.00</div><div class="line">        Extra: NULL</div><div class="line">1 row in set, 1 warning (0.00 sec)</div></pre></td></tr></table></figure>
+<p>According to experiment on data table with one billion entries, the time spent with indexing is only 50% without indexing.</p>
+<h2 id="PART-III-Query-Level"><a href="#PART-III-Query-Level" class="headerlink" title="PART III Query Level"></a>PART III Query Level</h2><h3 id="Use-EXPLAIN"><a href="#Use-EXPLAIN" class="headerlink" title="Use EXPLAIN"></a>Use EXPLAIN</h3><p>Explain is used to show a query execution plan. It helps understand what we are trying to do: how many operations are needed and how many rows are affected. Examples could be found in previous section.</p>
+<h3 id="Queries"><a href="#Queries" class="headerlink" title="Queries"></a>Queries</h3><ul>
+<li><p>Isolate</p>
+<blockquote>
+<p> “Isolate and tune any part of the query, so that a function could be called once for every row in the result set rather than in the whole table.”</p>
+</blockquote>
+</li>
+<li><p>Aggregate functions:</p>
+<blockquote>
+<p> “The most efficient way to process <code>GROUP BY</code> is when an index is used to directly retrieve the grouping columns. With this access method, MySQL uses the property of some index types that the keys are ordered (for example, <code>BTREE</code>). This property enables use of lookup groups in an index without having to consider all keys in the index that satisfy all <code>WHERE</code> conditions. “ </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="http://zetcode.com/databases/mysqltutorial/storageengines/" target="_blank" rel="external">MySQL Storage Engines</a></li>
+<li><a href="http://stackoverflow.com/questions/15678406/when-to-use-myisam-and-innodb" target="_blank" rel="external">When to use MyISAM and InnoDB</a></li>
+<li><a href="https://www.sqlshack.com/sql-query-performance-killers-understanding-poor-database-indexing/" target="_blank" rel="external">SQL query performance killers – understanding poor database indexing</a></li>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/optimization.html" target="_blank" rel="external">Optimization</a></li>
+</ul>
+<p>Note* All quotes are from Reference 4 Optimization - the official documentation of MySQL’s.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/Data-Warehousing/" rel="tag"># Data Warehousing</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/四月-芳菲尽/" rel="next" title="四月 芳菲尽">
+                <i class="fa fa-chevron-left"></i> 四月 芳菲尽
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/三月-浮世绘/" rel="prev" title="三月 浮世绘">
+                三月 浮世绘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yoyo.jpg"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/yiyoulin/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yoyolin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PART-I-Database-Level"><span class="nav-number">1.</span> <span class="nav-text">PART I Database Level</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Choice-of-Storage-Engine"><span class="nav-number">1.1.</span> <span class="nav-text">Choice of Storage Engine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimizing-Buffering-and-Caching"><span class="nav-number">1.2.</span> <span class="nav-text">Optimizing Buffering and Caching</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PART-II-Table-Creation"><span class="nav-number">2.</span> <span class="nav-text">PART II Table Creation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-Compression"><span class="nav-number">2.1.</span> <span class="nav-text">Table Compression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Right-Indexing"><span class="nav-number">2.2.</span> <span class="nav-text">Right Indexing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PART-III-Query-Level"><span class="nav-number">3.</span> <span class="nav-text">PART III Query Level</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-EXPLAIN"><span class="nav-number">3.1.</span> <span class="nav-text">Use EXPLAIN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queries"><span class="nav-number">3.2.</span> <span class="nav-text">Queries</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
