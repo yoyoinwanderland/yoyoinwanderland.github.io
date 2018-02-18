@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/Algorithms-Array/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Coding exercises - Arrays">
-<meta property="og:updated_time" content="2018-02-18T18:02:05.000Z">
+<meta property="og:updated_time" content="2018-02-18T18:03:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms - 1. Array">
 <meta name="twitter:description" content="Coding exercises - Arrays">
@@ -665,40 +665,9 @@ def twoSum(self, nums, target):
 </code></pre><h2 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h2><h3 id="Medium-3"><a href="#Medium-3" class="headerlink" title="Medium"></a>Medium</h3><h4 id="34-Search-for-a-Range"><a href="#34-Search-for-a-Range" class="headerlink" title="34 Search for a Range"></a>34 Search for a Range</h4><p>Given an array of integers sorted in ascending order, find the starting and ending position of a given target value.</p>
 <p>Your algorithm’s runtime complexity must be in the order of <em>O</em>(log <em>n</em>).</p>
 <p>If the target is not found in the array, return <code>[-1, -1]</code>.</p>
-<p>For example,<br>Given <code>[5, 7, 7, 8, 8, 10]</code> and target value 8,<br>return <code>[3, 4]</code>.</p>
-<pre><code>def searchRange(self, nums, target):
-    &quot;&quot;&quot;
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
-    &quot;&quot;&quot;
-    if not nums:
-        return -1, -1
-    start = bisect.bisect_left(nums, target)
-    if start &gt;= len(nums) or nums[start] != target :
-        return -1, -1
-
-    end = bisect.bisect_right(nums, target, lo = start)
-    return start, end - 1
-def searchRange(self, nums, target):
-    if not nums:
-        return [-1,-1]
-    start = self.binarySearch(nums, target-0.5)
-    if nums[start] != target:
-        return [-1, -1]
-    nums.append(float(&apos;inf&apos;))
-    end = self.binarySearch(nums, target+0.5)-1
-    return [start, end]
-def binarySearch(self, arr, target):
-    start, end = 0, len(arr)-1
-    while start &lt; end:
-        mid = (start+end)//2
-        if target &lt; arr[mid]:
-            end = mid
-        else:
-            start = mid+1
-    return start
-</code></pre><h4 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="33 Search in Rotated Sorted Array"></a>33 Search in Rotated Sorted Array</h4><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>For example,<br>Given <code>[5, 7, 7, 8, 8, 10]</code> and target value 8,<br>return <code>[3, 4]</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def searchRange(self, nums, target):</div><div class="line">	&quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type target: int</div><div class="line">    :rtype: List[int]</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    if not nums:</div><div class="line">        return -1, -1</div><div class="line">    start = bisect.bisect_left(nums, target)</div><div class="line">    if start &gt;= len(nums) or nums[start] != target :</div><div class="line">        return -1, -1</div><div class="line">    </div><div class="line">    end = bisect.bisect_right(nums, target, lo = start)</div><div class="line">    return start, end - 1</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">def searchRange(self, nums, target):</div><div class="line">	if not nums:</div><div class="line">        return [-1,-1]</div><div class="line">    start = self.binarySearch(nums, target-0.5)</div><div class="line">    if nums[start] != target:</div><div class="line">        return [-1, -1]</div><div class="line">    nums.append(float(&apos;inf&apos;))</div><div class="line">    end = self.binarySearch(nums, target+0.5)-1</div><div class="line">    return [start, end]</div><div class="line">def binarySearch(self, arr, target):</div><div class="line">    start, end = 0, len(arr)-1</div><div class="line">    while start &lt; end:</div><div class="line">        mid = (start+end)//2</div><div class="line">        if target &lt; arr[mid]:</div><div class="line">            end = mid</div><div class="line">        else:</div><div class="line">            start = mid+1</div><div class="line">    return start</div></pre></td></tr></table></figure>
+<h4 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="33 Search in Rotated Sorted Array"></a>33 Search in Rotated Sorted Array</h4><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
 <p>(i.e., <code>0 1 2 4 5 6 7</code> might become <code>4 5 6 7 0 1 2</code>).</p>
 <p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
 <p>You may assume no duplicate exists in the array.</p>
