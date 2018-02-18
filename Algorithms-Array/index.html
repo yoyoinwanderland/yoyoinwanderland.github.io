@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/Algorithms-Array/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
 <meta property="og:description" content="Coding exercises - Arrays">
-<meta property="og:updated_time" content="2018-02-18T18:01:14.000Z">
+<meta property="og:updated_time" content="2018-02-18T18:02:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithms - 1. Array">
 <meta name="twitter:description" content="Coding exercises - Arrays">
@@ -622,35 +622,34 @@ def twoSum(self, nums, target):
 <p><strong>Note:</strong></p>
 <ol>
 <li><code>cost</code> will have a length in the range <code>[2, 1000]</code>.</li>
-<li><p>Every <code>cost[i]</code> will be an integer in the range <code>[0, 999]</code>.</p>
-<p> def minCostClimbingStairs(self, cost):</p>
-<pre><code>&quot;&quot;&quot;
-:type cost: List[int]
-:rtype: int
-&quot;&quot;&quot;
-
-# if no stairs / only one stair, no cost by climbing 2 steps
-
-if len(cost) &lt; 2:
-    return 0
-
-# by reaching the second to last, or the last of the array, we can finish the whole journey
-# we proceed like this:
-# step 1, step 2
-#         step 2, step 3
-#                 step 3, step 4
-# on each of stairs, we try to find the minimal cost to reach there
-# the final minimum cost is the min ( cost_of_two_steps_away, cost_of_one_step_away)
-
-two_steps_away_cost, one_step_away_cost = cost[0], cost[1]
-
-## i is the step to reach
-for i in range(2, len(cost)):
-    two_steps_away_cost, one_step_away_cost = one_step_away_cost, min(two_steps_away_cost, one_step_away_cost) + cost[i]
-return min(two_steps_away_cost, one_step_away_cost)
-</code></pre><h3 id="Medium-2"><a href="#Medium-2" class="headerlink" title="Medium"></a>Medium</h3></li>
+<li>Every <code>cost[i]</code> will be an integer in the range <code>[0, 999]</code>.</li>
 </ol>
-<h4 id="152-Maximum-Product-Subarray"><a href="#152-Maximum-Product-Subarray" class="headerlink" title="152 Maximum Product Subarray"></a>152 Maximum Product Subarray</h4><p>Find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
+<pre><code>def minCostClimbingStairs(self, cost):
+    &quot;&quot;&quot;
+    :type cost: List[int]
+    :rtype: int
+    &quot;&quot;&quot;
+
+    # if no stairs / only one stair, no cost by climbing 2 steps
+
+    if len(cost) &lt; 2:
+        return 0
+
+    # by reaching the second to last, or the last of the array, we can finish the whole journey
+    # we proceed like this:
+    # step 1, step 2
+    #         step 2, step 3
+    #                 step 3, step 4
+    # on each of stairs, we try to find the minimal cost to reach there
+    # the final minimum cost is the min ( cost_of_two_steps_away, cost_of_one_step_away)
+
+    two_steps_away_cost, one_step_away_cost = cost[0], cost[1]
+
+    ## i is the step to reach
+    for i in range(2, len(cost)):
+        two_steps_away_cost, one_step_away_cost = one_step_away_cost, min(two_steps_away_cost, one_step_away_cost) + cost[i]
+    return min(two_steps_away_cost, one_step_away_cost)
+</code></pre><h3 id="Medium-2"><a href="#Medium-2" class="headerlink" title="Medium"></a>Medium</h3><h4 id="152-Maximum-Product-Subarray"><a href="#152-Maximum-Product-Subarray" class="headerlink" title="152 Maximum Product Subarray"></a>152 Maximum Product Subarray</h4><p>Find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
 <p>For example, given the array <code>[2,3,-2,4]</code>,<br>the contiguous subarray <code>[2,3]</code> has the largest product = <code>6</code>.</p>
 <pre><code>def maxProduct(self, nums):
     &quot;&quot;&quot;
