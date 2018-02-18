@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Coding Interviews," />
 
 
 
@@ -89,12 +89,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yoyo in Wanderland">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="LoopingEasy1 Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you ma">
+<meta name="keywords" content="Coding Interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms - 1. Array">
+<meta property="og:url" content="http://yoursite.com/Algorithms-Array/index.html">
 <meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="LoopingEasy1 Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you ma">
+<meta property="og:updated_time" content="2018-02-18T17:58:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yoyo in Wanderland">
+<meta name="twitter:title" content="Algorithms - 1. Array">
+<meta name="twitter:description" content="LoopingEasy1 Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you ma">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/Algorithms-Array/"/>
 
 
 
 
 
-  <title> Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> Algorithms - 1. Array | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -153,9 +158,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-   page-home 
- ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,10 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-        
-	
 
   
 
@@ -281,10 +283,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/Algorithms-Array/" itemprop="url">
-                  Algorithms - 1. Array
-                </a>
+                Algorithms - 1. Array
               
             
           </h1>
@@ -368,9 +367,7 @@
       
 
       
-        
-          
-            <h2 id="Looping"><a href="#Looping" class="headerlink" title="Looping"></a>Looping</h2><h3 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h3><h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1 Two Sum"></a>1 Two Sum</h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
+        <h2 id="Looping"><a href="#Looping" class="headerlink" title="Looping"></a>Looping</h2><h3 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h3><h4 id="1-Two-Sum"><a href="#1-Two-Sum" class="headerlink" title="1 Two Sum"></a>1 Two Sum</h4><p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have <strong>exactly</strong> one solution, and you may not use the <em>same</em> element twice.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">def twoSum(self, nums, target):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    :type nums: List[int]</div><div class="line">    :type target: int</div><div class="line">    :rtype: List[int]</div><div class="line">    &quot;&quot;&quot;</div><div class="line">	sols = &#123;&#125;</div><div class="line">    for i in xrange(len(nums)):</div><div class="line">    	if nums[i] in sols:</div><div class="line">   			 return i, sols[nums[i]]</div><div class="line">    	else:</div><div class="line">    		sols[target - nums[i]] = i</div><div class="line">    return None</div></pre></td></tr></table></figure>
 <p>####243 Shortest Word Distance</p>
@@ -788,1318 +785,72 @@ def dfs(self, board, word, i, j):
     board[i][j] = word[0]
     return False
 </code></pre>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Deep-Learning-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Deep-Learning-4/" itemprop="url">
-                  Improving Deep Neural Networks
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T15:09:24-06:00">
-                2017-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Coding-Interviews/" rel="tag"># Coding Interviews</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          Notes from Andrew NG's second module. Some pratical codes are added.
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Deep-Learning-4/">
-              Read more &raquo;
-            </a>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Deep-Learning-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
+              <a href="/Lunch-Recipe/" rel="prev" title="快手午餐食堂">
+                快手午餐食堂 <i class="fa fa-chevron-right"></i>
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/Deep-Learning-3/" itemprop="url">
-                  How to Structure DL Project
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T10:42:04-06:00">
-                2017-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          Learning note Andrew's course Structuring Machine Learning Projects
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Deep-Learning-3/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-	
-    
-        
-	
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Learn-OpenCV-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Learn-OpenCV-1/" itemprop="url">
-                  Image Processing Cheatsheet from PyImageSearch
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-19T10:51:50-05:00">
-                2017-10-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Computer-Vision/" itemprop="url" rel="index">
-                    <span itemprop="name">Computer Vision</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Learn image processing techniques from OpenCV & Adrian's blog posts.
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Learn-OpenCV-1/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Deep-Learning-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Deep-Learning-2/" itemprop="url">
-                  Learn CNN from Giants
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-29T10:47:49-05:00">
-                2017-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          Learning note for classic CNN models
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Deep-Learning-2/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Sklearn-CV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Sklearn-CV/" itemprop="url">
-                  Learn ML from Sklearn: Cross Validation
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T09:56:23-05:00">
-                2017-08-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          study notes for scikit-learn 2
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Sklearn-CV/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Community-Detection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Community-Detection/" itemprop="url">
-                  Community Detection in Python
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T19:48:15-05:00">
-                2017-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          A study note for performing community detection in Python using networkX and iGraph
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Community-Detection/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Sklearn-Preprocessing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Sklearn-Preprocessing/" itemprop="url">
-                  Learn ML from Sklearn Preprocessing
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T10:59:41-05:00">
-                2017-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/" itemprop="url" rel="index">
-                    <span itemprop="name">时习之</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/时习之/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          study notes for scikit-learn 1
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Sklearn-Preprocessing/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-        
-	
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/学医偶得/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yoyo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/yoyo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yoyo in Wanderland">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/学医偶得/" itemprop="url">
-                  学医偶得 一
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-24T16:45:27-05:00">
-                2017-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/医之道/" itemprop="url" rel="index">
-                    <span itemprop="name">医之道</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          《求医不如求己》笔记
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/学医偶得/">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-	
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -2107,6 +858,10 @@ def dfs(self, board, word, i, j):
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -2126,8 +881,17 @@ def dfs(self, board, word, i, j):
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/yoyo.jpg"
@@ -2227,6 +991,22 @@ def dfs(self, board, word, i, j):
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Looping"><span class="nav-number">1.</span> <span class="nav-text">Looping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy"><span class="nav-number">1.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Two-Sum"><span class="nav-number">1.1.1.</span> <span class="nav-text">1 Two Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#66-Plus-One"><span class="nav-number">1.1.2.</span> <span class="nav-text">66. Plus One</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#605-Can-Place-Flowers"><span class="nav-number">1.1.3.</span> <span class="nav-text">605 Can Place Flowers</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium"><span class="nav-number">1.2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#73-Set-Matrix-Zeroes"><span class="nav-number">1.2.1.</span> <span class="nav-text">73 Set Matrix Zeroes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#78-Subsets"><span class="nav-number">1.2.2.</span> <span class="nav-text">78 Subsets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#280-Wiggle-Sort"><span class="nav-number">1.2.3.</span> <span class="nav-text">280 Wiggle Sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#48-Rotate-Image"><span class="nav-number">1.2.4.</span> <span class="nav-text">48 Rotate Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#54-Spiral-Matrix"><span class="nav-number">1.2.5.</span> <span class="nav-text">54 Spiral Matrix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-Three-Sum"><span class="nav-number">1.2.6.</span> <span class="nav-text">15 Three Sum</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Pointers"><span class="nav-number">2.</span> <span class="nav-text">Two Pointers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy-1"><span class="nav-number">2.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#283-Move-Zeros"><span class="nav-number">2.1.1.</span> <span class="nav-text">283 Move Zeros</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#88-Merge-Sorted-Array"><span class="nav-number">2.1.2.</span> <span class="nav-text">88 Merge Sorted Array</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium-1"><span class="nav-number">2.2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#75-Sort-Colors"><span class="nav-number">2.2.1.</span> <span class="nav-text">75 Sort Colors</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Programming"><span class="nav-number">3.</span> <span class="nav-text">Dynamic Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy-2"><span class="nav-number">3.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#76-Min-Cost-Climbing-Stairs"><span class="nav-number">3.1.1.</span> <span class="nav-text">76 Min Cost Climbing Stairs</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium-2"><span class="nav-number">3.2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#152-Maximum-Product-Subarray"><span class="nav-number">3.2.1.</span> <span class="nav-text">152 Maximum Product Subarray</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Search"><span class="nav-number">4.</span> <span class="nav-text">Binary Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium-3"><span class="nav-number">4.1.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#34-Search-for-a-Range"><span class="nav-number">4.1.1.</span> <span class="nav-text">34 Search for a Range</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33-Search-in-Rotated-Sorted-Array"><span class="nav-number">4.1.2.</span> <span class="nav-text">33 Search in Rotated Sorted Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mark-Occurance-Using-Array"><span class="nav-number">5.</span> <span class="nav-text">Mark Occurance Using Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy-3"><span class="nav-number">5.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#448-Find-All-Numbers-Disappeared-in-an-Array"><span class="nav-number">5.1.1.</span> <span class="nav-text">448 Find All Numbers Disappeared in an Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFS"><span class="nav-number">6.</span> <span class="nav-text">DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium-4"><span class="nav-number">6.1.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#79-Word-Search"><span class="nav-number">6.1.1.</span> <span class="nav-text">79 Word Search</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -2334,6 +1114,10 @@ def dfs(self, board, word, i, j):
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
