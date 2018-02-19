@@ -1,0 +1,1085 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Coding Interviews," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Coding exercises - BFS/ DFS">
+<meta name="keywords" content="Coding Interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms - 2. BFS/ DFS">
+<meta property="og:url" content="http://yoursite.com/Algorithms-BFSDFS/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Coding exercises - BFS/ DFS">
+<meta property="og:updated_time" content="2018-02-19T00:26:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithms - 2. BFS/ DFS">
+<meta name="twitter:description" content="Coding exercises - BFS/ DFS">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Algorithms-BFSDFS/"/>
+
+
+
+
+
+  <title> Algorithms - 2. BFS/ DFS | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms-BFSDFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yoyo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Algorithms - 2. BFS/ DFS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-18T18:04:15-06:00">
+                2018-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Coding exercises - BFS/ DFS
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="BFS-Iterative"><a href="#BFS-Iterative" class="headerlink" title="BFS Iterative"></a>BFS Iterative</h2><h3 id="Easy"><a href="#Easy" class="headerlink" title="Easy"></a>Easy</h3><h4 id="Symmetric-Tree"><a href="#Symmetric-Tree" class="headerlink" title="Symmetric Tree"></a>Symmetric Tree</h4><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+<p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   2</div><div class="line"> / \ / \</div><div class="line">3  4 4  3</div></pre></td></tr></table></figure>
+<p>But the following <code>[1,2,2,null,3,null,3]</code> is not:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  1</div><div class="line"> / \</div><div class="line">2   2</div><div class="line"> \   \</div><div class="line"> 3    3</div></pre></td></tr></table></figure>
+<pre><code>def isSymmetric(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    # recursive
+    if not root:
+        return True
+
+    #bfs iterative
+    visited, queue = set(), [(root.left, root.right)]
+    while queue:
+        left, right = queue.pop(0)
+        if left is None and right is None:
+            continue
+        if (left is None or right is None) or (left.val != right.val):
+            return False
+        queue.append((left.left, right.right))
+        queue.append((left.right, right.left))
+
+    return True
+def isSymmetric(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    # recursive
+    if not root:
+        return True
+
+    return self.isMirror(root.left, root.right)
+
+def isMirror(self, left, right):
+    if not left and not right:
+        return True
+    if not left or not right:
+        return False
+
+    if left.val == right.val:
+        inner = self.isMirror(left.left, right.right)
+        outer = self.isMirror(left.right, right.left)
+        if inner and outer:
+            return True
+        else:
+            return False
+    else:
+        return False
+    if not root:
+        return True
+</code></pre><h4 id="Nested-List-Weight-Sum"><a href="#Nested-List-Weight-Sum" class="headerlink" title="Nested List Weight Sum"></a>Nested List Weight Sum</h4><p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
+<p><strong>Example 1:</strong><br>Given the list <code>[[1,1],2,[1,1]]</code>, return <strong>10</strong>. (four 1’s at depth 2, one 2 at depth 1)</p>
+<p><strong>Example 2:</strong><br>Given the list <code>[1,[4,[6]]]</code>, return <strong>27</strong>. (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4<em>2 + 6</em>3 = 27)</p>
+<pre><code>def depthSum(self, nestedList):
+    &quot;&quot;&quot;
+    :type nestedList: List[NestedInteger]
+    :rtype: int
+    &quot;&quot;&quot;
+
+    depth, acc_sum = 1, 0
+    while nestedList:
+        nextList = []
+        for x in nestedList:
+            if x.isInteger():
+                acc_sum += depth*x.getInteger()
+            else:
+                for i in x.getList():
+                    nextList.append(i)
+
+        depth += 1
+        nestedList = nextList
+
+    return acc_sum
+</code></pre><h4 id="Nested-List-Weight-Sum-II"><a href="#Nested-List-Weight-Sum-II" class="headerlink" title="Nested List Weight Sum II"></a>Nested List Weight Sum II</h4><p>Given a nested list of integers, return the sum of all integers in the list weighted by their depth.</p>
+<p>Each element is either an integer, or a list – whose elements may also be integers or other lists.</p>
+<p>Different from the <a href="https://leetcode.com/problems/nested-list-weight-sum/" target="_blank" rel="external">previous question</a> where weight is increasing from root to leaf, now the weight is defined from bottom up. i.e., the leaf level integers have weight 1, and the root level integers have the largest weight.</p>
+<p><strong>Example 1:</strong><br>Given the list <code>[[1,1],2,[1,1]]</code>, return <strong>8</strong>. (four 1’s at depth 1, one 2 at depth 2)</p>
+<p><strong>Example 2:</strong><br>Given the list <code>[1,[4,[6]]]</code>, return <strong>17</strong>. (one 1 at depth 3, one 4 at depth 2, and one 6 at depth 1; 1<em>3 + 4</em>2 + 6*1 = 17)</p>
+<pre><code>def depthSumInverse(self, nestedList):
+    &quot;&quot;&quot;
+    :type nestedList: List[NestedInteger]
+    :rtype: int
+    &quot;&quot;&quot;
+    w_sums = []
+    level = 1
+    while nestedList:
+        w_sum = 0
+        nextList = []
+        for i in nestedList:
+            if i.isInteger():
+                w_sum += i.getInteger()
+            else:
+                nextList += i.getList()
+        nestedList = nextList
+        level += 1
+        w_sums.append(w_sum)
+
+    return sum([ (i+1)*s for i,s in enumerate(w_sums[::-1])])
+</code></pre><h3 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h3><h4 id="Binary-Tree-Level-Order-Traversal"><a href="#Binary-Tree-Level-Order-Traversal" class="headerlink" title="Binary Tree Level Order Traversal"></a>Binary Tree Level Order Traversal</h4><p>Given a binary tree, return the <em>level order</em> traversal of its nodes’ values. (ie, from left to right, level by level).</p>
+<p>For example:<br>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  3</div><div class="line"> / \</div><div class="line">9  20</div><div class="line">  /  \</div><div class="line"> 15   7</div></pre></td></tr></table></figure>
+<p>return its level order traversal as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3],</div><div class="line">  [9,20],</div><div class="line">  [15,7]</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def levelOrder(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    result, current = [], [root]
+    while root and current:
+        result.append([i.val for i in current if i])
+        current = [kid for i in current for kid in (i.left, i.right) if kid]
+
+    return result
+</code></pre><h4 id="Binary-Tree-Right-Side-View"><a href="#Binary-Tree-Right-Side-View" class="headerlink" title="Binary Tree Right Side View"></a>Binary Tree Right Side View</h4><p>Given a binary tree, imagine yourself standing on the <em>right</em> side of it, return the values of the nodes you can see ordered from top to bottom.</p>
+<p>For example:<br>Given the following binary tree,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   1            &lt;---</div><div class="line"> /   \</div><div class="line">2     3         &lt;---</div><div class="line"> \     \</div><div class="line">  5     4       &lt;---</div></pre></td></tr></table></figure>
+<p>You should return <code>[1, 3, 4]</code>.</p>
+<pre><code>def rightSideView(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: List[int]
+    &quot;&quot;&quot;
+    ans, levels = [], [root]
+    while root and levels:
+        ans.append(levels[-1].val)
+        levels = [kid for n in levels for kid in (n.left, n.right) if kid]
+    return ans
+</code></pre><h4 id="Binary-Tree-Zigzag-Level-Order-Traversal"><a href="#Binary-Tree-Zigzag-Level-Order-Traversal" class="headerlink" title="Binary Tree Zigzag Level Order Traversal"></a>Binary Tree Zigzag Level Order Traversal</h4><p>Given a binary tree, return the <em>zigzag level order</em> traversal of its nodes’ values. (ie, from left to right, then right to left for the next level and alternate between).</p>
+<p>For example:<br>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  3</div><div class="line"> / \</div><div class="line">9  20</div><div class="line">  /  \</div><div class="line"> 15   7</div></pre></td></tr></table></figure>
+<p>return its zigzag level order traversal as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3],</div><div class="line">  [20,9],</div><div class="line">  [15,7]</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def zigzagLevelOrder(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    ans, levels = [], [root]
+    left = True
+
+    while root and levels:
+        next_ans = [i.val for i in levels]
+        if not left:
+            next_ans = next_ans[::-1]
+
+        ans.append(next_ans)
+        levels = [child for i in levels for child in (i.left, i.right) if child]
+        left = not left
+    return ans
+</code></pre><h4 id="Find-Largest-Value-in-Each-Tree-Row"><a href="#Find-Largest-Value-in-Each-Tree-Row" class="headerlink" title="Find Largest Value in Each Tree Row"></a>Find Largest Value in Each Tree Row</h4><p>You need to find the largest value in each row of a binary tree.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Input: </div><div class="line"></div><div class="line">          1</div><div class="line">         / \</div><div class="line">        3   2</div><div class="line">       / \   \  </div><div class="line">      5   3   9 </div><div class="line"></div><div class="line">Output: [1, 3, 9]</div></pre></td></tr></table></figure>
+<pre><code>def largestValues(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: List[int]
+    &quot;&quot;&quot;
+    ans, levels = [], [root]
+
+    while root and levels:
+        ans.append(max([i.val for i in levels]))
+        levels = [kid for i in levels for kid in (i.left, i.right) if kid]
+
+    return ans
+</code></pre><h4 id="Perfect-Squares"><a href="#Perfect-Squares" class="headerlink" title="Perfect Squares"></a>Perfect Squares</h4><p>Given a positive integer <em>n</em>, find the least number of perfect square numbers (for example, <code>1, 4, 9, 16, ...</code>) which sum to <em>n</em>.</p>
+<p>For example, given <em>n</em> = <code>12</code>, return <code>3</code> because <code>12 = 4 + 4 + 4</code>; given <em>n</em> = <code>13</code>, return <code>2</code> because <code>13 = 4 + 9</code>.</p>
+<pre><code>def numSquares(self, n):
+    &quot;&quot;&quot;
+    :type n: int
+    :rtype: int
+    &quot;&quot;&quot;
+    ceil = int(math.sqrt(n))
+    candidates = {i**2 for i in range(1, ceil+1)}
+    sums = {n}
+    cnt = 0
+
+    while True:
+        cnt += 1
+        if candidates &amp; sums:
+            return cnt
+        else:
+            sums.update({s - i for s in sums for i in candidates})
+</code></pre><h4 id="Word-Ladder"><a href="#Word-Ladder" class="headerlink" title="Word Ladder"></a>Word Ladder</h4><p>Given two words (<em>beginWord</em> and <em>endWord</em>), and a dictionary’s word list, find the length of shortest transformation sequence from <em>beginWord</em> to <em>endWord</em>, such that:</p>
+<ol>
+<li>Only one letter can be changed at a time.</li>
+<li>Each transformed word must exist in the word list. Note that <em>beginWord</em> is <em>not</em> a transformed word.</li>
+</ol>
+<p>For example,</p>
+<p>Given:<br><em>beginWord</em> = <code>&quot;hit&quot;</code><br><em>endWord</em> = <code>&quot;cog&quot;</code><br><em>wordList</em> = <code>[&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</code></p>
+<p>As one shortest transformation is <code>&quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;</code>,<br>return its length <code>5</code>.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Return 0 if there is no such transformation sequence.</li>
+<li>All words have the same length.</li>
+<li>All words contain only lowercase alphabetic characters.</li>
+<li>You may assume no duplicates in the word list.</li>
+<li>You may assume <em>beginWord</em> and <em>endWord</em> are non-empty and are not the same.</li>
+</ul>
+<pre><code>def ladderLength(self, beginWord, endWord, wordList):
+    &quot;&quot;&quot;
+    :type beginWord: str
+    :type endWord: str
+    :type wordList: List[str]
+    :rtype: int
+    &quot;&quot;&quot;
+    wordList = set(wordList)
+    wordList.discard(beginWord)
+
+    ladder = 1
+    front, back = {beginWord}, {endWord}
+
+    while front:
+        ladder += 1
+        front = wordList &amp; {word[:i] + char + word[i+1:] for word in front for i in xrange(len(word)) for char in &apos;abcdefghijklmnopqrstuvwxyz&apos; if word[i] != char}
+        if front &amp; back:
+            return ladder
+        else:
+            wordList -= front
+    return 0
+</code></pre><h2 id="DFS-Recursive"><a href="#DFS-Recursive" class="headerlink" title="DFS Recursive"></a>DFS Recursive</h2><h3 id="Easy-1"><a href="#Easy-1" class="headerlink" title="Easy"></a>Easy</h3><h4 id="Maximum-Depth-of-Binary-Tree"><a href="#Maximum-Depth-of-Binary-Tree" class="headerlink" title="Maximum Depth of Binary Tree"></a>Maximum Depth of Binary Tree</h4><p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<p>For example:<br>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  3</div><div class="line"> / \</div><div class="line">9  20</div><div class="line">  /  \</div><div class="line"> 15   7</div></pre></td></tr></table></figure>
+<p>return its depth = 3.</p>
+<pre><code>def maxDepth(self, root):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: int
+    &quot;&quot;&quot;
+    if not root:
+        return 0
+
+    return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+</code></pre><h3 id="Medium-1"><a href="#Medium-1" class="headerlink" title="Medium"></a>Medium</h3><h4 id="Validate-Binary-Search-Tree"><a href="#Validate-Binary-Search-Tree" class="headerlink" title="Validate Binary Search Tree"></a>Validate Binary Search Tree</h4><p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<ul>
+<li>The left subtree of a node contains only nodes with keys <strong>less than</strong> the node’s key.</li>
+<li>The right subtree of a node contains only nodes with keys <strong>greater than</strong> the node’s key.</li>
+<li>Both the left and right subtrees must also be binary search trees.</li>
+</ul>
+<p><strong>Example 1:</strong> True</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  2</div><div class="line"> / \</div><div class="line">1   3</div></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong> False</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  1</div><div class="line"> / \</div><div class="line">2   3</div></pre></td></tr></table></figure>
+<pre><code>def isValidBST(self, root, left = float(&apos;-inf&apos;), right = float(&apos;inf&apos;)):
+    &quot;&quot;&quot;
+    :type root: TreeNode
+    :rtype: bool
+    &quot;&quot;&quot;
+    if not root:
+        return True
+
+    if root.val &lt;= left or root.val &gt;= right:
+        return False
+
+    return self.isValidBST(root.left, left,  root.val) and self.isValidBST(root.right, root.val, right)
+</code></pre><h4 id="Find-Leaves-of-Binary-Tree"><a href="#Find-Leaves-of-Binary-Tree" class="headerlink" title="Find Leaves of Binary Tree"></a>Find Leaves of Binary Tree</h4><p>Given a binary tree, collect a tree’s nodes as if you were doing this: Collect and remove all leaves, repeat until the tree is empty.</p>
+<p><strong>Example:</strong><br>Given binary tree </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    1</div><div class="line">   / \</div><div class="line">  2   3</div><div class="line"> / \     </div><div class="line">4   5</div></pre></td></tr></table></figure>
+<p>Returns <code>[4, 5, 3], [2], [1]</code>.</p>
+<p><strong>Explanation:</strong></p>
+<ol>
+<li>Removing the leaves <code>[4, 5, 3]</code> would result in this tree:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  1</div><div class="line"> / </div><div class="line">2</div></pre></td></tr></table></figure>
+<ol>
+<li>Now removing the leaf <code>[2]</code> would result in this tree:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1</div></pre></td></tr></table></figure>
+<ol>
+<li>Now removing the leaf <code>[1]</code> would result in the empty tree:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[]</div></pre></td></tr></table></figure>
+<p>Returns <code>[4, 5, 3], [2], [1]</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># reference: </div><div class="line"># https://leetcode.com/problems/find-leaves-of-binary-tree/discuss/83851/Silly-3-liner...</div><div class="line">def findLeaves(self, root):</div><div class="line">    if not root: return []</div><div class="line">    kids = map(self.findLeaves, (root.left, root.right))</div><div class="line">    return map(lambda l, r: (l or []) + (r or []), *kids) + [[root.val]]</div></pre></td></tr></table></figure>
+<h4 id="Number-of-Islands"><a href="#Number-of-Islands" class="headerlink" title="Number of Islands"></a>Number of Islands</h4><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p><strong><em>Example 1:</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11110</div><div class="line">11010</div><div class="line">11000</div><div class="line">00000</div></pre></td></tr></table></figure>
+<p>Answer: 1</p>
+<p><strong><em>Example 2:</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11000</div><div class="line">11000</div><div class="line">00100</div><div class="line">00011</div></pre></td></tr></table></figure>
+<p>Answer: 3</p>
+<pre><code>def numIslands(self, grid):
+    &quot;&quot;&quot;
+    :type grid: List[List[str]]
+    :rtype: int
+    &quot;&quot;&quot;
+    return sum(self.sink(grid, i, j) for i in range(len(grid)) for j in range(len(grid[i])))
+
+def sink(self, grid, i, j):
+    if 0 &lt;= i &lt; len(grid) and 0 &lt;= j &lt; len(grid[i]) and grid[i][j] == &apos;1&apos;:
+        grid[i][j] = 0
+        self.sink(grid, i-1, j)
+        self.sink(grid, i+1, j)
+        self.sink(grid, i, j-1)
+        self.sink(grid, i, j+1)
+        return 1
+    return 0
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Coding-Interviews/" rel="tag"># Coding Interviews</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Algorithms-Array/" rel="prev" title="Algorithms - 1. Array">
+                Algorithms - 1. Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yoyo.jpg"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/yiyoulin/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yoyolin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hexiaoyuhaha.github.io" title="Xiaoyu He" target="_blank">Xiaoyu He</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shuang0420.com" title="Shuang Xu" target="_blank">Shuang Xu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BFS-Iterative"><span class="nav-number">1.</span> <span class="nav-text">BFS Iterative</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy"><span class="nav-number">1.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Symmetric-Tree"><span class="nav-number">1.1.1.</span> <span class="nav-text">Symmetric Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nested-List-Weight-Sum"><span class="nav-number">1.1.2.</span> <span class="nav-text">Nested List Weight Sum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nested-List-Weight-Sum-II"><span class="nav-number">1.1.3.</span> <span class="nav-text">Nested List Weight Sum II</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium"><span class="nav-number">1.2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-Tree-Level-Order-Traversal"><span class="nav-number">1.2.1.</span> <span class="nav-text">Binary Tree Level Order Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-Tree-Right-Side-View"><span class="nav-number">1.2.2.</span> <span class="nav-text">Binary Tree Right Side View</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binary-Tree-Zigzag-Level-Order-Traversal"><span class="nav-number">1.2.3.</span> <span class="nav-text">Binary Tree Zigzag Level Order Traversal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Find-Largest-Value-in-Each-Tree-Row"><span class="nav-number">1.2.4.</span> <span class="nav-text">Find Largest Value in Each Tree Row</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Perfect-Squares"><span class="nav-number">1.2.5.</span> <span class="nav-text">Perfect Squares</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Word-Ladder"><span class="nav-number">1.2.6.</span> <span class="nav-text">Word Ladder</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFS-Recursive"><span class="nav-number">2.</span> <span class="nav-text">DFS Recursive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Easy-1"><span class="nav-number">2.1.</span> <span class="nav-text">Easy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Maximum-Depth-of-Binary-Tree"><span class="nav-number">2.1.1.</span> <span class="nav-text">Maximum Depth of Binary Tree</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Medium-1"><span class="nav-number">2.2.</span> <span class="nav-text">Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Validate-Binary-Search-Tree"><span class="nav-number">2.2.1.</span> <span class="nav-text">Validate Binary Search Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Find-Leaves-of-Binary-Tree"><span class="nav-number">2.2.2.</span> <span class="nav-text">Find Leaves of Binary Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-of-Islands"><span class="nav-number">2.2.3.</span> <span class="nav-text">Number of Islands</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
