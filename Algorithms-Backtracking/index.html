@@ -1,0 +1,963 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Coding Interviews," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Coding exercises - backtracking">
+<meta name="keywords" content="Coding Interviews">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithms - 3. Backtracking">
+<meta property="og:url" content="http://yoursite.com/Algorithms-Backtracking/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Coding exercises - backtracking">
+<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png">
+<meta property="og:updated_time" content="2018-02-20T03:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Algorithms - 3. Backtracking">
+<meta name="twitter:description" content="Coding exercises - backtracking">
+<meta name="twitter:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Algorithms-Backtracking/"/>
+
+
+
+
+
+  <title> Algorithms - 3. Backtracking | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Algorithms-Backtracking/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yoyo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Algorithms - 3. Backtracking
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-19T17:44:59-05:00">
+                2018-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Coding exercises - backtracking
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>All problems are medium-level.</p>
+<h2 id="Iterate-and-Append-Solutions"><a href="#Iterate-and-Append-Solutions" class="headerlink" title="Iterate and Append Solutions"></a>Iterate and Append Solutions</h2><h3 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h3><p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
+<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
+<p>For example,<br>If <strong>nums</strong> = <code>[1,2,3]</code>, a solution is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3],</div><div class="line">  [1],</div><div class="line">  [2],</div><div class="line">  [1,2,3],</div><div class="line">  [1,3],</div><div class="line">  [2,3],</div><div class="line">  [1,2],</div><div class="line">  []</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def subsets(self, nums):
+    &quot;&quot;&quot;
+    :type nums: List[int]
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    ans = [[]]
+    for i in nums:
+        ans += [l + [i] for l in ans]
+    return ans
+</code></pre><p>###Gray Code</p>
+<p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer <em>n</em> representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<p>For example, given <em>n</em> = 2, return <code>[0,1,3,2]</code>. Its gray code sequence is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">00 - 0</div><div class="line">01 - 1</div><div class="line">11 - 3</div><div class="line">10 - 2</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong><br>For a given <em>n</em>, a gray code sequence is not uniquely defined.</p>
+<p>For example, <code>[0,2,3,1]</code> is also a valid gray code sequence according to the above definition.</p>
+<p>For now, the judge is able to judge based on one instance of gray code sequence. Sorry about that.</p>
+<pre><code>def grayCode(self, n):
+    &quot;&quot;&quot;
+    :type n: int
+    :rtype: List[int]
+    &quot;&quot;&quot;
+    ans = [0]
+    for i in range(n):
+        ans +=  [a + 2**i for a in ans[::-1]]
+    return ans
+</code></pre><h3 id="Letter-Combinations-of-a-Phone-Number"><a href="#Letter-Combinations-of-a-Phone-Number" class="headerlink" title="Letter Combinations of a Phone Number"></a>Letter Combinations of a Phone Number</h3><p>Given a digit string, return all possible letter combinations that the number could represent.</p>
+<p>A mapping of digit to letters (just like on the telephone buttons) is given below.</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input:Digit string &quot;23&quot;</div><div class="line">Output: [&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</div></pre></td></tr></table></figure>
+<p><strong>Note:</strong><br>Although the above answer is in lexicographical order, your answer could be in any order you want.</p>
+<pre><code>def letterCombinations(self, digits):
+    &quot;&quot;&quot;
+    :type digits: str
+    :rtype: List[str]
+    &quot;&quot;&quot;
+    sols = []
+    digits = digits.replace(&quot;1&quot;,&quot;&quot;).replace(&quot;0&quot;,&quot;&quot;)
+
+    if not digits:
+        return sols
+
+    digits_list = list(digits)
+    while digits_list:
+        digit, digits_list  = digits_list[0], digits_list[1:]
+        sols = self.mapping(digit, sols)
+    return sols
+
+def mapping(self, digit, sols):
+    &quot;&quot;&quot;
+    :type digits_list: 
+    &quot;&quot;&quot;
+    letter_map = {&quot;2&quot;:&quot;abc&quot;, &quot;3&quot;: &quot;def&quot;, &quot;4&quot;:&quot;ghi&quot;, &quot;5&quot;:&quot;jkl&quot;, &quot;6&quot;:&quot;mno&quot;, &quot;7&quot;:&quot;pqrs&quot;, &quot;8&quot;:&quot;tuv&quot;, &quot;9&quot;:&quot;wxyz&quot;}
+
+    if not sols:
+        sols = list(letter_map[digit])
+    else:
+        sols = [i+m for i in sols for m in letter_map[digit]]
+    return sols
+</code></pre><h2 id="Iterate-While-Eliminate-Duplicates"><a href="#Iterate-While-Eliminate-Duplicates" class="headerlink" title="Iterate While Eliminate Duplicates"></a>Iterate While Eliminate Duplicates</h2><h3 id="Permutations-II"><a href="#Permutations-II" class="headerlink" title="Permutations II"></a>Permutations II</h3><p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p>
+<p>For example,<br><code>[1,1,2]</code> have the following unique permutations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [1,1,2],</div><div class="line">  [1,2,1],</div><div class="line">  [2,1,1]</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def permuteUnique(self, nums):
+    &quot;&quot;&quot;
+    :type nums: List[int]
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    sols = [[]]
+
+    for n in nums:
+        sols = [s[:pos] + [n] + s[pos:] 
+                for s in sols 
+                for pos in xrange((s + [n]).index(n) + 1)]
+
+    return sols
+</code></pre><h3 id="Factor-Combinations"><a href="#Factor-Combinations" class="headerlink" title="Factor Combinations"></a>Factor Combinations</h3><p>Numbers can be regarded as product of its factors. For example,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">8 = 2 x 2 x 2;</div><div class="line">  = 2 x 4.</div></pre></td></tr></table></figure>
+<p>Write a function that takes an integer <em>n</em> and return all possible combinations of its factors.</p>
+<p><strong>Note:</strong> </p>
+<ol>
+<li>You may assume that <em>n</em> is always positive.</li>
+<li>Factors should be greater than 1 and less than <em>n</em>.</li>
+</ol>
+<p><strong>Examples: </strong><br>input: <code>1</code> output: []</p>
+<p>input:  37 output:  []</p>
+<p>input:  12  output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 6],</div><div class="line">  [2, 2, 3],</div><div class="line">  [3, 4]</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>input:  32 output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 16],</div><div class="line">  [2, 2, 8],</div><div class="line">  [2, 2, 2, 4],</div><div class="line">  [2, 2, 2, 2, 2],</div><div class="line">  [2, 4, 4],</div><div class="line">  [4, 8]</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def getFactors(self, n):
+    &quot;&quot;&quot;
+    :type n: int
+    :rtype: List[List[int]]
+    &quot;&quot;&quot;
+    nums, sols = [(n, 2, [])], []
+
+    while nums:
+        n, i, factors = nums.pop()
+        while i**2 &lt;= n:
+            if n%i == 0:
+                sols += [factors + [n/i, i]]
+                nums.append( (n/i, i, factors + [i]))
+            i += 1
+    return sols
+</code></pre><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><h3 id="Generate-Parentheses"><a href="#Generate-Parentheses" class="headerlink" title="Generate Parentheses"></a>Generate Parentheses</h3><p>Given <em>n</em> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+<p>For example, given <em>n</em> = 3, a solution set is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &quot;((()))&quot;,</div><div class="line">  &quot;(()())&quot;,</div><div class="line">  &quot;(())()&quot;,</div><div class="line">  &quot;()(())&quot;,</div><div class="line">  &quot;()()()&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<pre><code>def generateParenthesis(self, n):
+    &quot;&quot;&quot;
+    :type n: int
+    :rtype: List[str]
+
+    Examples: belows shows possible examples and reasons for each step
+    1   (        # only starts with left p when left p and right p equals
+    2   (),  ((, # can choose left or right if left
+    3   ()(, (((, (()
+    4   ()(), ()((, (((), (()(, (()) # run out of right p, so can&apos;t choose to go left
+    5   ()()(, ()((), ((()), (()(), (())( 
+    6   all
+    &quot;&quot;&quot;
+    return self.dfsParenthesis(n, n, [&quot;&quot;])
+
+def dfsParenthesis(self, left, right, sols):
+    if not left and not right:
+        return sols
+    if not left and right:
+        return self.dfsParenthesis(left, right - 1, [s + &quot;)&quot; for s in sols])
+    if left == right:
+        return self.dfsParenthesis(left-1, right, [s + &quot;(&quot; for s in sols])
+    else:
+        return self.dfsParenthesis(left-1, right, [s + &quot;(&quot; for s in sols]) + self.dfsParenthesis(left, right - 1, [s + &quot;)&quot; for s in sols])
+</code></pre><h3 id="Word-Search"><a href="#Word-Search" class="headerlink" title="Word Search"></a>Word Search</h3><p>Given a 2D board and a word, find if the word exists in the grid.</p>
+<p>The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+<p>For example,<br>Given <strong>board</strong> =</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;E&apos;],</div><div class="line">  [&apos;S&apos;,&apos;F&apos;,&apos;C&apos;,&apos;S&apos;],</div><div class="line">  [&apos;A&apos;,&apos;D&apos;,&apos;E&apos;,&apos;E&apos;]</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>“ABCCED” -&gt; true</p>
+<p>“SEE” -&gt; true</p>
+<p>“ABCB” -&gt; false</p>
+<pre><code>def exist(self, board, word):
+    &quot;&quot;&quot;
+    :type board: List[List[str]]
+    :type word: str
+    :rtype: bool
+    &quot;&quot;&quot;
+    if not board or not board[0] or not word:
+        return False
+
+    for i in xrange(len(board)):
+        for j in xrange(len(board[i])):
+            if self.dfs(board, word, i, j):
+                return True
+
+    return False
+
+
+def dfs(self, board, word, i, j):
+    if not word:
+        return True
+    if board[i][j] != word[0]:
+        return False
+    if not word[1:]:
+        return True
+
+    board[i][j] = &quot;#&quot;
+    if i-1 &gt;= 0 and self.dfs(board, word[1:], i-1, j):
+        return True 
+    if j-1 &gt;= 0 and self.dfs(board, word[1:], i, j-1):
+        return True
+    if i+1 &lt; len(board) and self.dfs(board, word[1:], i+1, j):
+        return True 
+    if j+1 &lt; len(board[i]) and self.dfs(board, word[1:], i, j+1):
+        return True
+
+    board[i][j] = word[0]
+    return False
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Coding-Interviews/" rel="tag"># Coding Interviews</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Algorithms-BFSDFS/" rel="prev" title="Algorithms - 2. BFS/ DFS">
+                Algorithms - 2. BFS/ DFS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yoyo.jpg"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/yiyoulin/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yoyolin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hexiaoyuhaha.github.io" title="Xiaoyu He" target="_blank">Xiaoyu He</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shuang0420.com" title="Shuang Xu" target="_blank">Shuang Xu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterate-and-Append-Solutions"><span class="nav-number">1.</span> <span class="nav-text">Iterate and Append Solutions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subsets"><span class="nav-number">1.1.</span> <span class="nav-text">Subsets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Letter-Combinations-of-a-Phone-Number"><span class="nav-number">1.2.</span> <span class="nav-text">Letter Combinations of a Phone Number</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterate-While-Eliminate-Duplicates"><span class="nav-number">2.</span> <span class="nav-text">Iterate While Eliminate Duplicates</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Permutations-II"><span class="nav-number">2.1.</span> <span class="nav-text">Permutations II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Factor-Combinations"><span class="nav-number">2.2.</span> <span class="nav-text">Factor Combinations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFS"><span class="nav-number">3.</span> <span class="nav-text">DFS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-Parentheses"><span class="nav-number">3.1.</span> <span class="nav-text">Generate Parentheses</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Word-Search"><span class="nav-number">3.2.</span> <span class="nav-text">Word Search</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
