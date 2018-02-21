@@ -1,0 +1,1062 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="XxyEUfc4yR7vI102EbbgOtuIXP1d7ew6TTq6J2wMlK8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Computer Vision," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Computer Vision Basics Recap">
+<meta name="keywords" content="Computer Vision">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CV Basics">
+<meta property="og:url" content="http://yoursite.com/CV-Basics/index.html">
+<meta property="og:site_name" content="Yoyo in Wanderland">
+<meta property="og:description" content="Computer Vision Basics Recap">
+<meta property="og:image" content="https://chart.googleapis.com/chart?cht=tx&chl=%5C%5B%5Cfrac%7B1%7D%7B%7B(%5Csqrt%7B2%5Cpi%7D%5Csigma">
+<meta property="og:image" content="https://i.stack.imgur.com/0HnWF.png">
+<meta property="og:image" content="http://opencv-python-tutroals.readthedocs.io/en/latest/_images/median.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20130515234049748">
+<meta property="og:image" content="http://img.blog.csdn.net/20130515234053466">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/j.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/erosion.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/j.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/dilation.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/opening.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/closing.png">
+<meta property="og:image" content="https://docs.opencv.org/3.0-beta/_images/gradient.png">
+<meta property="og:image" content="https://docs.opencv.org/2.4/_images/Sobel_Derivatives_Tutorial_Theory_Intensity_Function.jpg">
+<meta property="og:image" content="https://docs.opencv.org/2.4/_images/Sobel_Derivatives_Tutorial_Theory_dIntensity_Function.jpg">
+<meta property="og:image" content="http://slideplayer.com/5324858/17/images/13/Effects+of+noise+Consider+a+single+row+or+column+of+the+image.jpg">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/19a75a4374e6d56d45ca0e61f25d9134aafd8b58">
+<meta property="og:image" content="https://docs.opencv.org/2.4/_images/math/4c2af1833fd9f9af4ec5506ff8a83e217ebbe6db.png">
+<meta property="og:image" content="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-cell-gradients.png">
+<meta property="og:image" content="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-histogram-1.png">
+<meta property="og:image" content="https://www.learnopencv.com/wp-content/uploads/2016/12/histogram-8x8-cell.png">
+<meta property="og:image" content="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-visualization.png">
+<meta property="og:image" content="http://aishack.in/static/img/tut/sift-octaves.jpg">
+<meta property="og:image" content="https://docs.opencv.org/2.4/_images/Laplace_Operator_Tutorial_Result.jpg">
+<meta property="og:image" content="http://aishack.in/static/img/tut/sift-dog-idea.jpg">
+<meta property="og:image" content="http://aishack.in/static/img/tut/sift-maxima-idea.jpg">
+<meta property="og:image" content="http://aishack.in/static/img/tut/sift-maxima-subpixel.jpg">
+<meta property="og:image" content="http://aishack.in/static/img/tut/sift-a-keypoint.jpg">
+<meta property="og:image" content="https://docs.opencv.org/3.3.0/haar_features.jpg">
+<meta property="og:image" content="https://docs.opencv.org/3.3.0/haar.png">
+<meta property="og:updated_time" content="2018-02-21T05:17:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CV Basics">
+<meta name="twitter:description" content="Computer Vision Basics Recap">
+<meta name="twitter:image" content="https://chart.googleapis.com/chart?cht=tx&chl=%5C%5B%5Cfrac%7B1%7D%7B%7B(%5Csqrt%7B2%5Cpi%7D%5Csigma">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/CV-Basics/"/>
+
+
+
+
+
+  <title> CV Basics | Yoyo in Wanderland </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yoyo in Wanderland</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/CV-Basics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yoyo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yoyo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yoyo in Wanderland">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CV Basics
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-20T20:55:37-05:00">
+                2018-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/" itemprop="url" rel="index">
+                    <span itemprop="name">时习之</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/时习之/Computer-Vision/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Vision</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  Computer Vision Basics Recap
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Blurring"><a href="#Blurring" class="headerlink" title="Blurring"></a>Blurring</h2><ul>
+<li><strong>Purpose: to reduce noises in the image.</strong></li>
+</ul>
+<h3 id="Gaussian-Filter"><a href="#Gaussian-Filter" class="headerlink" title="Gaussian Filter"></a>Gaussian Filter</h3><ul>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li>Size of the kernel</li>
+<li>Sigma: bigger sigma, larger the blur</li>
+</ul>
+</li>
+<li><p><strong>Implementation:</strong> <a href="https://stackoverflow.com/questions/17190649/how-to-obtain-a-gaussian-filter-in-python" target="_blank" rel="external">Reference</a></p>
+<p><img src="https://chart.googleapis.com/chart?cht=tx&amp;chl=%5C%5B%5Cfrac%7B1%7D%7B%7B(%5Csqrt%7B2%5Cpi%7D%5Csigma" alt="formular">%7D%5E%7Bdim(%5Cwidehat%7Bx%7D)%7D%7De%5E%7B%5Cfrac%7B%5Cwidehat%7Bx%7D-x_%7Bcenter%7D%7D%7B2%5Csigma%5E2%7D%7D%5C%5D%0A)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def gaussian_filter(shape =(5,5), sigma=1):</div><div class="line">    x, y = [edge /2 for edge in shape]</div><div class="line">    grid = np.array([[((i**2+j**2)/(2.0*sigma**2)) for i in xrange(-x, x+1)] for j in xrange(-y, y+1)])</div><div class="line">    g_filter = np.exp(-grid)</div><div class="line">    g_filter /= np.sum(g_filter)</div><div class="line">    return g_filter</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[[ 0.00296902  0.01330621  0.02193823  0.01330621  0.00296902]</div><div class="line"> [ 0.01330621  0.0596343   0.09832033  0.0596343   0.01330621]</div><div class="line"> [ 0.02193823  0.09832033  0.16210282  0.09832033  0.02193823]</div><div class="line"> [ 0.01330621  0.0596343   0.09832033  0.0596343   0.01330621]</div><div class="line"> [ 0.00296902  0.01330621  0.02193823  0.01330621  0.00296902]]</div></pre></td></tr></table></figure>
+<p><img src="https://i.stack.imgur.com/0HnWF.png" alt="gaussian"></p>
+</li>
+<li><p><strong>Pros &amp; Cons:</strong></p>
+<ul>
+<li>Quick computation (function of space alone)</li>
+<li>Used in conjunction with edge detection to reduce noises while finding edges</li>
+<li>Not best in noise removal</li>
+<li>Will blur edges too</li>
+</ul>
+</li>
+</ul>
+<h3 id="Median-Filter"><a href="#Median-Filter" class="headerlink" title="Median Filter"></a>Median Filter</h3><p><img src="http://opencv-python-tutroals.readthedocs.io/en/latest/_images/median.jpg" alt="median filter"></p>
+<ul>
+<li><strong>Pros and Cons:</strong><ul>
+<li>Reduce pepper and salt noises</li>
+</ul>
+</li>
+</ul>
+<h3 id="Biteral-Filter"><a href="#Biteral-Filter" class="headerlink" title="Biteral Filter"></a>Biteral Filter</h3><ul>
+<li><p><strong>Concepts:</strong></p>
+<p> the spatial kernel for smoothing differences in coordinates:</p>
+<p><img src="http://img.blog.csdn.net/20130515234049748" alt="formular"></p>
+<p> The range kernel for smoothing differences in intensities:</p>
+<p><img src="http://img.blog.csdn.net/20130515234053466" alt="formular"></p>
+<p>The above two filters multiplied to get the final biteral filter.</p>
+</li>
+</ul>
+<ul>
+<li><strong>Pros and Cons:</strong><ul>
+<li>Highly effective at noise removal</li>
+<li>Edge preserving</li>
+<li>Slower compared to other filters.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Morphological-Transformations"><a href="#Morphological-Transformations" class="headerlink" title="Morphological Transformations"></a>Morphological Transformations</h2><ul>
+<li><strong>Purpose: Shape manipulation/ noise reduction for binary images</strong></li>
+</ul>
+<h3 id="Erosion"><a href="#Erosion" class="headerlink" title="Erosion"></a>Erosion</h3><blockquote>
+<p>Erodes away the boundaries of foreground object. A pixel in the original image (either 1 or 0) will be considered 1 only if <strong><em>all the pixels</em></strong> under the kernel is 1, otherwise it is eroded (made to zero).</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.0-beta/_images/j.png" alt="original"> <img src="https://docs.opencv.org/3.0-beta/_images/erosion.png" alt="Erosion"></p>
+<h3 id="Dilation"><a href="#Dilation" class="headerlink" title="Dilation"></a>Dilation</h3><blockquote>
+<p>A pixel element is ‘1’ if atleast one pixel under the kernel is ‘1’. So it increases the white region in the image or size of foreground object increases.</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.0-beta/_images/j.png" alt="original"><img src="https://docs.opencv.org/3.0-beta/_images/dilation.png" alt=""></p>
+<h3 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h3><h4 id="Opening"><a href="#Opening" class="headerlink" title="Opening"></a>Opening</h4><blockquote>
+<p>in cases like noise removal, erosion is followed by dilation. Because, erosion removes white noises, but it also shrinks our object. So we dilate it. Since noise is gone, they won’t come back, but our object area increases.</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.0-beta/_images/opening.png" alt="open"></p>
+<h4 id="Closing"><a href="#Closing" class="headerlink" title="Closing"></a>Closing</h4><blockquote>
+<p>Closing is reverse of Opening, <strong>Dilation followed by Erosion</strong>. It is useful in closing small holes inside the foreground objects, or small black points on the object.</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.0-beta/_images/closing.png" alt="close"></p>
+<h4 id="Morphological-Gradient"><a href="#Morphological-Gradient" class="headerlink" title="Morphological Gradient"></a>Morphological Gradient</h4><blockquote>
+<p> It is the difference between dilation and erosion of an image. The result will look like the outline of the object.</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.0-beta/_images/gradient.png" alt="gradient"></p>
+<p>##Edge Detection</p>
+<ul>
+<li><p><strong>Purpose: to detect sudden changes in an image</strong></p>
+</li>
+<li><p><strong>A good detection</strong>:</p>
+<ul>
+<li>good localization: find true positives</li>
+<li>single response: minimize false positives</li>
+</ul>
+</li>
+<li><p><strong>Concepts behind edge detection:</strong> </p>
+<blockquote>
+<p> let’s assume we have a 1D-image. An edge is shown by the “jump” in intensity in the plot below. The edge “jump” can be seen more easily if we take the first derivative (actually, here appears as a maximum). So, from the explanation above, we can deduce that a method to detect edges in an image can be performed by locating pixel locations where the gradient is higher than its neighbors (or to generalize, higher than a threshold). - <a href="https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/sobel_derivatives/sobel_derivatives.html#sobel-derivatives" target="_blank" rel="external">OpenCV Documentation</a></p>
+</blockquote>
+<p><img src="https://docs.opencv.org/2.4/_images/Sobel_Derivatives_Tutorial_Theory_Intensity_Function.jpg" alt="jump"> <img src="https://docs.opencv.org/2.4/_images/Sobel_Derivatives_Tutorial_Theory_dIntensity_Function.jpg" alt="direvative"></p>
+</li>
+<li><p><strong>Challenge:</strong></p>
+</li>
+</ul>
+<p><img src="http://slideplayer.com/5324858/17/images/13/Effects+of+noise+Consider+a+single+row+or+column+of+the+image.jpg" alt="noise"></p>
+<h3 id="Simple-Edge-Detection"><a href="#Simple-Edge-Detection" class="headerlink" title="Simple Edge Detection"></a>Simple Edge Detection</h3><p>Simple filter: <code>-0.5, 0, 0.5</code>, mean of left derivative <code>0,-1,1</code> and right derivative <code>-1,1,0</code>.</p>
+<h3 id="Sobel-Edge-Detection"><a href="#Sobel-Edge-Detection" class="headerlink" title="Sobel Edge Detection"></a>Sobel Edge Detection</h3><p>The idea is gaussian smoothing together with discrete direvative to get less noisy edges.</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/19a75a4374e6d56d45ca0e61f25d9134aafd8b58" alt="sobel"></p>
+<h3 id="Canny-Edge-Detection"><a href="#Canny-Edge-Detection" class="headerlink" title="Canny Edge Detection"></a>Canny Edge Detection</h3><ul>
+<li><p><strong>Algorithms:</strong></p>
+<ol>
+<li><p>Filter out noises with Gaussian.</p>
+</li>
+<li><p>Find magnitude and orientation of gradient</p>
+<p><img src="https://docs.opencv.org/2.4/_images/math/4c2af1833fd9f9af4ec5506ff8a83e217ebbe6db.png" alt="gradient"></p>
+</li>
+<li><p>Non maximum suppression applied</p>
+<p>Purpose is to “thin” the edges. The approach is like this: </p>
+<ul>
+<li>the edge strength <code>G</code> will be compared and only the largest value remains. </li>
+<li>The comparison is against neighboring pixels <em>in the same directions</em> (for example, for y direction gradient: up and down will be compared). </li>
+</ul>
+</li>
+<li><p>Linking and thresholding</p>
+<ul>
+<li>Gradient &gt; Threshold_high -&gt; edges</li>
+<li>Gradient &lt; Threshold_low   -&gt; suppress</li>
+<li>Threshold_low &lt; Gradient &lt; Threshold_high -&gt; remains only attached to strong edge pixels</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>Pros and Cons:</strong></p>
+<ul>
+<li><strong>Low error rate:</strong> Meaning a good detection of only existent edges.</li>
+<li><strong>Good localization:</strong> The distance between edge pixels detected and real edge pixels have to be minimized.</li>
+<li><strong>Minimal response:</strong> Only one detector response per edge.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Hough-Transformation"><a href="#Hough-Transformation" class="headerlink" title="Hough Transformation"></a>Hough Transformation</h2><h3 id="Hough-LIne-Transformation"><a href="#Hough-LIne-Transformation" class="headerlink" title="Hough LIne Transformation"></a>Hough LIne Transformation</h3><ul>
+<li><p><strong>Motivation:</strong> </p>
+<ul>
+<li>edge detection might miss / break/  distort a line because of noises</li>
+<li>Extra edge points will confuse line formation</li>
+</ul>
+</li>
+<li><p><strong>Concepts:</strong></p>
+<ol>
+<li>Match <strong>edge</strong> points to Hough space</li>
+<li>Find the theta, d bin that has the most votes</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">## Pseudo code</div><div class="line"></div><div class="line">H = np.zeros((d_candidate_length, 180))</div><div class="line">for x,y in edge_points:</div><div class="line">	for theta in xrange(0, 181):</div><div class="line">		d = x*cos(theta) - y*sin(theta)</div><div class="line">		H[d, theta] += 1</div><div class="line">max_line = np.argmax(H)</div><div class="line">max_d, max_theta = H[max_line]</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Pros and Cons</strong></p>
+<ul>
+<li>Handles missing and occluded data well; multiple matches per image</li>
+<li>Easy implementation</li>
+<li>Computationally complex for objects with many parameters k**n (n dimensions, k bins in total)</li>
+<li>looks for only one type of object</li>
+</ul>
+</li>
+</ul>
+<h2 id="Feature-Descriptors"><a href="#Feature-Descriptors" class="headerlink" title="Feature Descriptors"></a>Feature Descriptors</h2><blockquote>
+<p> “A feature descriptor is a representation of an image or an image patch that simplifies the image by extracting useful information and throwing away extraneous information.” <a href="https://www.learnopencv.com/histogram-of-oriented-gradients/" target="_blank" rel="external">Learn OpenCV</a></p>
+</blockquote>
+<h3 id="HOG-Histogram-of-Gradients"><a href="#HOG-Histogram-of-Gradients" class="headerlink" title="HOG - Histogram of Gradients"></a>HOG - Histogram of Gradients</h3><ul>
+<li><p><strong>Algorithms:</strong></p>
+<ol>
+<li><p>Calculate gradients using sobel filter, calculate magnitude and orientation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gx = cv2.Sobel(img, cv2.CV_32F, 1, 0, ksize=1)</div><div class="line">gy = cv2.Sobel(img, cv2.CV_32F, 0, 1, ksize=1)</div><div class="line">mag, angle = cv2.cartToPolar(gx, gy, angleInDegrees=True)</div></pre></td></tr></table></figure>
+<p><img src="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-cell-gradients.png" alt=""></p>
+<p><a href="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-cell-gradients.png" target="_blank" rel="external">                Copyright belongs to Learn OpenCV</a></p>
+</li>
+<li><p>Calculate histogram of gradient for each window</p>
+<p><img src="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-histogram-1.png" alt=""></p>
+<p>​    <img src="https://www.learnopencv.com/wp-content/uploads/2016/12/histogram-8x8-cell.png" alt="">            </p>
+<p>​                    <a href="https://www.learnopencv.com/histogram-of-oriented-gradients/" target="_blank" rel="external">Copyright belongs to Learn OpenCV</a></p>
+<ol>
+<li><p>Normalize and concatenate</p>
+<p>Normalization because of lighting conditions will affect the overall pixel values and then gradients.</p>
+<p><img src="https://www.learnopencv.com/wp-content/uploads/2016/12/hog-visualization.png" alt=""></p>
+<p>​                <a href="https://www.learnopencv.com/histogram-of-oriented-gradients/" target="_blank" rel="external">Copyright belongs to Learn OpenCV</a></p>
+</li>
+</ol>
+</li>
+</ol>
+<p>​</p>
+</li>
+<li><p><strong>Pros and Cons</strong></p>
+<ul>
+<li>Edges and corners pack in a lot more information about object shape than flat regions; magnitude of gradients is large around edges and corners ( regions of abrupt intensity changes) </li>
+</ul>
+</li>
+</ul>
+<h3 id="SIFT-Scale-Invariant-Feature-Transformation"><a href="#SIFT-Scale-Invariant-Feature-Transformation" class="headerlink" title="SIFT - Scale Invariant Feature Transformation"></a>SIFT - Scale Invariant Feature Transformation</h3><ul>
+<li><p><strong>Pros and Cons</strong> </p>
+<ul>
+<li>Detector invariant to scale and rotation</li>
+<li>Robust to variations corresponding to typical viewing conditions</li>
+</ul>
+</li>
+<li><p><strong>Algorithm:</strong></p>
+<ol>
+<li><p>Scale space</p>
+<p>Basically it iteratively does Gaussian blur and resizing to half. In total there will be 5 sigma and 5 blur levels.</p>
+<p><img src="http://aishack.in/static/img/tut/sift-octaves.jpg" alt=""></p>
+<p>​                <a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-scale-space/" target="_blank" rel="external">Copyright belongs to AIShack</a></p>
+</li>
+<li><p>LoG Approximations</p>
+<p>Calculate Laplacian of Gaussian to retain only edges and corners.</p>
+<p><img src="https://docs.opencv.org/2.4/_images/Laplace_Operator_Tutorial_Result.jpg" alt="laplacian"></p>
+<p>So why approximation and how? Problem is it’s too slow. A get around is to calculate difference of Gaussians of two consecutive scales.</p>
+<p><img src="http://aishack.in/static/img/tut/sift-dog-idea.jpg" alt=""></p>
+<p>​                <a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-scale-space/" target="_blank" rel="external">Copyright belongs to AIShack</a></p>
+<p>And this brings us scale invariant features (how?).</p>
+</li>
+<li><p>Finding Keypoints </p>
+<ul>
+<li><p>Finding local maximal and minimal</p>
+<p>First find the maximal/ minimal inside one image; compare these local maximal/ minimals to its 26 neighbors in order to ensure it’s key point.</p>
+<p><img src="http://aishack.in/static/img/tut/sift-maxima-idea.jpg" alt=""></p>
+<p>​                <a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-scale-space/" target="_blank" rel="external">Copyright belongs to AIShack</a></p>
+</li>
+<li><p>Find subpixels by math</p>
+<p><img src="http://aishack.in/static/img/tut/sift-maxima-subpixel.jpg" alt=""></p>
+<p>​                <a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-scale-space/" target="_blank" rel="external">Copyright belongs to AIShack</a></p>
+</li>
+</ul>
+</li>
+<li><p>Getting rid of low contrasting key points</p>
+<p>Low contrasting features (low gradient magnitude) are removed. Edges are removed, only corners are retained. Ideas / maths is from Harris Corner detectors.</p>
+</li>
+<li><p>Calculate gradient of key points</p>
+<blockquote>
+<p>The idea is to collect gradient directions and magnitudes around each keypoint. Then we figure out the most prominent orientation(s) in that region. And we assign this orientation(s) to the keypoint.</p>
+<p>Any later calculations are done relative to this orientation. This ensures <strong><em>rotation invariance.</em></strong></p>
+</blockquote>
+<p><img src="http://aishack.in/static/img/tut/sift-a-keypoint.jpg" alt=""></p>
+<p>​                <a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-scale-space/" target="_blank" rel="external">Copyright belongs to AIShack</a></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Object-Detection"><a href="#Object-Detection" class="headerlink" title="Object Detection"></a>Object Detection</h2><h3 id="Harr-Cascades"><a href="#Harr-Cascades" class="headerlink" title="Harr Cascades"></a>Harr Cascades</h3><ul>
+<li><p><strong>Algorithms</strong></p>
+<blockquote>
+<p>Haar features shown in below image are used. They are just like our convolutional kernel. Each feature is a single value obtained by subtracting sum of pixels under white rectangle from sum of pixels under black rectangle.</p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.3.0/haar_features.jpg" alt=""></p>
+<blockquote>
+<p>The first feature selected seems to focus on the property that the region of the eyes is often darker than the region of the nose and cheeks. The second feature selected relies on the property that the eyes are darker than the bridge of the nose. But the same windows applying on cheeks or any other place is irrelevant. </p>
+</blockquote>
+<p><img src="https://docs.opencv.org/3.3.0/haar.png" alt=""></p>
+<p>And then apply ada boosing to train features to object labelling (positive/ negative).</p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><strong><em>Note: All the images come from opencv tutorials documentation unless specified.</em></strong></p>
+<ul>
+<li><a href="http://opencv-python-tutroals.readthedocs.io/en/latest/" target="_blank" rel="external">OpenCV Tutorial’s Documentation</a></li>
+<li><a href="https://www.learnopencv.com/histogram-of-oriented-gradients/" target="_blank" rel="external">Learn OpenCV</a></li>
+<li><a href="https://classroom.udacity.com/courses/ud810" target="_blank" rel="external">Udacity - Introduction to Computer Vision</a></li>
+<li><a href="http://aishack.in/tutorials/sift-scale-invariant-feature-transform-introduction/" target="_blank" rel="external">SIFT: Theory and Practices</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Computer-Vision/" rel="tag"># Computer Vision</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Algorithms-Backtracking/" rel="prev" title="Algorithms - 3. Backtracking">
+                Algorithms - 3. Backtracking <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yoyo.jpg"
+               alt="Yoyo" />
+          <p class="site-author-name" itemprop="name">Yoyo</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/yiyoulin/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yoyolin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://hexiaoyuhaha.github.io" title="Xiaoyu He" target="_blank">Xiaoyu He</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.shuang0420.com" title="Shuang Xu" target="_blank">Shuang Xu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blurring"><span class="nav-number">1.</span> <span class="nav-text">Blurring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gaussian-Filter"><span class="nav-number">1.1.</span> <span class="nav-text">Gaussian Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Median-Filter"><span class="nav-number">1.2.</span> <span class="nav-text">Median Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Biteral-Filter"><span class="nav-number">1.3.</span> <span class="nav-text">Biteral Filter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Morphological-Transformations"><span class="nav-number">2.</span> <span class="nav-text">Morphological Transformations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Erosion"><span class="nav-number">2.1.</span> <span class="nav-text">Erosion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dilation"><span class="nav-number">2.2.</span> <span class="nav-text">Dilation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Applications"><span class="nav-number">2.3.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Opening"><span class="nav-number">2.3.1.</span> <span class="nav-text">Opening</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Closing"><span class="nav-number">2.3.2.</span> <span class="nav-text">Closing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Morphological-Gradient"><span class="nav-number">2.3.3.</span> <span class="nav-text">Morphological Gradient</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Edge-Detection"><span class="nav-number">2.4.</span> <span class="nav-text">Simple Edge Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sobel-Edge-Detection"><span class="nav-number">2.5.</span> <span class="nav-text">Sobel Edge Detection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Canny-Edge-Detection"><span class="nav-number">2.6.</span> <span class="nav-text">Canny Edge Detection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hough-Transformation"><span class="nav-number">3.</span> <span class="nav-text">Hough Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hough-LIne-Transformation"><span class="nav-number">3.1.</span> <span class="nav-text">Hough LIne Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Descriptors"><span class="nav-number">4.</span> <span class="nav-text">Feature Descriptors</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HOG-Histogram-of-Gradients"><span class="nav-number">4.1.</span> <span class="nav-text">HOG - Histogram of Gradients</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SIFT-Scale-Invariant-Feature-Transformation"><span class="nav-number">4.2.</span> <span class="nav-text">SIFT - Scale Invariant Feature Transformation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection"><span class="nav-number">5.</span> <span class="nav-text">Object Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Harr-Cascades"><span class="nav-number">5.1.</span> <span class="nav-text">Harr Cascades</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yoyo</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
